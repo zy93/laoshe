@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "AFTabBarViewController.h"
+#import "LauchViewController.h"
+#import "YYYiHomePageController.h"
+#import "YYYanHomePageController.h"
+#import "YYPlayHomePageController.h"
+#import "YYXunHomePageController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +23,37 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    [self EnterLauchPage];
     return YES;
+}
+
+#pragma mark - private methods
+
+- (void)EnterLauchPage
+{
+//    BOOL bNotFirstLauch = [[mUserDefaults valueForKeyPath:@"NotFirstLauch"] boolValue];
+//    if (!bNotFirstLauch)
+//    {
+//        LauchViewController *pLauchVC = [[LauchViewController alloc]init];
+//        self.window.rootViewController = pLauchVC;
+//    }
+//    else
+//    {
+        [self EnterMainPage];
+//    }
+}
+
+- (void)EnterMainPage
+{
+    AFTabBarViewController *pMainVC = [[AFTabBarViewController alloc]init];
+    pMainVC.propViewControllerClasses = @[[YYYiHomePageController class],[YYYanHomePageController class],[YYPlayHomePageController class],[YYXunHomePageController class]];
+    pMainVC.propTabBarNormalImages = @[@"tabbar_yi",@"tabbar_yan",@"tabbar_play",@"tabbar_xun"];
+    pMainVC.propTabBarSelectedImages = @[@"tabbar_yi_select",@"tabbar_yan_select",@"tabbar_play_select",@"tabbar_xun_select"];
+    pMainVC.propTabBarTitles = @[@"忆",@"研",@"演",@"寻"];
+    self.window.rootViewController = pMainVC;
 }
 
 

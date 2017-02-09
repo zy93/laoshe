@@ -1,0 +1,24 @@
+//
+//  YongYuanDeLaoShe_Perfix.pch
+//  YongYuanDeLaoShe
+//
+//  Created by 自知之明、 on 17/1/24.
+//  Copyright © 2017年 cn.hanyan. All rights reserved.
+//
+
+#ifndef YongYuanDeLaoShe_Perfix_h
+#define YongYuanDeLaoShe_Perfix_h
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AppConfigure.h"
+#import "UIDevice+Resolutions.h"
+
+//#import "MBProgressHUD.h"
+//#import "DeviceDelegateHelper.h"
+//#import "CommonTools.h"
+
+#endif
+
+#endif /* YongYuanDeLaoShe_Perfix_h */

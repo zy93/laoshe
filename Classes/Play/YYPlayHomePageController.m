@@ -8,8 +8,13 @@
 //
 
 #import "YYPlayHomePageController.h"
+#import "YYPlayHomePageView.h"
+#import "YYTingShuDetailController.h"
 
 @interface YYPlayHomePageController ()
+{
+    YYPlayHomePageView *m_pHomePageView;
+}
 
 @end
 
@@ -18,8 +23,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
     m_pNameLabel.text = @"演";
+    m_pTopBar.hidden = YES;
+    [self CreateSubViews];
+}
+
+#pragma mark - private methods
+-(void)CreateSubViews
+{
+    m_pHomePageView = [[YYPlayHomePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - TABBAR_HEIGHT)];
+    [self.view addSubview:m_pHomePageView];
+}
+
+#pragma mark - public methods
+-(void)ClickCheckDetailsWithId:(NSInteger)argId
+{
+    YYTingShuDetailController *pTingShuDetailVC = [[YYTingShuDetailController alloc] init];
+    [self PushChildViewController:pTingShuDetailVC];
 }
 
 - (void)didReceiveMemoryWarning {

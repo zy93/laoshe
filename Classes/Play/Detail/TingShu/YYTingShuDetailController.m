@@ -1,35 +1,22 @@
 //
-//  YYYanHomePageController.m
+//  YYTingShuDetailController.m
 //  YongYuanDeLaoShe
 //
-//  Created by 自知之明、 on 17/1/25.
+//  Created by 自知之明、 on 17/2/11.
 //  Copyright © 2017年 cn.hanyan. All rights reserved.
 //
 
-#import "YYYanHomePageController.h"
-#import "YYYanHomePageView.h"
+#import "YYTingShuDetailController.h"
 
-@interface YYYanHomePageController ()
-{
-    YYYanHomePageView *m_pHomePageView;
-}
+@interface YYTingShuDetailController ()
+
 @end
 
-@implementation YYYanHomePageController
+@implementation YYTingShuDetailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    m_pNameLabel.text = @"研";
-    m_pTopBar.hidden = YES;
-    [self CreateSubViews];
-}
-
-#pragma mark - private methods
--(void)CreateSubViews
-{
-    m_pHomePageView = [[YYYanHomePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - TABBAR_HEIGHT)];
-    [self.view addSubview:m_pHomePageView];
 }
 
 - (void)didReceiveMemoryWarning {

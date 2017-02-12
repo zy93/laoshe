@@ -9,6 +9,7 @@
 #import "YYYiHomePageView.h"
 #import "YYYiHeadView.h"
 #import "YYYiFriendsCell.h"
+#import "YYYiDonationCell.h"
 
 @interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -50,27 +51,40 @@
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"YYYiFriendsCell";
-    YYYiFriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil)
+    if (indexPath.row == 0)
     {
-        cell = [[YYYiFriendsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        static NSString *identifier = @"YYYiFriendsCell";
+        YYYiFriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil)
+        {
+            cell = [[YYYiFriendsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if (indexPath.row == 1)
+    {
+        static NSString *identifier = @"YYYiDonationCell";
+        YYYiDonationCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil)
+        {
+            cell = [[YYYiDonationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    return nil;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.row == m_arrMessage.count - 1)
-//    {
-//        CGFloat pMainH = 82*[AppConfigure GetLengthAdaptRate];
-//        return pMainH;
-//    }
+    if (indexPath.row == 1 )
+    {
+        return  200*[AppConfigure GetLengthAdaptRate];
+    }
     CGFloat pMainH = 144*[AppConfigure GetLengthAdaptRate];
     return pMainH;
 }

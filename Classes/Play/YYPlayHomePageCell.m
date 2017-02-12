@@ -31,7 +31,7 @@
 #pragma mark - private methods
 -(void)CreateSubViews
 {
-    m_pYanDirectoryScrollView = [[YYTitleBottomScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 220*[AppConfigure GetLengthAdaptRate])];
+    m_pYanDirectoryScrollView = [[YYTitleBottomScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 220*[AppConfigure GetLengthAdaptRate])andYiOrPlay:NO];
     m_pYanDirectoryScrollView.propDelegate = self;
     [self.contentView addSubview:m_pYanDirectoryScrollView];
 }

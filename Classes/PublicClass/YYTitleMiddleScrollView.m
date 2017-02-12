@@ -50,6 +50,8 @@
     m_pScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, m_pTitleLab.bottom + 9*[AppConfigure GetLengthAdaptRate], self.width, self.height - m_pTitleLab.bottom - 9*[AppConfigure GetLengthAdaptRate])];
     m_pScrollView.backgroundColor = [UIColor clearColor];
     m_pScrollView.clipsToBounds = NO;
+    m_pScrollView.showsVerticalScrollIndicator = NO;
+    m_pScrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:m_pScrollView];
     
     CGFloat fBackViewSize = 71*[AppConfigure GetLengthAdaptRate];

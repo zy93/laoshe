@@ -16,6 +16,8 @@
 
 @interface YYTitleBottomScrollView : UIView
 
+-(id)initWithFrame:(CGRect)frame andYiOrPlay:(BOOL)argSquare;
+
 @property (nonatomic,weak)id<YYTitleBottomScrollViewDelegate> propDelegate;
 
 -(void)SetTitleText:(NSString *)argTitle;

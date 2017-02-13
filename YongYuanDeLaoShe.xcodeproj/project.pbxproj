@@ -229,6 +229,7 @@
 		25DFD0D51E51F5740028D926 /* share_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D31E51F5740028D926 /* share_icon@3x.png */; };
 		25DFD0D81E51FABE0028D926 /* share_icon_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D61E51FABE0028D926 /* share_icon_select@2x.png */; };
 		25DFD0D91E51FABE0028D926 /* share_icon_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */; };
+		25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD0DC1E51FE570028D926 /* YYXunData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -638,6 +639,8 @@
 		25DFD0D31E51F5740028D926 /* share_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_icon@3x.png"; sourceTree = "<group>"; };
 		25DFD0D61E51FABE0028D926 /* share_icon_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_icon_select@2x.png"; sourceTree = "<group>"; };
 		25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_icon_select@3x.png"; sourceTree = "<group>"; };
+		25DFD0DB1E51FE570028D926 /* YYXunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunData.h; sourceTree = "<group>"; };
+		25DFD0DC1E51FE570028D926 /* YYXunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -957,6 +960,7 @@
 				258D7C881E388667009510C4 /* Yi */,
 				258D7C951E3887E2009510C4 /* Lauch */,
 				25A6DD811E3A1DB800B230B7 /* PublicClass */,
+				25DFD0DA1E51FE1D0028D926 /* MoudelData */,
 			);
 			path = Classes;
 			sourceTree = SOURCE_ROOT;
@@ -1614,6 +1618,15 @@
 			path = FriendsDetail;
 			sourceTree = "<group>";
 		};
+		25DFD0DA1E51FE1D0028D926 /* MoudelData */ = {
+			isa = PBXGroup;
+			children = (
+				25DFD0DB1E51FE570028D926 /* YYXunData.h */,
+				25DFD0DC1E51FE570028D926 /* YYXunData.m */,
+			);
+			path = MoudelData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1942,6 +1955,7 @@
 				2555A4E61E3785DC00E309F6 /* ZYKeyboardUtil.m in Sources */,
 				25DFD0D11E51F4B10028D926 /* YYYiFriendDetailController.m in Sources */,
 				2555A50B1E3785DC00E309F6 /* MLSelectPhotoPickerCollectionView.m in Sources */,
+				25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */,
 				2555A3CE1E37851200E309F6 /* AFDetailTimeSelectedView.m in Sources */,
 				258D7CBC1E389157009510C4 /* YYYiHomePageView.m in Sources */,
 				2555A51A1E3785DD00E309F6 /* AFNetworkActivityIndicatorManager.m in Sources */,

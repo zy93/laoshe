@@ -10,4 +10,6 @@
 
 @interface YYXunHomePageView : UIView
 
+-(void)SetXunHomePageData:(NSArray *)argData;
+
 @end

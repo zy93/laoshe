@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class YYXunData;
+
 @interface YYXunHomePageCell : UITableViewCell
+
+-(void)SetData:(YYXunData *)argData;
 
 @end

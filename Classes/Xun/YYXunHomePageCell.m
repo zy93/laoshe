@@ -7,6 +7,8 @@
 //
 
 #import "YYXunHomePageCell.h"
+#import "YYXunData.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface YYXunHomePageCell ()
 {
@@ -41,6 +43,13 @@
     m_pTitleLab.textColor = UIColorFromHex(0xffffff);
     m_pTitleLab.textAlignment = NSTextAlignmentCenter;
     [m_pBackgroundView addSubview:m_pTitleLab];
+}
+
+#pragma mark - public methods
+-(void)SetData:(YYXunData *)argData
+{
+    m_pTitleLab.text = argData.title;
+    [m_pBackgroundView setImageWithURL:[NSURL URLWithString:argData.cover] placeholderImage:nil];
 }
 
 - (void)awakeFromNib {

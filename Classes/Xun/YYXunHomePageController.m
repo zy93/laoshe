@@ -8,10 +8,12 @@
 
 #import "YYXunHomePageController.h"
 #import "YYXunHomePageView.h"
+#import "YYXunData.h"
 
 @interface YYXunHomePageController ()
 {
     YYXunHomePageView *m_pHomePageView;
+    BUAFHttpRequest *m_pRequest;
 }
 @end
 
@@ -22,6 +24,8 @@
     // Do any additional setup after loading the view.
     m_pNameLabel.text = @"寻";
     [self CreateSubViews];
+    [self CreateRequest];
+    
 }
 
 #pragma mark - private methods
@@ -29,6 +33,35 @@
 {
     m_pHomePageView = [[YYXunHomePageView alloc] initWithFrame:CGRectMake(0, m_pTopBar.bottom, self.view.width, self.view.height-m_pTopBar.bottom - TABBAR_HEIGHT)];
     [self.view addSubview:m_pHomePageView];
+}
+
+-(void)CreateRequest
+{
+    m_pRequest = [[BUAFHttpRequest alloc] initWithUrl:[NSString stringWithFormat:@"Xun/getXun"] andTag:@"xunHomePage"];
+    m_pRequest.propDelegate = self;
+    m_pRequest.propDataClass = [YYXunData class];
+    [m_pRequest GetAsynchronous];
+    [self ShowProgressHUDWithMessage:@"Loading..."];
+}
+
+
+#pragma mark - BUAFHttpRequestDelegate methods
+-(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData
+{
+    if ([argRequestTag isEqualToString:@"xunHomePage"])
+    {
+        [m_pHomePageView SetXunHomePageData:argData];
+        [self HideProgressHUD];
+    }
+}
+- (void)RequestErrorHappened:(BUAFHttpRequest *)argRequest withErrorMsg:(NSString *)argMsg
+{
+    [self RequestFailed:argRequest];
+}
+
+- (void)RequestFailed:(BUAFHttpRequest *)argRequest
+{
+    [self HideProgressHUD];
 }
 
 - (void)didReceiveMemoryWarning {

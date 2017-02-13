@@ -12,6 +12,7 @@
 @interface YYXunHomePageView ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *m_pTableView;
+    NSMutableArray *m_arrData;
 }
 
 @end
@@ -23,6 +24,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        m_arrData = [NSMutableArray array];
         [self CreateSubViews];
     }
     return self;
@@ -39,11 +41,19 @@
     [self addSubview:m_pTableView];
 }
 
+#pragma mark - public methods
+-(void)SetXunHomePageData:(NSArray *)argData
+{
+    [m_arrData removeAllObjects];
+    [m_arrData addObjectsFromArray:argData];
+    [m_pTableView reloadData];
+}
+
 
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return m_arrData.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,12 +64,13 @@
     {
         cell = [[YYXunHomePageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell SetData:m_arrData[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 9)
+    if (indexPath.row == m_arrData.count - 1)
     {
         CGFloat pMainH = 134*[AppConfigure GetLengthAdaptRate];
         return pMainH;

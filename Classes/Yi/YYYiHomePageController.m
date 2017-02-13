@@ -8,8 +8,10 @@
 
 #import "YYYiHomePageController.h"
 #import "YYYiHomePageView.h"
+#import "YYShareView.h"
+#import "YYYiFriendDetailController.h"
 
-@interface YYYiHomePageController ()
+@interface YYYiHomePageController ()<YYYiHomePageViewDelegate>
 {
     YYYiHomePageView *m_pHomePageView;
 }
@@ -30,7 +32,14 @@
 -(void)CreateSubViews
 {
     m_pHomePageView = [[YYYiHomePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - TABBAR_HEIGHT)];
+    m_pHomePageView.propDelegate = self;
     [self.view addSubview:m_pHomePageView];
+}
+
+-(void)Click2111
+{
+    YYYiFriendDetailController *pVC = [[YYYiFriendDetailController alloc] init];
+    [self PushChildViewController:pVC];
 }
 
 - (void)didReceiveMemoryWarning {

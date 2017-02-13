@@ -89,4 +89,12 @@
     return pMainH;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(Click2111)])
+    {
+        [self.propDelegate Click2111];
+    }
+}
+
 @end

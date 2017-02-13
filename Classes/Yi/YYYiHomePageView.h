@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol YYYiHomePageViewDelegate <NSObject>
+
+-(void)Click2111    ;
+
+@end
+
 @interface YYYiHomePageView : UIView
+
+@property (nonatomic,weak)id<YYYiHomePageViewDelegate> propDelegate;
 
 @end

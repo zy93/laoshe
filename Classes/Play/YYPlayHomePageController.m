@@ -9,7 +9,7 @@
 
 #import "YYPlayHomePageController.h"
 #import "YYPlayHomePageView.h"
-#import "YYTingShuDetailController.h"
+#import "AudioPlayViewController.h"
 
 @interface YYPlayHomePageController ()
 {
@@ -38,7 +38,7 @@
 #pragma mark - public methods
 -(void)ClickCheckDetailsWithId:(NSInteger)argId
 {
-    YYTingShuDetailController *pTingShuDetailVC = [[YYTingShuDetailController alloc] init];
+    AudioPlayViewController *pTingShuDetailVC = [[AudioPlayViewController alloc] init];
     [self PushChildViewController:pTingShuDetailVC];
 }
 

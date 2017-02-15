@@ -18,4 +18,8 @@
 
 @property (nonatomic,weak)id<YYYiHomePageViewDelegate> propDelegate;
 
+-(void)SetFriendData:(NSArray *)argData;
+
+-(void)SetDonationData:(NSArray *)argData;
+
 @end

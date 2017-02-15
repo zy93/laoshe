@@ -54,10 +54,17 @@
     m_pScrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:m_pScrollView];
     
+
+
+}
+
+#pragma mark - public methods
+-(void)SetData:(NSArray *)argData
+{
     CGFloat fBackViewSize = 71*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewInterval = 8*[AppConfigure GetLengthAdaptRate];
-    for (NSInteger i = 0; i < 10; i++)
+    for (NSInteger i = 0; i < argData.count; i++)
     {
         UIView *pBackgroupView = [[UIView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (fBackViewSize + fBackViewInterval)), 0, fBackViewSize, fBackViewSize)];
         pBackgroupView.backgroundColor = m_arrBackgroupColor[i%5];
@@ -71,7 +78,6 @@
         [m_pScrollView addSubview:pNameLab];
     }
     m_pScrollView.contentSize = CGSizeMake(fBackViewX+(10 * (fBackViewSize+fBackViewInterval)), 0);
-
 }
 
 @end

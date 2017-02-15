@@ -66,10 +66,27 @@
     m_pScrollView.showsVerticalScrollIndicator = NO;
     m_pScrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:m_pScrollView];
-    
+}
+
+-(void)ClickCheckDetails:(UIButton *)argBtn
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:)])
+    {
+        [self.propDelegate ClickCheckDetailsWithId:argBtn.tag - VIEWBTNTAG];
+    }
+}
+
+#pragma mark - public methods
+-(void)SetTitleText:(NSString *)argTitle
+{
+    m_pTitleLab.text = argTitle;
+}
+
+-(void)SetData:(NSArray *)argData
+{
     CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewInterval = 4*[AppConfigure GetLengthAdaptRate];
-    for (NSInteger i = 0; i < 10; i++)
+    for (NSInteger i = 0; i < argData.count; i++)
     {
         UIImageView *pBackgroupView = [[UIImageView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (m_fBackViewSizeW + fBackViewInterval)), 0, m_fBackViewSizeW, m_fBackViewSizeH)];
         pBackgroupView.backgroundColor = [UIColor redColor];
@@ -89,22 +106,6 @@
         [m_pScrollView addSubview:pNameLab];
     }
     m_pScrollView.contentSize = CGSizeMake(fBackViewX+(10 * (m_fBackViewSizeW+fBackViewInterval)), 0);
-    
 }
-
--(void)ClickCheckDetails:(UIButton *)argBtn
-{
-    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:)])
-    {
-        [self.propDelegate ClickCheckDetailsWithId:argBtn.tag - VIEWBTNTAG];
-    }
-}
-
-#pragma mark - public methods
--(void)SetTitleText:(NSString *)argTitle
-{
-    m_pTitleLab.text = argTitle;
-}
-
 
 @end

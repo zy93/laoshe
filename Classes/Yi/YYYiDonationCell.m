@@ -34,7 +34,12 @@
     m_pDonationView = [[YYTitleBottomScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200*[AppConfigure GetLengthAdaptRate]) andYiOrPlay:YES];
     [m_pDonationView SetTitleText:@"大众捐献"];
     [self.contentView addSubview:m_pDonationView];
-    
+}
+
+#pragma mark - public methods
+-(void)SetDonationData:(NSArray *)argData
+{
+    [m_pDonationView SetData:argData];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

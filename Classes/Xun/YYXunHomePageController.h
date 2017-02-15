@@ -7,7 +7,10 @@
 //  寻
 
 #import "BUCustomViewController.h"
+@class YYXunData;
 
 @interface YYXunHomePageController : BUCustomViewController
+
+-(void)CheckDetail:(YYXunData *)argData;
 
 @end

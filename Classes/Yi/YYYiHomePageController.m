@@ -10,10 +10,14 @@
 #import "YYYiHomePageView.h"
 #import "YYShareView.h"
 #import "YYYiFriendDetailController.h"
+#import "YYDonationData.h"
+#import "YYFriendData.h"
 
 @interface YYYiHomePageController ()<YYYiHomePageViewDelegate>
 {
     YYYiHomePageView *m_pHomePageView;
+    BUAFHttpRequest *m_pFriendRequest;
+    BUAFHttpRequest *m_pDonateRequest;
 }
 
 @end
@@ -26,6 +30,7 @@
 //    m_pNameLabel.text = @"忆";
     m_pTopBar.hidden = YES;
     [self CreateSubViews];
+    [self CreateRequest];
 }
 
 #pragma mark - private methods 
@@ -36,11 +41,53 @@
     [self.view addSubview:m_pHomePageView];
 }
 
+-(void)CreateRequest
+{
+    m_pFriendRequest = [[BUAFHttpRequest alloc] initWithUrl:[NSString stringWithFormat:@"Friends/getFriends"] andTag:@"friend"];
+    m_pFriendRequest.propDelegate = self;
+    m_pFriendRequest.propDataClass = [YYFriendData class];
+    [m_pFriendRequest GetAsynchronous];
+    
+    m_pDonateRequest = [[BUAFHttpRequest alloc] initWithUrl:[NSString stringWithFormat:@"Friends/getDonateList"] andTag:@"donate"];
+    m_pDonateRequest.propDelegate = self;
+    m_pDonateRequest.propDataClass = [YYDonationData class];
+    [m_pDonateRequest GetAsynchronous];
+    
+    [self ShowProgressHUDWithMessage:@"Loading..."];
+}
+
 -(void)Click2111
 {
     YYYiFriendDetailController *pVC = [[YYYiFriendDetailController alloc] init];
     [self PushChildViewController:pVC];
 }
+
+#pragma mark - BUAFHttpRequestDelegate methods
+-(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData
+{
+    if ([argRequestTag isEqualToString:@"friend"])
+    {
+        [m_pHomePageView SetFriendData:argData];
+    }
+    if ([argRequestTag isEqualToString:@"donate"])
+    {
+        [m_pHomePageView SetDonationData:argData];
+    }
+    if (m_pDonateRequest.proRequestRunning == NO && m_pFriendRequest.proRequestRunning == NO)
+    {
+        [self HideProgressHUD];
+    }
+}
+- (void)RequestErrorHappened:(BUAFHttpRequest *)argRequest withErrorMsg:(NSString *)argMsg
+{
+    [self RequestFailed:argRequest];
+}
+
+- (void)RequestFailed:(BUAFHttpRequest *)argRequest
+{
+    [self HideProgressHUD];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,7 +10,7 @@
 #import "YYXunHomePageView.h"
 #import "YYXunData.h"
 
-@interface YYXunHomePageController ()
+@interface YYXunHomePageController ()<YYXunHomePageViewDelegate>
 {
     YYXunHomePageView *m_pHomePageView;
     BUAFHttpRequest *m_pRequest;
@@ -32,6 +32,7 @@
 -(void)CreateSubViews
 {
     m_pHomePageView = [[YYXunHomePageView alloc] initWithFrame:CGRectMake(0, m_pTopBar.bottom, self.view.width, self.view.height-m_pTopBar.bottom - TABBAR_HEIGHT)];
+    m_pHomePageView.propDelegate = self;
     [self.view addSubview:m_pHomePageView];
 }
 
@@ -42,6 +43,12 @@
     m_pRequest.propDataClass = [YYXunData class];
     [m_pRequest GetAsynchronous];
     [self ShowProgressHUDWithMessage:@"Loading..."];
+}
+
+#pragma mark - YYXunHomePageView Delegate
+-(void)CheckDetail:(YYXunData *)argData
+{
+    
 }
 
 

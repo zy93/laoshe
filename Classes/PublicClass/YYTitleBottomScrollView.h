@@ -22,4 +22,6 @@
 
 -(void)SetTitleText:(NSString *)argTitle;
 
+-(void)SetData:(NSArray *)argData;
+
 @end

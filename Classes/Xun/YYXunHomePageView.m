@@ -8,6 +8,7 @@
 
 #import "YYXunHomePageView.h"
 #import "YYXunHomePageCell.h"
+#import "YYXunData.h"
 
 @interface YYXunHomePageView ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -77,6 +78,13 @@
     }
     CGFloat pMainH = 124*[AppConfigure GetLengthAdaptRate];
     return pMainH;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(CheckDetail:)])
+    {
+        [self.propDelegate CheckDetail:m_arrData[indexPath.row]];
+    }
 }
 
 

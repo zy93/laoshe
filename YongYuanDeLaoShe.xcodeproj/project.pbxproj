@@ -237,6 +237,8 @@
 		2AC696221E5488720061A601 /* 我这一辈子@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AC696201E5488720061A601 /* 我这一辈子@2x.png */; };
 		2AC696231E5488720061A601 /* 我这一辈子@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AC696211E5488720061A601 /* 我这一辈子@3x.png */; };
 		2AC696291E549E8C0061A601 /* ZYListenBookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC696281E549E8C0061A601 /* ZYListenBookData.m */; };
+		2AC6962E1E54A5600061A601 /* YYDonationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6962B1E54A5600061A601 /* YYDonationData.m */; };
+		2AC6962F1E54A5600061A601 /* YYFriendData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6962D1E54A5600061A601 /* YYFriendData.m */; };
 		2AD5FE3F1E52068400C5F704 /* AudioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */; };
 		2AD5FE401E52068400C5F704 /* ZYSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD5FE3E1E52068400C5F704 /* ZYSlider.m */; };
 		2AD5FED91E52085300C5F704 /* cd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD5FEA71E52085300C5F704 /* cd@2x.png */; };
@@ -672,9 +674,7 @@
 		25C939B21E5485A000017D17 /* YYXunDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunDetailController.m; sourceTree = "<group>"; };
 		25C939B41E5487AE00017D17 /* YYXunDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunDetailView.h; sourceTree = "<group>"; };
 		25C939B51E5487AE00017D17 /* YYXunDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunDetailView.m; sourceTree = "<group>"; };
-		25C939B71E548EC300017D17 /* YYFriendData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFriendData.h; sourceTree = "<group>"; };
 		25C939B81E548EC300017D17 /* YYFriendData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFriendData.m; sourceTree = "<group>"; };
-		25C939BA1E54916700017D17 /* YYDonationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonationData.h; sourceTree = "<group>"; };
 		25C939BB1E54916700017D17 /* YYDonationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonationData.m; sourceTree = "<group>"; };
 		25DFD0A11E51E74A0028D926 /* YYShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYShareView.h; sourceTree = "<group>"; };
 		25DFD0A21E51E74A0028D926 /* YYShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYShareView.m; sourceTree = "<group>"; };
@@ -712,6 +712,10 @@
 		2AC696211E5488720061A601 /* 我这一辈子@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我这一辈子@3x.png"; sourceTree = "<group>"; };
 		2AC696271E549E8C0061A601 /* ZYListenBookData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYListenBookData.h; sourceTree = "<group>"; };
 		2AC696281E549E8C0061A601 /* ZYListenBookData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYListenBookData.m; sourceTree = "<group>"; };
+		2AC6962A1E54A5600061A601 /* YYDonationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonationData.h; sourceTree = "<group>"; };
+		2AC6962B1E54A5600061A601 /* YYDonationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonationData.m; sourceTree = "<group>"; };
+		2AC6962C1E54A5600061A601 /* YYFriendData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFriendData.h; sourceTree = "<group>"; };
+		2AC6962D1E54A5600061A601 /* YYFriendData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFriendData.m; sourceTree = "<group>"; };
 		2AD5FE3B1E52068400C5F704 /* AudioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayViewController.h; sourceTree = "<group>"; };
 		2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayViewController.m; sourceTree = "<group>"; };
 		2AD5FE3D1E52068400C5F704 /* ZYSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYSlider.h; sourceTree = "<group>"; };
@@ -1755,6 +1759,10 @@
 		25DFD0DA1E51FE1D0028D926 /* MoudelData */ = {
 			isa = PBXGroup;
 			children = (
+				2AC6962A1E54A5600061A601 /* YYDonationData.h */,
+				2AC6962B1E54A5600061A601 /* YYDonationData.m */,
+				2AC6962C1E54A5600061A601 /* YYFriendData.h */,
+				2AC6962D1E54A5600061A601 /* YYFriendData.m */,
 				25DFD0DB1E51FE570028D926 /* YYXunData.h */,
 				25DFD0DC1E51FE570028D926 /* YYXunData.m */,
 				2AC696271E549E8C0061A601 /* ZYListenBookData.h */,
@@ -2131,11 +2139,13 @@
 				2555A4FC1E3785DC00E309F6 /* UIImage+MLTint.m in Sources */,
 				25ADF5DE1E38C950000FFE0E /* YYYiHeadView.m in Sources */,
 				2555A4DF1E3785DC00E309F6 /* JSONKit.m in Sources */,
+				2AC6962F1E54A5600061A601 /* YYFriendData.m in Sources */,
 				2555A51C1E3785DD00E309F6 /* UIButton+AFNetworking.m in Sources */,
 				2583F6151E347F9D00222D66 /* ViewController.m in Sources */,
 				2555A4E41E3785DC00E309F6 /* SBJsonParser.m in Sources */,
 				2555A3D41E37851200E309F6 /* NSString+IntValue.m in Sources */,
 				2555A3CD1E37851200E309F6 /* AFPickerView.m in Sources */,
+				2AC6962E1E54A5600061A601 /* YYDonationData.m in Sources */,
 				2555A3EA1E37851200E309F6 /* BUCustomViewController.m in Sources */,
 				2555A3EE1E37851200E309F6 /* BUTagButton.m in Sources */,
 				2555A4D21E3785DC00E309F6 /* AFPictureBrowser.m in Sources */,

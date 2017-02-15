@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YYXunData;
+
+@protocol YYXunHomePageViewDelegate <NSObject>
+
+-(void)CheckDetail:(YYXunData *)argData;
+
+@end
 
 @interface YYXunHomePageView : UIView
+
+@property (nonatomic,weak)id<YYXunHomePageViewDelegate> propDelegate;
 
 -(void)SetXunHomePageData:(NSArray *)argData;
 

@@ -15,6 +15,8 @@
 {
     YYYiHeadView *m_pHeadView;
     UITableView *m_pTableView;
+    NSMutableArray *m_arrFriendData;
+    NSMutableArray *m_arrDonationData;
 }
 
 @end
@@ -26,6 +28,8 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        m_arrFriendData = [NSMutableArray array];
+        m_arrDonationData = [NSMutableArray array];
         [self CreateSubViews];
     }
     return self;
@@ -48,6 +52,20 @@
 
 }
 
+#pragma mark - public methods
+-(void)SetFriendData:(NSArray *)argData
+{
+    [m_arrFriendData removeAllObjects];
+    [m_arrFriendData addObjectsFromArray:argData];
+    [m_pTableView reloadData];
+}
+-(void)SetDonationData:(NSArray *)argData
+{
+    [m_arrDonationData removeAllObjects];
+    [m_arrDonationData addObjectsFromArray:argData];
+    [m_pTableView reloadData];
+}
+
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -64,6 +82,7 @@
         {
             cell = [[YYYiFriendsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        [cell SetFriendData:m_arrFriendData];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.row == 1)
@@ -74,6 +93,7 @@
         {
             cell = [[YYYiDonationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        [cell SetDonationData:m_arrDonationData];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

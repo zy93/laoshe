@@ -51,7 +51,6 @@
     m_pIntroduceLab1.numberOfLines = 0;
     m_pIntroduceLab1.font = [UIFont fontWithName:[AppConfigure RegularFont] size:14.0f];
     m_pIntroduceLab1.textColor = UIColorFromHex(0x333333);
-    m_pIntroduceLab1.backgroundColor = [UIColor redColor];
     [self addSubview:m_pIntroduceLab1];
     [m_pIntroduceLab1 sizeToFit];
     

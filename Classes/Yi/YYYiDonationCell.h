@@ -10,4 +10,6 @@
 
 @interface YYYiDonationCell : UITableViewCell
 
+-(void)SetDonationData:(NSArray *)argData;
+
 @end

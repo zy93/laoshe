@@ -35,6 +35,11 @@
     m_pFriendsScrollView = [[YYTitleMiddleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 144*[AppConfigure GetLengthAdaptRate])];
     [self.contentView addSubview:m_pFriendsScrollView];
 }
+#pragma mark - public methods
+-(void)SetFriendData:(NSArray *)argData
+{
+    [m_pFriendsScrollView SetData:argData];
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

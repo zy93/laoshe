@@ -10,4 +10,6 @@
 
 @interface YYYiFriendsCell : UITableViewCell
 
+-(void)SetFriendData:(NSArray *)argData;
+
 @end

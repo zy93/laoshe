@@ -10,4 +10,6 @@
 
 @interface YYTitleMiddleScrollView : UIView
 
+-(void)SetData:(NSArray *)argData;
+
 @end

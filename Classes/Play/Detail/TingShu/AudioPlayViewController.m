@@ -8,8 +8,12 @@
 
 #import "AudioPlayViewController.h"
 
-#import "ZYSlider.h"
 #import <AVFoundation/AVFoundation.h>
+
+#import "AppConfigure.h"
+
+#import "ZYSlider.h"
+#import "ZYBookListView.h"
 
 #define black_33 0x333333
 #define black_66 0x666666
@@ -22,10 +26,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
-@interface AudioPlayViewController () <ZYSliderDelegate>
+@interface AudioPlayViewController () <ZYSliderDelegate, ZYBookListViewDelegate>
 {
-    UIImageView *m_pBackgroundImage;
-    UIImageView *m_pBookIconImage;
+    UIImageView *m_pBackgroundImage; //图片毛玻璃背景层
+    UIImageView *m_pBookIconImage; //图片
     
     UIButton *m_pPlayBtn; //播放/暂停按钮
     UIButton *m_pPreviousBtn; //上一曲按钮
@@ -41,8 +45,9 @@
     BOOL m_bIsPlaying; //播放状态
     NSArray *m_pPlayList;
     
+    ZYBookListView *m_pBookMenuView;
     
-    
+    BUAFHttpRequest *m_pRequest;
 }
 
 //@property (nonatomic, strong) UIProgressView *m_progress;//缓冲进度条.
@@ -75,6 +80,8 @@
     [self addAudioInfoView];
     [self addControlButton];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
+    [self.view addGestureRecognizer:tap];
     
     
     __weak AudioPlayViewController *weakVC = self;
@@ -108,7 +115,7 @@
 {
     [super viewDidAppear:animated];
     //进入页面后自动播放
-    [self play];
+//    [self play];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,17 +123,41 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)tapView:(UITapGestureRecognizer *)tap
+{
+    [self hiddenBookMenu];
+}
 
 -(void)addBackgroundImage
 {
     m_pBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 375)];
     [self.view addSubview:m_pBackgroundImage];
     [m_pBackgroundImage setBackgroundColor:[UIColor redColor]];
+    [m_pBackgroundImage setImage:[UIImage imageNamed:@"我这一辈子"]];
+    //模糊效果
+    UIBlurEffect *beffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithEffect:beffect];
+    view.frame = m_pBackgroundImage.bounds;
+    [self.view addSubview:view];
     
+    //cd
+    UIImageView *cdImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    cdImgView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2+30, m_pBackgroundImage.frame.size.height/2);
+    [cdImgView setImage:[UIImage imageNamed:@"cd"]];
+    [self.view addSubview:cdImgView];
     //上面的小图片
-    m_pBookIconImage =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    m_pBookIconImage.center = CGPointMake(m_pBackgroundImage.frame.size.width/2, m_pBackgroundImage.frame.size.height/2);
+    UIView *bookIconBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 124, 124)];
+    bookIconBackgroundView.backgroundColor =[UIColor whiteColor];
+    bookIconBackgroundView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2-30, m_pBackgroundImage.frame.size.height/2);
+    [self.view addSubview:bookIconBackgroundView];
+
+    
+    m_pBookIconImage =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 114, 114)];
+    m_pBookIconImage.center = CGPointMake(bookIconBackgroundView.frame.size.width/2, bookIconBackgroundView.frame.size.height/2);
+    [m_pBookIconImage setImage:[UIImage imageNamed:@"我这一辈子"]];
     [m_pBookIconImage setBackgroundColor:[UIColor grayColor]];
+    [bookIconBackgroundView addSubview:m_pBookIconImage];
+//
     
 }
 
@@ -147,7 +178,7 @@
     [self.m_pCurrentTimeLabel setTextColor:[UIColor whiteColor]];
 //    [m_pCurrentTimeLabel setBackgroundColor:[UIColor blackColor]];
     [self.m_pCurrentTimeLabel setText:@"00:00"];
-    [m_pBackgroundImage addSubview:self.m_pCurrentTimeLabel];
+    [self.view addSubview:self.m_pCurrentTimeLabel];
     
     
     self.m_pProgresSlider = [[ZYSlider alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.m_pCurrentTimeLabel.frame)+5, CGRectGetMinY(self.m_pCurrentTimeLabel.frame), CGRectGetWidth(m_pBackgroundImage.frame)-130, 20)];
@@ -173,7 +204,7 @@
     [self.m_pDurationLabel setText:@"20:32"];
 //    [m_pDurationLabel setBackgroundColor:[UIColor blackColor]];
 
-    [m_pBackgroundImage addSubview:self.m_pDurationLabel];
+    [self.view addSubview:self.m_pDurationLabel];
     
 //    //进度条
 //    self.m_progress = [[UIProgressView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.m_pProgresSlider.frame)+1, CGRectGetMidY(self.m_pProgresSlider.frame)-10, CGRectGetWidth(self.m_pProgresSlider.frame)-2, 10)];
@@ -211,7 +242,7 @@
     m_pPlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [m_pPlayBtn setFrame:CGRectMake(0, 0, 50, 50)];
     m_pPlayBtn.center = CGPointMake(CGRectGetWidth(self.view.frame)/2, CGRectGetHeight(self.view.frame)-66);
-    [m_pPlayBtn addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+    [m_pPlayBtn addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
     [m_pPlayBtn setImage:[UIImage imageNamed:@"资源 39"] forState:UIControlStateNormal];
 //    [m_pPlayBtn setBackgroundColor:[UIColor yellowColor]];
     [self.view addSubview:m_pPlayBtn];
@@ -221,7 +252,7 @@
     m_pPreviousBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [m_pPreviousBtn setFrame:CGRectMake(0, 0, 21, 27)];
     m_pPreviousBtn.center = CGPointMake(CGRectGetMidX(m_pPlayBtn.frame)-50-(54/2), CGRectGetMidY(m_pPlayBtn.frame));
-    [m_pPreviousBtn addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+    [m_pPreviousBtn addTarget:self action:@selector(previous:) forControlEvents:UIControlEventTouchUpInside];
     [m_pPreviousBtn setImage:[UIImage imageNamed:@"资源 18"] forState:UIControlStateNormal];
     [self.view addSubview:m_pPreviousBtn];
     
@@ -229,7 +260,7 @@
     m_pNextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [m_pNextBtn setFrame:CGRectMake(0, 0, 21, 27)];
     m_pNextBtn.center = CGPointMake(CGRectGetMidX(m_pPlayBtn.frame)+50+(54/2), CGRectGetMidY(m_pPlayBtn.frame));
-    [m_pNextBtn addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+    [m_pNextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
     [m_pNextBtn setImage:[UIImage imageNamed:@"默认"] forState:UIControlStateNormal];
     [self.view addSubview:m_pNextBtn];
     
@@ -237,31 +268,18 @@
     m_pMenuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [m_pMenuBtn setFrame:CGRectMake(0, 0, 21, 27)];
     m_pMenuBtn.center = CGPointMake(CGRectGetWidth(self.view.frame)- 32, CGRectGetMidY(m_pPlayBtn.frame));
-    [m_pMenuBtn addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+    [m_pMenuBtn addTarget:self action:@selector(showBookMenu:) forControlEvents:UIControlEventTouchUpInside];
     [m_pMenuBtn setImage:[UIImage imageNamed:@"资源 28"] forState:UIControlStateNormal];
     [self.view addSubview:m_pMenuBtn];
 }
 
 #pragma mark - action
--(void)back
+-(void)previous:(UIButton *)sender
 {
     
 }
 
-//http://sc1.111ttt.com/2016/1/12/10/205102156089.mp3
--(void)slider:(CGFloat)value
-{
-    NSLog(@"---------__%f", value);
-    CMTime duration = m_pAVPlayer.currentItem.duration;
-    CGFloat totalDuration = CMTimeGetSeconds(duration);
-    float time = value * totalDuration;
-    //快进
-    [m_pAVPlayer seekToTime:CMTimeMake(time, 1) completionHandler:^(BOOL finished) {
-        NSLog(@"++++++++");
-    }];
-}
-
--(void)play
+-(void)play:(UIButton *)sender
 {
     if (m_bIsPlaying) {
         [m_pAVPlayer pause];
@@ -276,6 +294,43 @@
     }
 }
 
+-(void)next:(UIButton *)sender
+{
+    
+}
+
+-(void)showBookMenu:(UIButton *)sender
+{
+    CGFloat h =394*[AppConfigure GetLengthAdaptRate];
+    if (!m_pBookMenuView) {
+        m_pBookMenuView = [[ZYBookListView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), h)];
+        [self.view addSubview:m_pBookMenuView];
+    }
+    
+    m_pBookMenuView.m_bookList = @[@"asdf"];
+    
+    if (!sender.isSelected) {
+        [UIView animateWithDuration:0.5 animations:^{
+            [m_pBookMenuView setFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-h, CGRectGetWidth(self.view.frame), h)];
+        }];
+    }
+    else {
+        [self hiddenBookMenu];
+    }
+    sender.selected = !sender.isSelected;
+}
+
+
+-(void)hiddenBookMenu
+{
+    CGFloat h =394*[AppConfigure GetLengthAdaptRate];
+    [UIView animateWithDuration:0.5 animations:^{
+        [m_pBookMenuView setFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), h)];
+    }];
+    
+    m_pMenuBtn.selected = NO;
+}
+
 -(NSTimeInterval)availableDuration {
     NSArray *loadedTimeRanages = [[m_pAVPlayer currentItem] loadedTimeRanges];
     CMTimeRange timeRange = [loadedTimeRanages.firstObject CMTimeRangeValue];
@@ -285,6 +340,25 @@
     NSTimeInterval result = startSeconds + durationSeconds;
     
     return result;
+}
+
+#pragma mark - ZYSlider delegate
+-(void)slider:(CGFloat)value
+{
+    NSLog(@"---------__%f", value);
+    CMTime duration = m_pAVPlayer.currentItem.duration;
+    CGFloat totalDuration = CMTimeGetSeconds(duration);
+    float time = value * totalDuration;
+    //快进
+    [m_pAVPlayer seekToTime:CMTimeMake(time, 1) completionHandler:^(BOOL finished) {
+        NSLog(@"++++++++");
+    }];
+}
+
+#pragma mark - ZYBookListView delegate
+-(void)selectBookIndex:(NSInteger)index
+{
+    [self hiddenBookMenu];
 }
 
 #pragma mark - notification
@@ -300,6 +374,26 @@
     int minute = time / 60;
     int second = (int)time % 60;
     return [NSString stringWithFormat:@"%02d:%02d",minute,second];
+}
+
+
+#pragma mark - BUAFHttpRequestDelegate methods
+-(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData
+{
+    if ([argRequestTag isEqualToString:@"xunHomePage"])
+    {
+//        [m_pHomePageView SetXunHomePageData:argData];
+        [self HideProgressHUD];
+    }
+}
+- (void)RequestErrorHappened:(BUAFHttpRequest *)argRequest withErrorMsg:(NSString *)argMsg
+{
+    [self RequestFailed:argRequest];
+}
+
+- (void)RequestFailed:(BUAFHttpRequest *)argRequest
+{
+    [self HideProgressHUD];
 }
 
 /*

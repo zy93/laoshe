@@ -229,6 +229,10 @@
 		25DFD0D81E51FABE0028D926 /* share_icon_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D61E51FABE0028D926 /* share_icon_select@2x.png */; };
 		25DFD0D91E51FABE0028D926 /* share_icon_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */; };
 		25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD0DC1E51FE570028D926 /* YYXunData.m */; };
+		2AC6961F1E547FF60061A601 /* ZYBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6961E1E547FF60061A601 /* ZYBookListView.m */; };
+		2AC696221E5488720061A601 /* 我这一辈子@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AC696201E5488720061A601 /* 我这一辈子@2x.png */; };
+		2AC696231E5488720061A601 /* 我这一辈子@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AC696211E5488720061A601 /* 我这一辈子@3x.png */; };
+		2AC696291E549E8C0061A601 /* ZYListenBookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC696281E549E8C0061A601 /* ZYListenBookData.m */; };
 		2AD5FE3F1E52068400C5F704 /* AudioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */; };
 		2AD5FE401E52068400C5F704 /* ZYSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD5FE3E1E52068400C5F704 /* ZYSlider.m */; };
 		2AD5FED91E52085300C5F704 /* cd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD5FEA71E52085300C5F704 /* cd@2x.png */; };
@@ -690,6 +694,12 @@
 		25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_icon_select@3x.png"; sourceTree = "<group>"; };
 		25DFD0DB1E51FE570028D926 /* YYXunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunData.h; sourceTree = "<group>"; };
 		25DFD0DC1E51FE570028D926 /* YYXunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunData.m; sourceTree = "<group>"; };
+		2AC6961D1E547FF60061A601 /* ZYBookListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBookListView.h; sourceTree = "<group>"; };
+		2AC6961E1E547FF60061A601 /* ZYBookListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBookListView.m; sourceTree = "<group>"; };
+		2AC696201E5488720061A601 /* 我这一辈子@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我这一辈子@2x.png"; sourceTree = "<group>"; };
+		2AC696211E5488720061A601 /* 我这一辈子@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我这一辈子@3x.png"; sourceTree = "<group>"; };
+		2AC696271E549E8C0061A601 /* ZYListenBookData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYListenBookData.h; sourceTree = "<group>"; };
+		2AC696281E549E8C0061A601 /* ZYListenBookData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYListenBookData.m; sourceTree = "<group>"; };
 		2AD5FE3B1E52068400C5F704 /* AudioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayViewController.h; sourceTree = "<group>"; };
 		2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayViewController.m; sourceTree = "<group>"; };
 		2AD5FE3D1E52068400C5F704 /* ZYSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYSlider.h; sourceTree = "<group>"; };
@@ -1637,6 +1647,8 @@
 			children = (
 				2AD5FE3B1E52068400C5F704 /* AudioPlayViewController.h */,
 				2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */,
+				2AC6961D1E547FF60061A601 /* ZYBookListView.h */,
+				2AC6961E1E547FF60061A601 /* ZYBookListView.m */,
 				2AD5FE3D1E52068400C5F704 /* ZYSlider.h */,
 				2AD5FE3E1E52068400C5F704 /* ZYSlider.m */,
 			);
@@ -1729,6 +1741,8 @@
 			children = (
 				25DFD0DB1E51FE570028D926 /* YYXunData.h */,
 				25DFD0DC1E51FE570028D926 /* YYXunData.m */,
+				2AC696271E549E8C0061A601 /* ZYListenBookData.h */,
+				2AC696281E549E8C0061A601 /* ZYListenBookData.m */,
 			);
 			path = MoudelData;
 			sourceTree = "<group>";
@@ -1737,6 +1751,8 @@
 			isa = PBXGroup;
 			children = (
 				2AD5FEA71E52085300C5F704 /* cd@2x.png */,
+				2AC696201E5488720061A601 /* 我这一辈子@2x.png */,
+				2AC696211E5488720061A601 /* 我这一辈子@3x.png */,
 				2AD5FEA81E52085300C5F704 /* cd@3x.png */,
 				2AD5FEA91E52085300C5F704 /* 不可点击@2x.png */,
 				2AD5FEAA1E52085300C5F704 /* 不可点击@3x.png */,
@@ -1953,6 +1969,7 @@
 				2AD5FEFD1E52085300C5F704 /* 资源 37@2x.png in Resources */,
 				25DFD0D81E51FABE0028D926 /* share_icon_select@2x.png in Resources */,
 				251CD1E01E5092C20073517C /* yan_lun_wen_ji@2x.png in Resources */,
+				2AC696231E5488720061A601 /* 我这一辈子@3x.png in Resources */,
 				25ADF5E41E38D46F000FFE0E /* yi_head_background@2x.png in Resources */,
 				25DFD0C71E51EB980028D926 /* share_sina_select@2x.png in Resources */,
 				25DFD0C31E51EB980028D926 /* share_qqkongjian_select@2x.png in Resources */,
@@ -1983,6 +2000,7 @@
 				2AD5FEF81E52085300C5F704 /* 资源 33@3x.png in Resources */,
 				2AD5FF0A1E52085300C5F704 /* 默认@3x.png in Resources */,
 				251CD1DD1E5092C20073517C /* yan_gong_ju_shu@3x.png in Resources */,
+				2AC696221E5488720061A601 /* 我这一辈子@2x.png in Resources */,
 				251CD1E71E5092C20073517C /* yan_yuan_zhu@3x.png in Resources */,
 				258D7CB21E388F4A009510C4 /* tabbar_yan@2x.png in Resources */,
 				2AD5FEF41E52085300C5F704 /* 资源 31@3x.png in Resources */,
@@ -2061,6 +2079,7 @@
 				2555A4F41E3785DC00E309F6 /* MJRefreshGifHeader.m in Sources */,
 				25A6DD7C1E3989F900B230B7 /* YYXunHomePageView.m in Sources */,
 				2555A4F01E3785DC00E309F6 /* MJRefreshAutoStateFooter.m in Sources */,
+				2AC6961F1E547FF60061A601 /* ZYBookListView.m in Sources */,
 				2555A3F21E37851200E309F6 /* BUChannelsView.m in Sources */,
 				2555A3DB1E37851200E309F6 /* UILable+TextEffect.m in Sources */,
 				2555A50C1E3785DC00E309F6 /* MLSelectPhotoPickerCollectionViewCell.m in Sources */,
@@ -2161,6 +2180,7 @@
 				2555A4E11E3785DC00E309F6 /* NSObject+SBJSON.m in Sources */,
 				25925C761E4EFD7B00EDEA69 /* YYPlayHomePageCell.m in Sources */,
 				2555A4D31E3785DC00E309F6 /* AFTempConverData.m in Sources */,
+				2AC696291E549E8C0061A601 /* ZYListenBookData.m in Sources */,
 				251CD1CC1E508C650073517C /* YYYanChannelView.m in Sources */,
 				2555A4DE1E3785DC00E309F6 /* CHANGELOG.md in Sources */,
 				2555A5021E3785DC00E309F6 /* MLSelectPhotoBrowserViewController.m in Sources */,

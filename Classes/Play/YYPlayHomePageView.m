@@ -10,12 +10,15 @@
 #import "YYPlayHeadView.h"
 #import "YYPlayHomePageCell.h"
 #import "YYPlayHomePageController.h"
+#import "YYPlayData.h"
 
 @interface YYPlayHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYPlayHomePageCellDelgate>
 {
     YYPlayHeadView *m_pHeadView;
     UITableView *m_pTableView;
     NSMutableArray *m_arrTitle;
+    NSMutableArray *m_arrData;
+    YYPlayData *m_pData;
 }
 @end
 @implementation YYPlayHomePageView
@@ -24,6 +27,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        m_arrData = [NSMutableArray array];
         m_arrTitle = [NSMutableArray arrayWithObjects:@"电影",@"电视剧",@"话剧",@"曲剧",@"其他",@"听书",@"活动",nil];
         self.backgroundColor = [UIColor whiteColor];
         [self CreateSubViews];
@@ -46,6 +50,15 @@
     m_pTableView.tableHeaderView = m_pHeadView;
 }
 
+#pragma mark - public methods
+-(void)SetPlayData:(NSArray *)argData
+{
+    m_pData = [argData firstObject];
+    [m_arrData removeAllObjects];
+    [m_arrData addObjectsFromArray:argData];
+    [m_pTableView reloadData];
+}
+
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -60,7 +73,35 @@
     {
         cell = [[YYPlayHomePageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+//    [cell ClearData];
     cell.propDelegate = self;
+    [cell SetType:indexPath.row];
+    switch (indexPath.row)
+    {
+        case 0:
+            [cell SetPlayData:m_pData.movie];
+            break;
+        case 1:
+            [cell SetPlayData:m_pData.TVSeries];
+            break;
+        case 2:
+            [cell SetPlayData:m_pData.drama];
+            break;
+        case 3:
+            [cell SetPlayData:m_pData.opera];
+            break;
+        case 4:
+            [cell SetPlayData:m_pData.other];
+            break;
+        case 5:
+            [cell SetPlayData:m_pData.tingBook];
+            break;
+        case 6:
+            [cell SetPlayData:m_pData.activity];
+            break;
+        default:
+            break;
+    }
     [cell SetDirectoryTitle:m_arrTitle[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

@@ -6,9 +6,9 @@
 //  Copyright © 2017年 cn.hanyan. All rights reserved.
 //
 
-#import "YYDonationData.h"
+#import "AFBaseModuleData.h"
 
-@interface YYFriendData : YYDonationData
+@interface YYFriendData : AFBaseModuleData
 
 @property (nonatomic,copy)NSString *fid;
 @property (nonatomic,copy)NSString *username;

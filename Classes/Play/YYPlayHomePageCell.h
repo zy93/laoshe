@@ -20,4 +20,9 @@
 
 -(void)SetDirectoryTitle:(NSString *)argTitle;
 
+-(void)SetPlayData:(NSArray *)argData;
+
+-(void)SetType:(NSInteger)argType;
+
+
 @end

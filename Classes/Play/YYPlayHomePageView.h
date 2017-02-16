@@ -10,4 +10,6 @@
 
 @interface YYPlayHomePageView : UIView
 
+-(void)SetPlayData:(NSArray *)argData;
+
 @end

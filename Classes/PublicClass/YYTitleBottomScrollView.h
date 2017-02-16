@@ -10,7 +10,7 @@
 
 @protocol YYTitleBottomScrollViewDelegate <NSObject>
 
--(void)ClickCheckDetailsWithId:(NSInteger)argId;
+-(void)ClickCheckDetailsWithId:(NSInteger)argId andType:(NSInteger)argType;
 
 @end
 
@@ -20,8 +20,12 @@
 
 @property (nonatomic,weak)id<YYTitleBottomScrollViewDelegate> propDelegate;
 
+-(void)SetType:(NSInteger)argType;
+
 -(void)SetTitleText:(NSString *)argTitle;
 
 -(void)SetData:(NSArray *)argData;
+
+-(void)ClearData;
 
 @end

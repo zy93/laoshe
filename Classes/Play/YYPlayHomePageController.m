@@ -10,10 +10,13 @@
 #import "YYPlayHomePageController.h"
 #import "YYPlayHomePageView.h"
 #import "AudioPlayViewController.h"
+#import "YYPlayInfoData.h"
+#import "YYPlayData.h"
 
 @interface YYPlayHomePageController ()
 {
     YYPlayHomePageView *m_pHomePageView;
+    BUAFHttpRequest *m_pRequest;
 }
 
 @end
@@ -26,6 +29,7 @@
     m_pNameLabel.text = @"演";
     m_pTopBar.hidden = YES;
     [self CreateSubViews];
+    [self CreateRequest];
 }
 
 #pragma mark - private methods
@@ -35,11 +39,37 @@
     [self.view addSubview:m_pHomePageView];
 }
 
+-(void)CreateRequest
+{
+    m_pRequest = [[BUAFHttpRequest alloc] initWithUrl:[NSString stringWithFormat:@"Yan/getYan"] andTag:@"getYan"];
+    m_pRequest.propDelegate = self;
+    m_pRequest.propDataClass = [YYPlayData class];
+    [m_pRequest GetAsynchronous];
+}
 #pragma mark - public methods
 -(void)ClickCheckDetailsWithId:(NSInteger)argId
 {
     AudioPlayViewController *pTingShuDetailVC = [[AudioPlayViewController alloc] init];
     [self PushChildViewController:pTingShuDetailVC];
+}
+
+#pragma mark - BUAFHttpRequestDelegate methods
+-(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData
+{
+    if ([argRequestTag isEqualToString:@"getYan"])
+    {
+        [m_pHomePageView SetPlayData:argData];
+        [self HideProgressHUD];
+    }
+}
+- (void)RequestErrorHappened:(BUAFHttpRequest *)argRequest withErrorMsg:(NSString *)argMsg
+{
+    [self RequestFailed:argRequest];
+}
+
+- (void)RequestFailed:(BUAFHttpRequest *)argRequest
+{
+    [self HideProgressHUD];
 }
 
 - (void)didReceiveMemoryWarning {

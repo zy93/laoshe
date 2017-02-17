@@ -156,6 +156,7 @@
 		2555A5201E3785DD00E309F6 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A4C91E3785DC00E309F6 /* UIWebView+AFNetworking.m */; };
 		2555A5231E3787AF00E309F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2555A5221E3787AF00E309F6 /* UIKit.framework */; };
 		2555A5251E3787BF00E309F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2555A5241E3787BF00E309F6 /* Foundation.framework */; };
+		255C4EF61E55DB4500667816 /* YYPlayData.m in Sources */ = {isa = PBXBuildFile; fileRef = 255C4EF51E55DB4500667816 /* YYPlayData.m */; };
 		2583F60F1E347F9D00222D66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2583F60E1E347F9D00222D66 /* main.m */; };
 		2583F6121E347F9D00222D66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2583F6111E347F9D00222D66 /* AppDelegate.m */; };
 		2583F6151E347F9D00222D66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2583F6141E347F9D00222D66 /* ViewController.m */; };
@@ -598,6 +599,8 @@
 		2555A5221E3787AF00E309F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2555A5241E3787BF00E309F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2555A5261E378B3700E309F6 /* YongYuanDeLaoShe_Perfix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YongYuanDeLaoShe_Perfix.pch; sourceTree = "<group>"; };
+		255C4EF41E55DB4500667816 /* YYPlayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPlayData.h; sourceTree = "<group>"; };
+		255C4EF51E55DB4500667816 /* YYPlayData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPlayData.m; sourceTree = "<group>"; };
 		2583F60A1E347F9D00222D66 /* YongYuanDeLaoShe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YongYuanDeLaoShe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2583F60E1E347F9D00222D66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2583F6101E347F9D00222D66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../YongYuanDeLaoShe/AppDelegate.h; sourceTree = "<group>"; };
@@ -2185,6 +2188,7 @@
 				2555A3DD1E37851200E309F6 /* AFNetStatus.m in Sources */,
 				2555A5011E3785DC00E309F6 /* MLSelectPhotoPickerGroup.m in Sources */,
 				2555A3DF1E37851200E309F6 /* BUBaseResponseData.m in Sources */,
+				255C4EF61E55DB4500667816 /* YYPlayData.m in Sources */,
 				2AD5FE401E52068400C5F704 /* ZYSlider.m in Sources */,
 				2555A4D81E3785DC00E309F6 /* NSData+Base64.m in Sources */,
 				2555A5181E3785DD00E309F6 /* AFAutoPurgingImageCache.m in Sources */,

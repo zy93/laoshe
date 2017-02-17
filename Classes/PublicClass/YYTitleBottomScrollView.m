@@ -7,6 +7,7 @@
 //
 
 #import "YYTitleBottomScrollView.h"
+#import "YYDonationData.h"
 
 #define VIEWBTNTAG 1000
 
@@ -21,6 +22,7 @@
     CGFloat m_fBackViewSizeW;
     CGFloat m_fBackViewSizeH;
     CGFloat m_fFont;
+    NSInteger m_iType;
 }
 
 @end
@@ -70,24 +72,37 @@
 
 -(void)ClickCheckDetails:(UIButton *)argBtn
 {
-    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:)])
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:andType:)])
     {
-        [self.propDelegate ClickCheckDetailsWithId:argBtn.tag - VIEWBTNTAG];
+        [self.propDelegate ClickCheckDetailsWithId:argBtn.tag - VIEWBTNTAG andType:m_iType];
     }
 }
 
 #pragma mark - public methods
+-(void)SetType:(NSInteger)argType
+{
+    m_iType = argType;
+}
 -(void)SetTitleText:(NSString *)argTitle
 {
     m_pTitleLab.text = argTitle;
 }
-
+-(void)ClearData
+{
+    for (UIView *pView in m_pScrollView.subviews)
+    {
+        [pView removeFromSuperview];
+    }
+}
 -(void)SetData:(NSArray *)argData
 {
+
     CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewInterval = 4*[AppConfigure GetLengthAdaptRate];
     for (NSInteger i = 0; i < argData.count; i++)
     {
+
+        YYDonationData *pData = argData[i];
         UIImageView *pBackgroupView = [[UIImageView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (m_fBackViewSizeW + fBackViewInterval)), 0, m_fBackViewSizeW, m_fBackViewSizeH)];
         pBackgroupView.backgroundColor = [UIColor redColor];
         [m_pScrollView addSubview:pBackgroupView];
@@ -99,7 +114,7 @@
         [m_pScrollView addSubview:pPhotoBtn];
         
         UILabel *pNameLab = [[UILabel alloc] initWithFrame:CGRectMake(fBackViewX+(i * (m_fBackViewSizeW + fBackViewInterval)), pBackgroupView.bottom, m_fBackViewSizeW, 42*[AppConfigure GetLengthAdaptRate])];
-        pNameLab.text = @"我这一辈子";
+        pNameLab.text = pData.title;
         pNameLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:m_fFont];
         pNameLab.textColor = UIColorFromHex(0x333333);
         pNameLab.textAlignment = NSTextAlignmentLeft;

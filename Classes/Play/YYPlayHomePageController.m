@@ -10,7 +10,6 @@
 #import "YYPlayHomePageController.h"
 #import "YYPlayHomePageView.h"
 #import "AudioPlayViewController.h"
-#import "YYPlayInfoData.h"
 #import "YYPlayData.h"
 
 @interface YYPlayHomePageController ()

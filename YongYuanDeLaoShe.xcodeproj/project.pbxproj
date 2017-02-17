@@ -205,8 +205,6 @@
 		25B43FA11E4B4BDE00711DC4 /* YYYiFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B43FA01E4B4BDE00711DC4 /* YYYiFriendsCell.m */; };
 		25C939B31E5485A000017D17 /* YYXunDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B21E5485A000017D17 /* YYXunDetailController.m */; };
 		25C939B61E5487AE00017D17 /* YYXunDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B51E5487AE00017D17 /* YYXunDetailView.m */; };
-		25C939B91E548EC300017D17 /* YYFriendData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B81E548EC300017D17 /* YYFriendData.m */; };
-		25C939BC1E54916700017D17 /* YYDonationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939BB1E54916700017D17 /* YYDonationData.m */; };
 		25DFD0A31E51E74A0028D926 /* YYShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD0A21E51E74A0028D926 /* YYShareView.m */; };
 		25DFD0B91E51EB980028D926 /* share_pengyouquan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0A51E51EB980028D926 /* share_pengyouquan@2x.png */; };
 		25DFD0BA1E51EB980028D926 /* share_pengyouquan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0A61E51EB980028D926 /* share_pengyouquan@3x.png */; };
@@ -677,8 +675,6 @@
 		25C939B21E5485A000017D17 /* YYXunDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunDetailController.m; sourceTree = "<group>"; };
 		25C939B41E5487AE00017D17 /* YYXunDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunDetailView.h; sourceTree = "<group>"; };
 		25C939B51E5487AE00017D17 /* YYXunDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunDetailView.m; sourceTree = "<group>"; };
-		25C939B81E548EC300017D17 /* YYFriendData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFriendData.m; sourceTree = "<group>"; };
-		25C939BB1E54916700017D17 /* YYDonationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonationData.m; sourceTree = "<group>"; };
 		25DFD0A11E51E74A0028D926 /* YYShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYShareView.h; sourceTree = "<group>"; };
 		25DFD0A21E51E74A0028D926 /* YYShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYShareView.m; sourceTree = "<group>"; };
 		25DFD0A51E51EB980028D926 /* share_pengyouquan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_pengyouquan@2x.png"; sourceTree = "<group>"; };
@@ -1768,6 +1764,8 @@
 				2AC6962D1E54A5600061A601 /* YYFriendData.m */,
 				25DFD0DB1E51FE570028D926 /* YYXunData.h */,
 				25DFD0DC1E51FE570028D926 /* YYXunData.m */,
+				255C4EF41E55DB4500667816 /* YYPlayData.h */,
+				255C4EF51E55DB4500667816 /* YYPlayData.m */,
 				2AC696271E549E8C0061A601 /* ZYListenBookData.h */,
 				2AC696281E549E8C0061A601 /* ZYListenBookData.m */,
 			);
@@ -2160,7 +2158,6 @@
 				251CD1C91E5086440073517C /* YYYiDonationCell.m in Sources */,
 				2555A3F71E37851200E309F6 /* AppConfigure.m in Sources */,
 				2555A3D31E37851200E309F6 /* NSString+Check.m in Sources */,
-				25C939B91E548EC300017D17 /* YYFriendData.m in Sources */,
 				2555A4F21E3785DC00E309F6 /* MJRefreshBackNormalFooter.m in Sources */,
 				2555A3D51E37851200E309F6 /* NSString+MD5.m in Sources */,
 				2555A4EA1E3785DC00E309F6 /* MJRefreshBackFooter.m in Sources */,
@@ -2218,7 +2215,6 @@
 				2555A5021E3785DC00E309F6 /* MLSelectPhotoBrowserViewController.m in Sources */,
 				2555A5031E3785DC00E309F6 /* MLSelectPhotoNavigationViewController.m in Sources */,
 				2555A5041E3785DC00E309F6 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
-				25C939BC1E54916700017D17 /* YYDonationData.m in Sources */,
 				2555A4E61E3785DC00E309F6 /* ZYKeyboardUtil.m in Sources */,
 				25C939B31E5485A000017D17 /* YYXunDetailController.m in Sources */,
 				25DFD0D11E51F4B10028D926 /* YYYiFriendDetailController.m in Sources */,

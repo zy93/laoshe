@@ -118,9 +118,9 @@
 }
 
 #pragma mark - YYPlayHomePageCellDelgate methods
--(void)ClickCheckDetailsWithId:(NSInteger)argId
+-(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType
 {
-    [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:argId];
+    [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:argId argType:argType];
 }
 
 @end

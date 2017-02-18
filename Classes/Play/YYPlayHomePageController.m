@@ -46,10 +46,57 @@
     [m_pRequest GetAsynchronous];
 }
 #pragma mark - public methods
--(void)ClickCheckDetailsWithId:(NSInteger)argId
+-(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType
 {
-    AudioPlayViewController *pTingShuDetailVC = [[AudioPlayViewController alloc] init];
-    [self PushChildViewController:pTingShuDetailVC];
+    
+    NSLog(@"----------");
+    
+    switch (argType) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+        case 3:
+        {
+            
+        }
+            break;
+        case 4:
+        {
+            
+        }
+            break;
+        case 5:
+        {
+            AudioPlayViewController *pTingShuDetailVC = [[AudioPlayViewController alloc] init];
+            pTingShuDetailVC.mid = argId;
+            pTingShuDetailVC.cid = 0;
+            [self PushChildViewController:pTingShuDetailVC];
+        }
+            break;
+        case 6:
+        {
+            
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+    
 }
 
 #pragma mark - BUAFHttpRequestDelegate methods

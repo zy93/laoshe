@@ -18,7 +18,8 @@
 
 @end
 
-@interface Data : AFBaseModuleData
+
+@interface ZYListenBookData : AFBaseModuleData
 
 @property (nonatomic, copy) NSString *mid;
 @property (nonatomic, copy) NSString *title;
@@ -28,13 +29,5 @@
 @property (nonatomic, copy) NSString *audioUrl;
 @property (nonatomic, copy) NSString *time;
 @property (nonatomic, copy) NSArray *allChapter;
-
-@end
-
-@interface ZYListenBookData : AFBaseModuleData
-
-@property (nonatomic, copy) NSString *state_code;
-@property (nonatomic, copy) NSString *error_msg;
-@property (nonatomic, copy) Data *data;
 
 @end

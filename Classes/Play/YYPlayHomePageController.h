@@ -10,6 +10,6 @@
 
 @interface YYPlayHomePageController : BUCustomViewController
 
--(void)ClickCheckDetailsWithId:(NSInteger)argId;
+-(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType;
 
 @end

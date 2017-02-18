@@ -232,6 +232,9 @@
 		25DFD0D81E51FABE0028D926 /* share_icon_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D61E51FABE0028D926 /* share_icon_select@2x.png */; };
 		25DFD0D91E51FABE0028D926 /* share_icon_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */; };
 		25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD0DC1E51FE570028D926 /* YYXunData.m */; };
+		2A0F93171E584A1B00B874AA /* ZYAudioPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */; };
+		2A44C2651E57275B00CFD89E /* custom_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */; };
+		2A44C2661E57275B00CFD89E /* custom_back_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */; };
 		2AC6961F1E547FF60061A601 /* ZYBookListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6961E1E547FF60061A601 /* ZYBookListView.m */; };
 		2AC696221E5488720061A601 /* 我这一辈子@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AC696201E5488720061A601 /* 我这一辈子@2x.png */; };
 		2AC696231E5488720061A601 /* 我这一辈子@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AC696211E5488720061A601 /* 我这一辈子@3x.png */; };
@@ -705,6 +708,10 @@
 		25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_icon_select@3x.png"; sourceTree = "<group>"; };
 		25DFD0DB1E51FE570028D926 /* YYXunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunData.h; sourceTree = "<group>"; };
 		25DFD0DC1E51FE570028D926 /* YYXunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunData.m; sourceTree = "<group>"; };
+		2A0F93151E584A1B00B874AA /* ZYAudioPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYAudioPlayView.h; sourceTree = "<group>"; };
+		2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYAudioPlayView.m; sourceTree = "<group>"; };
+		2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom_back_btn@2x.png"; sourceTree = "<group>"; };
+		2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom_back_btn@3x.png"; sourceTree = "<group>"; };
 		2AC6961D1E547FF60061A601 /* ZYBookListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBookListView.h; sourceTree = "<group>"; };
 		2AC6961E1E547FF60061A601 /* ZYBookListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBookListView.m; sourceTree = "<group>"; };
 		2AC696201E5488720061A601 /* 我这一辈子@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我这一辈子@2x.png"; sourceTree = "<group>"; };
@@ -1096,6 +1103,7 @@
 		2555A3FC1E37851D00E309F6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2A44C2621E57272100CFD89E /* Custom */,
 				2AD5FEA61E52085300C5F704 /* Play */,
 				25DFD0A41E51EB980028D926 /* Share */,
 				251CD1CD1E5092C20073517C /* Yan */,
@@ -1662,6 +1670,8 @@
 			children = (
 				2AD5FE3B1E52068400C5F704 /* AudioPlayViewController.h */,
 				2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */,
+				2A0F93151E584A1B00B874AA /* ZYAudioPlayView.h */,
+				2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */,
 				2AC6961D1E547FF60061A601 /* ZYBookListView.h */,
 				2AC6961E1E547FF60061A601 /* ZYBookListView.m */,
 				2AD5FE3D1E52068400C5F704 /* ZYSlider.h */,
@@ -1770,6 +1780,15 @@
 				2AC696281E549E8C0061A601 /* ZYListenBookData.m */,
 			);
 			path = MoudelData;
+			sourceTree = "<group>";
+		};
+		2A44C2621E57272100CFD89E /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */,
+				2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		2AD5FEA61E52085300C5F704 /* Play */ = {
@@ -1940,6 +1959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AD5FEE91E52085300C5F704 /* 资源 21@2x.png in Resources */,
+				2A44C2651E57275B00CFD89E /* custom_back_btn@2x.png in Resources */,
 				2AD5FEE61E52085300C5F704 /* 点击@3x.png in Resources */,
 				2AD5FF091E52085300C5F704 /* 默认@2x.png in Resources */,
 				2AD5FEF51E52085300C5F704 /* 资源 32@2x.png in Resources */,
@@ -2046,6 +2066,7 @@
 				25DFD0CA1E51EB980028D926 /* share_weixin@3x.png in Resources */,
 				258D7CAF1E388F4A009510C4 /* tabbar_xun@3x.png in Resources */,
 				2AD5FEDC1E52085300C5F704 /* 不可点击@3x.png in Resources */,
+				2A44C2661E57275B00CFD89E /* custom_back_btn@3x.png in Resources */,
 				251CD1DE1E5092C20073517C /* yan_guo_wai_yan_jiu@2x.png in Resources */,
 				2AD5FF071E52085300C5F704 /* 资源 42@2x.png in Resources */,
 				251CD1E61E5092C20073517C /* yan_yuan_zhu@2x.png in Resources */,
@@ -2096,6 +2117,7 @@
 				25DFD0A31E51E74A0028D926 /* YYShareView.m in Sources */,
 				2555A3C11E37851200E309F6 /* AFBase64CommonFunc.m in Sources */,
 				25C939B61E5487AE00017D17 /* YYXunDetailView.m in Sources */,
+				2A0F93171E584A1B00B874AA /* ZYAudioPlayView.m in Sources */,
 				2555A3E01E37851200E309F6 /* BUFileDownloader.m in Sources */,
 				2555A4FF1E3785DC00E309F6 /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
 				2555A3E61E37851200E309F6 /* NSUserDefaults+RMSaveCustomObject.m in Sources */,

@@ -7,7 +7,10 @@
 //
 
 #import "BUCustomViewController.h"
+@class YYFriendData;
 
 @interface YYYiFriendDetailController : BUCustomViewController
+
+@property (nonatomic,strong)YYFriendData *propData;
 
 @end

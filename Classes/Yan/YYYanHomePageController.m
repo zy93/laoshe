@@ -12,6 +12,7 @@
 @interface YYYanHomePageController ()
 {
     YYYanHomePageView *m_pHomePageView;
+    BUAFHttpRequest *m_pRequest;
 }
 @end
 
@@ -31,7 +32,13 @@
     m_pHomePageView = [[YYYanHomePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - TABBAR_HEIGHT)];
     [self.view addSubview:m_pHomePageView];
 }
-
+-(void)CreateRequest
+{
+    m_pRequest = [[BUAFHttpRequest alloc] initWithUrl:[NSString stringWithFormat:@"Yan/getContentbyType"] andTag:@"friend"];
+    m_pRequest.propDelegate = self;
+//    m_pRequest.propDataClass = [YYFriendData class];
+    [m_pRequest GetAsynchronous];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

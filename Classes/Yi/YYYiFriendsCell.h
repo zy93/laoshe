@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YYFriendData;
+
+@protocol YYYiFriendsCellDelegate <NSObject>
+
+-(void)ClickCheckDetailsWithData:(YYFriendData *)argData;
+
+@end
 
 @interface YYYiFriendsCell : UITableViewCell
+
+@property (nonatomic,weak)id<YYYiFriendsCellDelegate> propDelegate;
 
 -(void)SetFriendData:(NSArray *)argData;
 

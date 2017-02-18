@@ -11,6 +11,6 @@
 
 @interface YYXunHomePageController : BUCustomViewController
 
--(void)CheckDetail:(YYXunData *)argData;
+//-(void)CheckDetail:(YYXunData *)argData;
 
 @end

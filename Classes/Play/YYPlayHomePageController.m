@@ -10,12 +10,15 @@
 #import "YYPlayHomePageController.h"
 #import "YYPlayHomePageView.h"
 #import "AudioPlayViewController.h"
+#import "YYActivityViewController.h"
 #import "YYPlayData.h"
 
 @interface YYPlayHomePageController ()
 {
     YYPlayHomePageView *m_pHomePageView;
     BUAFHttpRequest *m_pRequest;
+    
+    NSArray *m_pResponseData;
 }
 
 @end
@@ -87,7 +90,9 @@
             break;
         case 6:
         {
-            
+            YYActivityViewController *pActivityDetailVC = [[YYActivityViewController alloc] init];
+            pActivityDetailVC.m_pActivityList = [m_pHomePageView GetAccivity];
+            [self PushChildViewController:pActivityDetailVC];
         }
             break;
             
@@ -105,6 +110,7 @@
     if ([argRequestTag isEqualToString:@"getYan"])
     {
         [m_pHomePageView SetPlayData:argData];
+        m_pResponseData = argData;
         [self HideProgressHUD];
     }
 }

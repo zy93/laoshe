@@ -59,6 +59,11 @@
     [m_pTableView reloadData];
 }
 
+-(NSArray *)GetAccivity
+{
+    return m_pData.activity;
+}
+
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

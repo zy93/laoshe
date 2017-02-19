@@ -8,6 +8,7 @@
 
 #import "YYPlayData.h"
 #import "YYDonationData.h"
+#import "YYActivityData.h"
 #import "RMMapper.h"
 
 @implementation YYPlayData
@@ -64,7 +65,7 @@
 {
     if ([activity isKindOfClass:[NSArray class]])
     {
-        _activity = [RMMapper arrayOfClass:[YYDonationData class] fromArrayOfDictionary:activity];
+        _activity = [RMMapper arrayOfClass:[YYActivityData class] fromArrayOfDictionary:activity];
     }
 }
 

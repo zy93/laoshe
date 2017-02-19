@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZYListenBookData.h"
 
 @interface ZYAudioPlayView : UIView
 
 
--(void)SetBookData:(id)argData;
+-(void)SetBookData:(NSArray *)argData;
+
+-(void)clearPlay;
+
 
 @end

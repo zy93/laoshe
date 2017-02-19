@@ -10,7 +10,7 @@
 #import "RMMapper.h"
 
 
-@implementation Chapter
+@implementation ZYChapter
 
 
 
@@ -23,7 +23,7 @@
 {
     if ([allChapter isKindOfClass:[NSArray class]])
     {
-       _allChapter = [RMMapper arrayOfClass:[Chapter class] fromArrayOfDictionary:allChapter];
+       _allChapter = [RMMapper arrayOfClass:[ZYChapter class] fromArrayOfDictionary:allChapter];
     }
 }
 

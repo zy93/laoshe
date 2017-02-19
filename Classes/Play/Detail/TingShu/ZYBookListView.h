@@ -24,11 +24,17 @@
 
 @interface ZYBookListView : UIView <UITableViewDelegate, UITableViewDataSource>
 {
+    UIView *m_topView;
     UITableView *m_table;
+    
+    
 }
 
 @property (nonatomic, strong) NSArray *m_bookList;
 @property (nonatomic, assign) NSInteger playBookIndex; //当前播放的下标
 @property (nonatomic, weak) id <ZYBookListViewDelegate>delegate;
+
+-(void)showView;
+
 
 @end

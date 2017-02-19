@@ -48,7 +48,6 @@
 {
     [super viewDidAppear:animated];
     //进入页面后自动播放
-//    [self play];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +69,7 @@
     m_pBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     m_pBackBtn.frame = CGRectMake(20, 31, 28, 28);
     [m_pBackBtn setImage:[UIImage imageNamed:@"custom_back_btn"] forState:UIControlStateNormal];
-    [m_pBackBtn addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];
+    [m_pBackBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:m_pBackBtn];
     
 }
@@ -84,6 +83,13 @@
     m_pRequest.propDelegate = self;
     m_pRequest.propDataClass = [ZYListenBookData class];
     [m_pRequest GetAsynchronous];
+}
+
+#pragma mark - 
+-(void)back:(UIButton *)sender
+{
+    [self Back];
+    [m_pPlayView clearPlay];
 }
 
 

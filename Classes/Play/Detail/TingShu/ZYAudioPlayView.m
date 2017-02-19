@@ -8,22 +8,17 @@
 
 #import "ZYAudioPlayView.h"
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 #import "AppConfigure.h"
 #import "ZYSlider.h"
 #import "ZYBookListView.h"
-
-#define black_33 0x333333
-#define black_66 0x666666
-
-#define blue_45 0x455cc7  //左侧
-#define white_f2 0xff44ff //背景
-#define white_ff 0xffffff //缓冲
-
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#import "YYUtil.h"
 
 
-@interface ZYAudioPlayView () <ZYSliderDelegate, ZYBookListViewDelegate>
+
+
+@interface ZYAudioPlayView () <ZYSliderDelegate, ZYBookListViewDelegate, UIGestureRecognizerDelegate>
 {
     UIImageView *m_pBackgroundImage; //图片毛玻璃背景层
     UIImageView *m_pBookIconImage; //图片
@@ -39,14 +34,13 @@
 
     UILabel *m_pBookTitleLabel; //书标题
     UILabel *m_pBookInfoLabel; //书信息
-
-    AVPlayer *m_pAVPlayer; //播放器
-    BOOL m_bIsPlaying; //播放状态
-    NSArray *m_pPlayList;
     
-
-
     ZYBookListView *m_pBookMenuView;
+    AVPlayer *m_pAVPlayer; //播放器
+    id m_pPlayObserver;
+    BOOL m_bIsPlaying; //播放状态
+    NSInteger m_iPlayIndex; //当前播放内容记录
+    NSArray *m_pChapterList;
 }
 
 @property (nonatomic, strong) ZYSlider *m_pProgresSlider; //滑动条
@@ -72,51 +66,19 @@
 {
     
     m_bIsPlaying = NO;
-    
-    NSURL *url1 = [NSURL URLWithString:@"http://www.itinge.com/music/1/201412/2014121010281616093683.mp3"];
-    m_pPlayList = @[url1];
-    m_pAVPlayer = [[AVPlayer alloc] initWithPlayerItem:[[AVPlayerItem alloc] initWithURL:url1]];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playedidEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-    
-    
-    
-    __weak ZYAudioPlayView *weakView = self;
-    __weak AVPlayer *weakPlayer = m_pAVPlayer;
-    
-    
-    
-    
-    [m_pAVPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-        CMTime duration = weakPlayer.currentItem.duration;
-        CGFloat totalDuration = CMTimeGetSeconds(duration);
-        //当前进度时间
-        double currentTime = weakPlayer.currentItem.currentTime.value/weakPlayer.currentItem.currentTime.timescale;
-        [weakView.m_pCurrentTimeLabel setText:[weakView stringWithTime:currentTime]];
-        weakView.m_pProgresSlider.value = currentTime/totalDuration;
-        //        NSLog(@"----currt time : %f, %f", currentTime, currentTime/totalDuration);
-        
-        //更新缓冲
-        NSTimeInterval timeInterval = [weakView availableDuration];
-        //        NSLog(@"Time Interval:%f", timeInterval);
-        [weakView.m_pDurationLabel setText:[weakView stringWithTime:timeInterval]];
-        //        [weakVC.m_progress setProgress:timeInterval/totalDuration animated:YES];
-        weakView.m_pProgresSlider.middleValue = timeInterval/totalDuration;
-        //        NSLog(@"----progress : %f , %f", timeInterval, totalDuration);
-    }];
     [self createBackgroundImage];
+    [self createSlider];
+    [self createAudioInfoView];
+    [self createControlButton];
 }
 
--(void)createGesture
-{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-    [self addGestureRecognizer:tap];
-}
+
 
 -(void)createBackgroundImage
 {
     m_pBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 375)];
-    //    m_pBackgroundImage.userInteractionEnabled = YES;
+    m_pBackgroundImage.userInteractionEnabled = YES;
+    m_pBackgroundImage.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:m_pBackgroundImage];
     [m_pBackgroundImage setBackgroundColor:[UIColor redColor]];
     [m_pBackgroundImage setImage:[UIImage imageNamed:@"我这一辈子"]];
@@ -159,9 +121,9 @@
     
     
     self.m_pProgresSlider = [[ZYSlider alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.m_pCurrentTimeLabel.frame)+5, CGRectGetMinY(self.m_pCurrentTimeLabel.frame), CGRectGetWidth(m_pBackgroundImage.frame)-130, 20)];
-    self.m_pProgresSlider.minimumTrackTintColor = UIColorFromRGB(blue_45);
-    self.m_pProgresSlider.middleTrackTintColor = UIColorFromRGB(white_ff);
-    self.m_pProgresSlider.maximumTrackTintColor = UIColorFromRGB(white_f2);
+    self.m_pProgresSlider.minimumTrackTintColor = UIColorFromHex(blue_45);
+    self.m_pProgresSlider.middleTrackTintColor = UIColorFromHex(white_ff);
+    self.m_pProgresSlider.maximumTrackTintColor = UIColorFromHex(white_f2);
     self.m_pProgresSlider.value = 0;
     self.m_pProgresSlider.delegate = self;
     [self addSubview:self.m_pProgresSlider];
@@ -182,13 +144,13 @@
     //    [self insertSubview:self.m_progress belowSubview:self.m_pProgresSlider];
 }
 
--(void)addAudioInfoView
+-(void)createAudioInfoView
 {
     m_pBookTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(m_pBackgroundImage.frame)+63, CGRectGetWidth(self.frame), 18)];
     [m_pBookTitleLabel setTextAlignment:NSTextAlignmentCenter];
     [m_pBookTitleLabel setText:@"我这一辈子 第二章"];
     [m_pBookTitleLabel setFont:[UIFont systemFontOfSize:18.f]];
-    [m_pBookTitleLabel setTextColor:UIColorFromRGB(black_33)];
+    [m_pBookTitleLabel setTextColor:UIColorFromHex(black_33)];
     [m_pBookTitleLabel setTextColor:[UIColor blackColor]];
     //    [m_pBookTitleLabel setBackgroundColor:[UIColor yellowColor]];
     [self addSubview:m_pBookTitleLabel];
@@ -197,7 +159,7 @@
     [m_pBookInfoLabel setTextAlignment:NSTextAlignmentCenter];
     [m_pBookInfoLabel setText:@"最后更新：2016-09-22"];
     [m_pBookInfoLabel setFont:[UIFont systemFontOfSize:12.f]];
-    [m_pBookInfoLabel setTextColor:UIColorFromRGB(black_66)];
+    [m_pBookInfoLabel setTextColor:UIColorFromHex(black_66)];
     [m_pBookInfoLabel setTextColor:[UIColor blackColor]];
     //    [m_pBookInfoLabel setBackgroundColor:[UIColor yellowColor]];
     
@@ -206,15 +168,17 @@
     
 }
 
--(void)addControlButton
+-(void)createControlButton
 {
     //播放
     m_pPlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [m_pPlayBtn setFrame:CGRectMake(0, 0, 50, 50)];
     m_pPlayBtn.center = CGPointMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)-66);
     [m_pPlayBtn addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
-    [m_pPlayBtn setImage:[UIImage imageNamed:@"资源 39"] forState:UIControlStateNormal];
-    //    [m_pPlayBtn setBackgroundColor:[UIColor yellowColor]];
+    [m_pPlayBtn setImage:[UIImage imageNamed:@"play_def"] forState:UIControlStateNormal];
+    [m_pPlayBtn setImage:[UIImage imageNamed:@"play_hig"] forState:UIControlStateHighlighted];
+    [m_pPlayBtn setImage:[UIImage imageNamed:@"play_dis"] forState:UIControlStateDisabled];
+    [m_pPlayBtn setImage:[UIImage imageNamed:@"pause_def"] forState:UIControlStateSelected];
     [self addSubview:m_pPlayBtn];
     
     //上一曲
@@ -223,7 +187,10 @@
     [m_pPreviousBtn setFrame:CGRectMake(0, 0, 21, 27)];
     m_pPreviousBtn.center = CGPointMake(CGRectGetMidX(m_pPlayBtn.frame)-50-(54/2), CGRectGetMidY(m_pPlayBtn.frame));
     [m_pPreviousBtn addTarget:self action:@selector(previous:) forControlEvents:UIControlEventTouchUpInside];
-    [m_pPreviousBtn setImage:[UIImage imageNamed:@"资源 18"] forState:UIControlStateNormal];
+    [m_pPreviousBtn setImage:[UIImage imageNamed:@"up_def"] forState:UIControlStateNormal];
+    [m_pPreviousBtn setImage:[UIImage imageNamed:@"up_hig"] forState:UIControlStateHighlighted];
+    [m_pPreviousBtn setImage:[UIImage imageNamed:@"up_dis"] forState:UIControlStateDisabled];
+
     [self addSubview:m_pPreviousBtn];
     
     //下一曲
@@ -231,7 +198,10 @@
     [m_pNextBtn setFrame:CGRectMake(0, 0, 21, 27)];
     m_pNextBtn.center = CGPointMake(CGRectGetMidX(m_pPlayBtn.frame)+50+(54/2), CGRectGetMidY(m_pPlayBtn.frame));
     [m_pNextBtn addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
-    [m_pNextBtn setImage:[UIImage imageNamed:@"默认"] forState:UIControlStateNormal];
+    [m_pNextBtn setImage:[UIImage imageNamed:@"next_def"] forState:UIControlStateNormal];
+    [m_pNextBtn setImage:[UIImage imageNamed:@"next_hig"] forState:UIControlStateHighlighted];
+    [m_pNextBtn setImage:[UIImage imageNamed:@"next_dis"] forState:UIControlStateDisabled];
+
     [self addSubview:m_pNextBtn];
     
     //菜单栏
@@ -239,14 +209,67 @@
     [m_pMenuBtn setFrame:CGRectMake(0, 0, 21, 27)];
     m_pMenuBtn.center = CGPointMake(CGRectGetWidth(self.frame)- 32, CGRectGetMidY(m_pPlayBtn.frame));
     [m_pMenuBtn addTarget:self action:@selector(showBookMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [m_pMenuBtn setImage:[UIImage imageNamed:@"资源 28"] forState:UIControlStateNormal];
+    [m_pMenuBtn setImage:[UIImage imageNamed:@"menu_def"] forState:UIControlStateNormal];
+    [m_pMenuBtn setImage:[UIImage imageNamed:@"menu_hig"] forState:UIControlStateHighlighted];
     [self addSubview:m_pMenuBtn];
 }
 
-#pragma mark - action
--(void)previous:(UIButton *)sender
+-(void)createAvdioPlayWithChapter:(NSArray *)allChapter
 {
     
+    if (allChapter.count <=0 || ! allChapter) {
+        
+        return;
+    }
+    
+    ZYChapter *chapter = allChapter.firstObject;
+    [self updateViewWithChapter:chapter];
+    
+    NSURL *url1 = [NSURL URLWithString:chapter.audioUrl];
+    m_iPlayIndex = 0;
+    m_pAVPlayer = [[AVPlayer alloc] initWithPlayerItem:[[AVPlayerItem alloc] initWithURL:url1]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playedidEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    
+    
+    
+    __weak ZYAudioPlayView *weakView = self;
+    __weak AVPlayer *weakPlayer = m_pAVPlayer;
+    
+    
+    m_pPlayObserver = [m_pAVPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        CMTime duration = weakPlayer.currentItem.duration;
+        CGFloat totalDuration = CMTimeGetSeconds(duration);
+        //当前进度时间
+        double currentTime = weakPlayer.currentItem.currentTime.value/weakPlayer.currentItem.currentTime.timescale;
+        [weakView.m_pCurrentTimeLabel setText:[weakView stringWithTime:currentTime]];
+        weakView.m_pProgresSlider.value = currentTime/totalDuration;
+        //        NSLog(@"----currt time : %f, %f", currentTime, currentTime/totalDuration);
+        
+        //更新缓冲
+        NSTimeInterval timeInterval = [weakView availableDuration];
+        //        NSLog(@"Time Interval:%f", timeInterval);
+        [weakView.m_pDurationLabel setText:[weakView stringWithTime:timeInterval]];
+        //        [weakVC.m_progress setProgress:timeInterval/totalDuration animated:YES];
+        weakView.m_pProgresSlider.middleValue = timeInterval/totalDuration;
+        //        NSLog(@"----progress : %f , %f", timeInterval, totalDuration);
+    }];
+    
+    [self play:m_pPlayBtn];
+
+}
+
+
+#pragma mark - action
+-(void)clearPlay
+{
+    [m_pAVPlayer removeTimeObserver:m_pPlayObserver];
+}
+
+-(void)previous:(UIButton *)sender
+{
+    m_iPlayIndex -=1;
+    [self playWithIndex];
 }
 
 -(void)play:(UIButton *)sender
@@ -254,56 +277,94 @@
     if (m_bIsPlaying) {
         [m_pAVPlayer pause];
         m_bIsPlaying = NO;
-        [m_pPlayBtn setImage:[UIImage imageNamed:@"资源 39"] forState:UIControlStateNormal];
         
     }
     else {
         m_bIsPlaying = YES;
         [m_pAVPlayer play];
-        [m_pPlayBtn setImage:[UIImage imageNamed:@"资源 38"] forState:UIControlStateNormal];
     }
+    
+    sender.selected = !sender.isSelected;
+    
 }
 
 -(void)next:(UIButton *)sender
 {
-    
+    m_iPlayIndex +=1;
+    [self playWithIndex];
 }
 
 -(void)showBookMenu:(UIButton *)sender
 {
-    CGFloat h =394*[AppConfigure GetLengthAdaptRate];
+    CGRect viewFrame = CGRectMake(0, 64, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-64);
     if (!m_pBookMenuView) {
-        m_pBookMenuView = [[ZYBookListView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.frame), CGRectGetWidth(self.frame), h)];
+        m_pBookMenuView = [[ZYBookListView alloc] initWithFrame:viewFrame];
+        m_pBookMenuView.delegate = self;
         [self addSubview:m_pBookMenuView];
-    }
-    
-    m_pBookMenuView.m_bookList = @[@"asdf"];
-    
-    if (!sender.isSelected) {
-        [UIView animateWithDuration:0.5 animations:^{
-            [m_pBookMenuView setFrame:CGRectMake(0, CGRectGetHeight(self.frame)-h, CGRectGetWidth(self.frame), h)];
-        }];
+        [m_pBookMenuView showView];
     }
     else {
-        [self hiddenBookMenu];
+        [m_pBookMenuView showView];
     }
-    sender.selected = !sender.isSelected;
-}
-
--(void)tapView:(UITapGestureRecognizer *)tap
-{
-    [self hiddenBookMenu];
+    m_pBookMenuView.m_bookList = m_pChapterList;
+    m_pBookMenuView.playBookIndex = m_iPlayIndex;
 }
 
 
--(void)hiddenBookMenu
+
+-(void)playWithIndex
 {
-    CGFloat h =394*[AppConfigure GetLengthAdaptRate];
-    [UIView animateWithDuration:0.5 animations:^{
-        [m_pBookMenuView setFrame:CGRectMake(0, CGRectGetHeight(self.frame), CGRectGetWidth(self.frame), h)];
-    }];
     
-    m_pMenuBtn.selected = NO;
+    ZYChapter *chapter = m_pChapterList[m_iPlayIndex];
+    [self updateViewWithChapter:chapter];
+    AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:chapter.audioUrl]];
+    [m_pAVPlayer replaceCurrentItemWithPlayerItem:item];
+    [m_pAVPlayer play];
+    [self configNowPlayingCenter];
+}
+
+
+
+-(void)updateViewWithChapter:(ZYChapter *)chapter
+{
+    
+    //加载图片
+    __weak UIImageView *pBookImag = m_pBookIconImage;
+    __weak UIImageView *pBGImag = m_pBackgroundImage;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *url = [NSURL URLWithString:chapter.cover];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [[UIImage alloc] initWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [pBookImag setImage:image];
+            [pBGImag setImage:image];
+        });
+    });
+    
+    [m_pBookTitleLabel setText:[NSString stringWithFormat:@"%@ %@",chapter.title,chapter.chapter]];
+    [m_pBookInfoLabel setText:[NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeIntervalString:chapter.updateTime]]];
+    [_m_pCurrentTimeLabel setText:@"00:00"];
+    [_m_pDurationLabel setText:chapter.time];
+    
+    [self updateControlerStatus];
+    
+}
+
+-(void)updateControlerStatus
+{
+    if (m_iPlayIndex == 0) {
+        m_pPreviousBtn.enabled = NO;
+    }
+    else {
+        m_pPreviousBtn.enabled = YES;
+    }
+    
+    if (m_iPlayIndex == m_pChapterList.count-1) {
+        m_pNextBtn.enabled = NO;
+    }
+    else {
+        m_pNextBtn.enabled = YES;
+    }
 }
 
 -(NSTimeInterval)availableDuration {
@@ -315,6 +376,38 @@
     NSTimeInterval result = startSeconds + durationSeconds;
     
     return result;
+}
+
+- (void)configNowPlayingCenter {
+//    BASE_INFO_FUN(@"配置NowPlayingCenter");
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    //音乐的标题
+    [info setObject:m_pBookTitleLabel.text forKey:MPMediaItemPropertyTitle];
+    //音乐的艺术家
+    [info setObject:@"永远的老舍" forKey:MPMediaItemPropertyArtist];
+    //音乐的播放时间
+    double currentTime = m_pAVPlayer.currentItem.currentTime.value/m_pAVPlayer.currentItem.currentTime.timescale;
+
+    [info setObject:@(currentTime) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    //音乐的播放速度
+    [info setObject:@(1) forKey:MPNowPlayingInfoPropertyPlaybackRate];
+    //音乐的总时间
+    NSTimeInterval tim = [self availableDuration];
+    [info setObject:@(tim) forKey:MPMediaItemPropertyPlaybackDuration];
+    //音乐的封面
+    MPMediaItemArtwork * artwork = [[MPMediaItemArtwork alloc] initWithImage:m_pBookIconImage.image];
+    [info setObject:artwork forKey:MPMediaItemPropertyArtwork];
+    //完成设置
+    [[MPNowPlayingInfoCenter defaultCenter]setNowPlayingInfo:info];
+}
+
+#pragma mark - Gesture delegate
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([NSStringFromClass([touch class]) isEqualToString:@"ZYBookListViewCell"]) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - ZYSlider delegate
@@ -333,13 +426,19 @@
 #pragma mark - ZYBookListView delegate
 -(void)selectBookIndex:(NSInteger)index
 {
-    [self hiddenBookMenu];
+    //切换播放
+    if (m_iPlayIndex == index) {
+        return;
+    }
+    m_iPlayIndex = index;
+    [self playWithIndex];
 }
 
 #pragma mark - notification
 -(void)playedidEnd
 {
     NSLog(@"----播放完毕");
+    m_bIsPlaying = NO;
 }
 
 #pragma mark - tool
@@ -352,10 +451,18 @@
 }
 
 
+
 #pragma mark - Set data
--(void)SetBookData:(id)argData
+-(void)SetBookData:(NSArray *)argData
 {
-    NSLog(@"***************%@",argData);
+    ZYListenBookData *pData = argData.firstObject;
+    NSLog(@"***************%@",pData);
+
+    //自动播放第一章，
+//    NSString *allChapter = argData.allChapter;
+    m_pChapterList = [NSArray arrayWithArray:pData.allChapter];
+    [self createAvdioPlayWithChapter:pData.allChapter];
+    
 }
 
 

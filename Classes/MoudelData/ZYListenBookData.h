@@ -9,12 +9,15 @@
 #import "AFBaseModuleData.h"
 
 
-@interface Chapter : AFBaseModuleData
+@interface ZYChapter : AFBaseModuleData
 
 @property (nonatomic, copy) NSString *cid;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *cover;
-@property (nonatomic, copy) NSString *error_msg;
+@property (nonatomic, copy) NSString *chapter;
+@property (nonatomic, copy) NSString *updateTime;
+@property (nonatomic, copy) NSString *audioUrl;
+@property (nonatomic, copy) NSString *time;
 
 @end
 

@@ -53,10 +53,10 @@
 #pragma mark - YYTitleBottomScrollViewDelegate methods
 -(void)ClickCheckDetailsWithId:(NSInteger)argId andType:(NSInteger)argType
 {
-    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:)])
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:argType:)])
     {
-        NSLog(@"argType =======  %ld",(long)argType);
-        [self.propDelegate ClickCheckDetailsWithId:argId];
+        NSLog(@"=======mid:%ld    argType =======  %ld",(long)argId,(long)argType);
+        [self.propDelegate ClickCheckDetailsWithId:argId argType:argType];
     }
 }
 

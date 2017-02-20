@@ -10,7 +10,7 @@
 
 @protocol YYPlayHomePageCellDelgate <NSObject>
 
--(void)ClickCheckDetailsWithId:(NSInteger)argId;
+-(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType;
 
 @end
 

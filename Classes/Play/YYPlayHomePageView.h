@@ -12,4 +12,6 @@
 
 -(void)SetPlayData:(NSArray *)argData;
 
+-(NSArray *)GetAccivity;
+
 @end

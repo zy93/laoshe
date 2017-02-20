@@ -59,6 +59,11 @@
     [m_pTableView reloadData];
 }
 
+-(NSArray *)GetAccivity
+{
+    return m_pData.activity;
+}
+
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -118,9 +123,9 @@
 }
 
 #pragma mark - YYPlayHomePageCellDelgate methods
--(void)ClickCheckDetailsWithId:(NSInteger)argId
+-(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType
 {
-    [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:argId];
+    [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:argId argType:argType];
 }
 
 @end

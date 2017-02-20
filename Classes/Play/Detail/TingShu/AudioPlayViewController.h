@@ -11,4 +11,7 @@
 
 @interface AudioPlayViewController : BUCustomViewController
 
+@property (nonatomic, assign) NSInteger mid;
+@property (nonatomic, assign) NSInteger cid;
+
 @end

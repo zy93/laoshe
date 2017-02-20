@@ -23,6 +23,7 @@
     CGFloat m_fBackViewSizeH;
     CGFloat m_fFont;
     NSInteger m_iType;
+    NSMutableArray *m_arrData;
 }
 
 @end
@@ -34,6 +35,8 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        m_arrData = [NSMutableArray array];
+        
         if (argSquare == YES)
         {
             m_fFont = 14.0f;
@@ -74,7 +77,8 @@
 {
     if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithId:andType:)])
     {
-        [self.propDelegate ClickCheckDetailsWithId:argBtn.tag - VIEWBTNTAG andType:m_iType];
+        YYDonationData *pData =m_arrData[argBtn.tag - VIEWBTNTAG];
+        [self.propDelegate ClickCheckDetailsWithId:[pData.mid integerValue] andType:m_iType];
     }
 }
 
@@ -97,6 +101,8 @@
 -(void)SetData:(NSArray *)argData
 {
 
+    [m_arrData removeAllObjects];
+    [m_arrData addObjectsFromArray:argData];
     CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewInterval = 4*[AppConfigure GetLengthAdaptRate];
     for (NSInteger i = 0; i < argData.count; i++)
@@ -105,6 +111,14 @@
         YYDonationData *pData = argData[i];
         UIImageView *pBackgroupView = [[UIImageView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (m_fBackViewSizeW + fBackViewInterval)), 0, m_fBackViewSizeW, m_fBackViewSizeH)];
         pBackgroupView.backgroundColor = [UIColor redColor];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSURL *url = [NSURL URLWithString:pData.cover];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *image = [[UIImage alloc] initWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [pBackgroupView setImage:image];
+            });
+        });
         [m_pScrollView addSubview:pBackgroupView];
         
         UIButton *pPhotoBtn = [[UIButton alloc] initWithFrame:pBackgroupView.frame];

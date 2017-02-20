@@ -7,7 +7,24 @@
 //
 
 #import "ZYListenBookData.h"
+#import "RMMapper.h"
+
+
+@implementation ZYChapter
+
+
+
+@end
 
 @implementation ZYListenBookData
+
+
+-(void)setAllChapter:(NSArray *)allChapter
+{
+    if ([allChapter isKindOfClass:[NSArray class]])
+    {
+       _allChapter = [RMMapper arrayOfClass:[ZYChapter class] fromArrayOfDictionary:allChapter];
+    }
+}
 
 @end

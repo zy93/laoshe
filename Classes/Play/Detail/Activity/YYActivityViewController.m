@@ -10,6 +10,7 @@
 #import "YYNavView.h"
 #import "YYActivityCell.h"
 #import "YYActivityData.h"
+#import "YYRichTextDetailController.h"
 
 #define kColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define WIDTH [UIScreen mainScreen].bounds.size.width
@@ -214,7 +215,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    YYActivityData *pData = _m_pActivityList[indexPath.row];
+    YYRichTextDetailController *pXunDetailVC = [[YYRichTextDetailController alloc] init];
+    pXunDetailVC.propContent = pData.content;
+    [self PushChildViewController:pXunDetailVC];
     
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

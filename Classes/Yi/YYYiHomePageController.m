@@ -12,6 +12,7 @@
 #import "YYYiFriendDetailController.h"
 #import "YYDonationData.h"
 #import "YYFriendData.h"
+#import "YYRichTextDetailController.h"
 
 @interface YYYiHomePageController ()
 {
@@ -31,6 +32,7 @@
     m_pTopBar.hidden = YES;
     [self CreateSubViews];
     [self CreateRequest];
+
 }
 
 #pragma mark - private methods 
@@ -57,7 +59,8 @@
 
 -(void)ClickCheckDetailsWithData:(YYFriendData *)argData
 {
-    YYYiFriendDetailController *pFriendDetailVC = [[YYYiFriendDetailController alloc] init];
+    YYRichTextDetailController *pFriendDetailVC = [[YYRichTextDetailController alloc] init];
+    pFriendDetailVC.propContent = argData.content;
     [self PushChildViewController:pFriendDetailVC];
 }
 

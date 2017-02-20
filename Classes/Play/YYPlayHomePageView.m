@@ -11,8 +11,10 @@
 #import "YYPlayHomePageCell.h"
 #import "YYPlayHomePageController.h"
 #import "YYPlayData.h"
+#import "YYPlayActivityCell.h"
+#import "YYActivityData.h"
 
-@interface YYPlayHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYPlayHomePageCellDelgate>
+@interface YYPlayHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYPlayHomePageCellDelgate,YYPlayActivityCellDelegate>
 {
     YYPlayHeadView *m_pHeadView;
     UITableView *m_pTableView;
@@ -72,13 +74,28 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 6)
+    {
+        static NSString *identifier = @"YYPlayActivityCell";
+        YYPlayActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil)
+        {
+            cell = [[YYPlayActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        //    [cell ClearData];
+        cell.propDelegate = self;
+        [cell SetPlayActivityData:[m_pData.activity firstObject]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+ 
     static NSString *identifier = @"YYPlayHomePageCell";
     YYPlayHomePageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil)
     {
         cell = [[YYPlayHomePageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-//    [cell ClearData];
+    //    [cell ClearData];
     cell.propDelegate = self;
     [cell SetType:indexPath.row];
     switch (indexPath.row)
@@ -101,9 +118,6 @@
         case 5:
             [cell SetPlayData:m_pData.tingBook];
             break;
-        case 6:
-            [cell SetPlayData:m_pData.activity];
-            break;
         default:
             break;
     }
@@ -118,14 +132,37 @@
     //        CGFloat pMainH = 82*[AppConfigure GetLengthAdaptRate];
     //        return pMainH;
     //    }
+    
     CGFloat pMainH = 220*[AppConfigure GetLengthAdaptRate];
+    if (indexPath.row == 6)
+    {
+        pMainH = 288*[AppConfigure GetLengthAdaptRate];
+    }
     return pMainH;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 6)
+    {
+        if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(CheckDetail:)])
+        {
+            YYActivityData *pData = [m_pData.activity firstObject];
+            [self.propDelegate CheckDetail:pData];
+        }
+    }
 }
 
 #pragma mark - YYPlayHomePageCellDelgate methods
 -(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType
 {
     [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:argId argType:argType];
+}
+
+#pragma mark - YYPlayActivityCellDelegate methods
+-(void)CheckMoreActivity
+{
+    [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:0 argType:6];
 }
 
 @end

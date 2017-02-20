@@ -9,6 +9,7 @@
 #import "YYXunHomePageController.h"
 #import "YYXunHomePageView.h"
 #import "YYXunData.h"
+#import "YYRichTextDetailController.h"
 
 @interface YYXunHomePageController ()<YYXunHomePageViewDelegate>
 {
@@ -48,7 +49,9 @@
 #pragma mark - YYXunHomePageView Delegate
 -(void)CheckDetail:(YYXunData *)argData
 {
-    
+    YYRichTextDetailController *pXunDetailVC = [[YYRichTextDetailController alloc] init];
+    pXunDetailVC.propContent = argData.content;
+    [self PushChildViewController:pXunDetailVC];
 }
 
 

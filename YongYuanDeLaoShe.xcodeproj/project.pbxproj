@@ -203,6 +203,9 @@
 		25ADF5E51E38D46F000FFE0E /* yi_head_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25ADF5E11E38D46F000FFE0E /* yi_head_background@3x.png */; };
 		25ADF5E61E38D46F000FFE0E /* yi_laoshe_portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25ADF5E21E38D46F000FFE0E /* yi_laoshe_portrait@2x.png */; };
 		25ADF5E71E38D46F000FFE0E /* yi_laoshe_portrait@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25ADF5E31E38D46F000FFE0E /* yi_laoshe_portrait@3x.png */; };
+		25AEE9251E5B1FF000DC9488 /* YYRichTextDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AEE9241E5B1FF000DC9488 /* YYRichTextDetailController.m */; };
+		25AEE9281E5B22E800DC9488 /* YYRichTextDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AEE9271E5B22E800DC9488 /* YYRichTextDetailView.m */; };
+		25AEE92B1E5B2C9B00DC9488 /* YYPlayActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AEE92A1E5B2C9B00DC9488 /* YYPlayActivityCell.m */; };
 		25B43FA11E4B4BDE00711DC4 /* YYYiFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B43FA01E4B4BDE00711DC4 /* YYYiFriendsCell.m */; };
 		25C939B31E5485A000017D17 /* YYXunDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B21E5485A000017D17 /* YYXunDetailController.m */; };
 		25C939B61E5487AE00017D17 /* YYXunDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B51E5487AE00017D17 /* YYXunDetailView.m */; };
@@ -677,6 +680,12 @@
 		25ADF5E11E38D46F000FFE0E /* yi_head_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yi_head_background@3x.png"; sourceTree = "<group>"; };
 		25ADF5E21E38D46F000FFE0E /* yi_laoshe_portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yi_laoshe_portrait@2x.png"; sourceTree = "<group>"; };
 		25ADF5E31E38D46F000FFE0E /* yi_laoshe_portrait@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yi_laoshe_portrait@3x.png"; sourceTree = "<group>"; };
+		25AEE9231E5B1FF000DC9488 /* YYRichTextDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRichTextDetailController.h; sourceTree = "<group>"; };
+		25AEE9241E5B1FF000DC9488 /* YYRichTextDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRichTextDetailController.m; sourceTree = "<group>"; };
+		25AEE9261E5B22E800DC9488 /* YYRichTextDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRichTextDetailView.h; sourceTree = "<group>"; };
+		25AEE9271E5B22E800DC9488 /* YYRichTextDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRichTextDetailView.m; sourceTree = "<group>"; };
+		25AEE9291E5B2C9B00DC9488 /* YYPlayActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPlayActivityCell.h; sourceTree = "<group>"; };
+		25AEE92A1E5B2C9B00DC9488 /* YYPlayActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPlayActivityCell.m; sourceTree = "<group>"; };
 		25B43F9F1E4B4BDE00711DC4 /* YYYiFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYYiFriendsCell.h; sourceTree = "<group>"; };
 		25B43FA01E4B4BDE00711DC4 /* YYYiFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYYiFriendsCell.m; sourceTree = "<group>"; };
 		25C939B11E5485A000017D17 /* YYXunDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunDetailController.h; sourceTree = "<group>"; };
@@ -1107,6 +1116,7 @@
 				258D7C871E388667009510C4 /* Yan */,
 				258D7C881E388667009510C4 /* Yi */,
 				258D7C951E3887E2009510C4 /* Lauch */,
+				25AEE9221E5B1F6F00DC9488 /* RichTextDetail */,
 				25A6DD811E3A1DB800B230B7 /* PublicClass */,
 				25DFD0DA1E51FE1D0028D926 /* MoudelData */,
 			);
@@ -1585,6 +1595,8 @@
 				25925C7B1E4EFDB400EDEA69 /* YYPlayHeadView.m */,
 				25925C741E4EFD7B00EDEA69 /* YYPlayHomePageCell.h */,
 				25925C751E4EFD7B00EDEA69 /* YYPlayHomePageCell.m */,
+				25AEE9291E5B2C9B00DC9488 /* YYPlayActivityCell.h */,
+				25AEE92A1E5B2C9B00DC9488 /* YYPlayActivityCell.m */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -1722,6 +1734,17 @@
 				25ADF5E31E38D46F000FFE0E /* yi_laoshe_portrait@3x.png */,
 			);
 			path = Yi;
+			sourceTree = "<group>";
+		};
+		25AEE9221E5B1F6F00DC9488 /* RichTextDetail */ = {
+			isa = PBXGroup;
+			children = (
+				25AEE9231E5B1FF000DC9488 /* YYRichTextDetailController.h */,
+				25AEE9241E5B1FF000DC9488 /* YYRichTextDetailController.m */,
+				25AEE9261E5B22E800DC9488 /* YYRichTextDetailView.h */,
+				25AEE9271E5B22E800DC9488 /* YYRichTextDetailView.m */,
+			);
+			path = RichTextDetail;
 			sourceTree = "<group>";
 		};
 		25C939B01E54858D00017D17 /* Detail */ = {
@@ -2182,6 +2205,7 @@
 				2555A4CD1E3785DC00E309F6 /* AFNetworkReachabilityManager.m in Sources */,
 				2555A5121E3785DC00E309F6 /* UIImage+Cut.m in Sources */,
 				25925C731E4EFBF400EDEA69 /* YYYanHomePageCell.m in Sources */,
+				25AEE9281E5B22E800DC9488 /* YYRichTextDetailView.m in Sources */,
 				2555A3F01E37851200E309F6 /* IYCActivityIndicator.m in Sources */,
 				2555A3E21E37851200E309F6 /* BUPageRequest.m in Sources */,
 				2555A51D1E3785DD00E309F6 /* UIImageView+AFNetworking.m in Sources */,
@@ -2212,6 +2236,7 @@
 				2555A3D31E37851200E309F6 /* NSString+Check.m in Sources */,
 				2555A4F21E3785DC00E309F6 /* MJRefreshBackNormalFooter.m in Sources */,
 				2555A3D51E37851200E309F6 /* NSString+MD5.m in Sources */,
+				25AEE92B1E5B2C9B00DC9488 /* YYPlayActivityCell.m in Sources */,
 				2555A4EA1E3785DC00E309F6 /* MJRefreshBackFooter.m in Sources */,
 				2555A4F31E3785DC00E309F6 /* MJRefreshBackStateFooter.m in Sources */,
 				2555A4D11E3785DC00E309F6 /* AFURLSessionManager.m in Sources */,
@@ -2271,6 +2296,7 @@
 				2555A5041E3785DC00E309F6 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
 				2555A4E61E3785DC00E309F6 /* ZYKeyboardUtil.m in Sources */,
 				25C939B31E5485A000017D17 /* YYXunDetailController.m in Sources */,
+				25AEE9251E5B1FF000DC9488 /* YYRichTextDetailController.m in Sources */,
 				25DFD0D11E51F4B10028D926 /* YYYiFriendDetailController.m in Sources */,
 				2555A50B1E3785DC00E309F6 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */,

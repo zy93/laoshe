@@ -11,6 +11,7 @@
 #import "YYPlayHomePageView.h"
 #import "AudioPlayViewController.h"
 #import "YYActivityViewController.h"
+#import "YYOtherDetailViewController.h"
 #import "YYPlayData.h"
 
 @interface YYPlayHomePageController ()
@@ -56,28 +57,14 @@
     
     switch (argType) {
         case 0:
-        {
-            
-        }
-            break;
         case 1:
-        {
-            
-        }
-            break;
         case 2:
-        {
-            
-        }
-            break;
         case 3:
-        {
-            
-        }
-            break;
         case 4:
         {
-            
+            YYOtherDetailViewController *pDetailVC = [[YYOtherDetailViewController alloc] init];
+            pDetailVC.mid = argId;
+            [self PushChildViewController:pDetailVC];
         }
             break;
         case 5:

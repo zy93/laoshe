@@ -157,6 +157,7 @@
 		2555A5231E3787AF00E309F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2555A5221E3787AF00E309F6 /* UIKit.framework */; };
 		2555A5251E3787BF00E309F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2555A5241E3787BF00E309F6 /* Foundation.framework */; };
 		255C4EF61E55DB4500667816 /* YYPlayData.m in Sources */ = {isa = PBXBuildFile; fileRef = 255C4EF51E55DB4500667816 /* YYPlayData.m */; };
+		258034B11E58914C0021BD6D /* YYYanData.m in Sources */ = {isa = PBXBuildFile; fileRef = 258034B01E58914C0021BD6D /* YYYanData.m */; };
 		2583F60F1E347F9D00222D66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2583F60E1E347F9D00222D66 /* main.m */; };
 		2583F6121E347F9D00222D66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2583F6111E347F9D00222D66 /* AppDelegate.m */; };
 		2583F6151E347F9D00222D66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2583F6141E347F9D00222D66 /* ViewController.m */; };
@@ -599,6 +600,8 @@
 		2555A5261E378B3700E309F6 /* YongYuanDeLaoShe_Perfix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YongYuanDeLaoShe_Perfix.pch; sourceTree = "<group>"; };
 		255C4EF41E55DB4500667816 /* YYPlayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPlayData.h; sourceTree = "<group>"; };
 		255C4EF51E55DB4500667816 /* YYPlayData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPlayData.m; sourceTree = "<group>"; };
+		258034AF1E58914C0021BD6D /* YYYanData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYYanData.h; sourceTree = "<group>"; };
+		258034B01E58914C0021BD6D /* YYYanData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYYanData.m; sourceTree = "<group>"; };
 		2583F60A1E347F9D00222D66 /* YongYuanDeLaoShe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YongYuanDeLaoShe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2583F60E1E347F9D00222D66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2583F6101E347F9D00222D66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../YongYuanDeLaoShe/AppDelegate.h; sourceTree = "<group>"; };
@@ -1768,6 +1771,8 @@
 				255C4EF51E55DB4500667816 /* YYPlayData.m */,
 				2AC696271E549E8C0061A601 /* ZYListenBookData.h */,
 				2AC696281E549E8C0061A601 /* ZYListenBookData.m */,
+				258034AF1E58914C0021BD6D /* YYYanData.h */,
+				258034B01E58914C0021BD6D /* YYYanData.m */,
 			);
 			path = MoudelData;
 			sourceTree = "<group>";
@@ -2226,6 +2231,7 @@
 				2555A3F31E37851200E309F6 /* AFTabBarItem.m in Sources */,
 				2555A51B1E3785DD00E309F6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2555A3F61E37851200E309F6 /* AFTitleBannerView.m in Sources */,
+				258034B11E58914C0021BD6D /* YYYanData.m in Sources */,
 				2555A4E31E3785DC00E309F6 /* SBJsonBase.m in Sources */,
 				2555A3E11E37851200E309F6 /* BUInternetReportUtilities.m in Sources */,
 				258D7C8E1E3886EB009510C4 /* YYYanHomePageController.m in Sources */,

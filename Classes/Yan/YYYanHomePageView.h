@@ -10,4 +10,6 @@
 
 @interface YYYanHomePageView : UIView
 
+-(void)SetYanData:(NSArray *)argData;
+
 @end

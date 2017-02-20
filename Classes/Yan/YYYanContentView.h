@@ -10,4 +10,6 @@
 
 @interface YYYanContentView : UIView
 
+-(void)SetYanData:(NSArray *)argData;
+
 @end

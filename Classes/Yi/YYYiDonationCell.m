@@ -41,6 +41,10 @@
 {
     [m_pDonationView SetData:argData];
 }
+-(void)SetType:(NSInteger)argType
+{
+    [m_pDonationView SetType:argType];
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

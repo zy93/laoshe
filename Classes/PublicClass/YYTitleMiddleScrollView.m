@@ -7,6 +7,9 @@
 //
 
 #import "YYTitleMiddleScrollView.h"
+#import "YYFriendData.h"
+
+#define VIEWBTNTAG 1000
 
 @interface YYTitleMiddleScrollView ()<UIScrollViewDelegate>
 {
@@ -16,6 +19,7 @@
     UILabel *m_pNameLab;
     UIView *m_pBackgroupView;
     NSMutableArray *m_arrBackgroupColor;
+    NSMutableArray *m_arrData;
 }
 
 @end
@@ -27,6 +31,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        m_arrData = [NSMutableArray array];
         m_arrBackgroupColor = [NSMutableArray arrayWithObjects:UIColorFromHex(0x7bb6d3),UIColorFromHex(0xda9ca7),UIColorFromHex(0x98a6ce),UIColorFromHex(0xe6daa2),UIColorFromHex(0x88b9b0), nil];
         [self CreateSubViews];
     }
@@ -58,26 +63,45 @@
 
 }
 
+-(void)ClickCheckDetails:(UIButton *)argBtn
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithData:)])
+    {
+        [self.propDelegate ClickCheckDetailsWithData:m_arrData[argBtn.tag - VIEWBTNTAG]];
+    }
+}
+
+
 #pragma mark - public methods
 -(void)SetData:(NSArray *)argData
 {
+    [m_arrData removeAllObjects];
+    [m_arrData addObjectsFromArray:argData];
     CGFloat fBackViewSize = 71*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewInterval = 8*[AppConfigure GetLengthAdaptRate];
     for (NSInteger i = 0; i < argData.count; i++)
     {
+        YYFriendData *pData = argData[i];
+
         UIView *pBackgroupView = [[UIView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (fBackViewSize + fBackViewInterval)), 0, fBackViewSize, fBackViewSize)];
         pBackgroupView.backgroundColor = m_arrBackgroupColor[i%5];
         [m_pScrollView addSubview:pBackgroupView];
         
+        UIButton *pPhotoBtn = [[UIButton alloc] initWithFrame:pBackgroupView.frame];
+        pPhotoBtn.backgroundColor = [UIColor clearColor];
+        [pPhotoBtn addTarget:self action:@selector(ClickCheckDetails:) forControlEvents:UIControlEventTouchUpInside];
+        pPhotoBtn.tag = VIEWBTNTAG + i;
+        [m_pScrollView addSubview:pPhotoBtn];
+        
         UILabel *pNameLab = [[UILabel alloc] initWithFrame:pBackgroupView.frame];
-        pNameLab.text = @"好友";
+        pNameLab.text = pData.username;
         pNameLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:16.0f];
         pNameLab.textColor = UIColorFromHex(0xfefefe);
         pNameLab.textAlignment = NSTextAlignmentCenter;
         [m_pScrollView addSubview:pNameLab];
     }
-    m_pScrollView.contentSize = CGSizeMake(fBackViewX+(10 * (fBackViewSize+fBackViewInterval)), 0);
+    m_pScrollView.contentSize = CGSizeMake(fBackViewX+(argData.count * (fBackViewSize+fBackViewInterval)), 0);
 }
 
 @end

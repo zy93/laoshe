@@ -12,4 +12,6 @@
 
 -(void)SetDonationData:(NSArray *)argData;
 
+-(void)SetType:(NSInteger)argType;
+
 @end

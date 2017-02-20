@@ -8,9 +8,9 @@
 
 #import "YYYiFriendsCell.h"
 #import "YYTitleMiddleScrollView.h"
+#import "YYFriendData.h"
 
-
-@interface YYYiFriendsCell ()
+@interface YYYiFriendsCell ()<YYTitleMiddleScrollViewDelegate>
 {
     YYTitleMiddleScrollView *m_pFriendsScrollView;
 }
@@ -33,12 +33,22 @@
 -(void)CreateSubViews
 {
     m_pFriendsScrollView = [[YYTitleMiddleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 144*[AppConfigure GetLengthAdaptRate])];
+    m_pFriendsScrollView.propDelegate = self;
     [self.contentView addSubview:m_pFriendsScrollView];
 }
 #pragma mark - public methods
 -(void)SetFriendData:(NSArray *)argData
 {
     [m_pFriendsScrollView SetData:argData];
+}
+
+#pragma mark - YYTitleMiddleScrollView Delegate
+-(void)ClickCheckDetailsWithData:(YYFriendData *)argData
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickCheckDetailsWithData:)])
+    {
+        [self.propDelegate ClickCheckDetailsWithData:argData];
+    }
 }
 
 - (void)awakeFromNib {

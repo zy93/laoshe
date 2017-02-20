@@ -10,8 +10,9 @@
 #import "YYYiHeadView.h"
 #import "YYYiFriendsCell.h"
 #import "YYYiDonationCell.h"
+#import "YYYiHomePageController.h"
 
-@interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource>
+@interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYYiFriendsCellDelegate>
 {
     YYYiHeadView *m_pHeadView;
     UITableView *m_pTableView;
@@ -82,6 +83,7 @@
         {
             cell = [[YYYiFriendsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        cell.propDelegate = self;
         [cell SetFriendData:m_arrFriendData];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -93,6 +95,7 @@
         {
             cell = [[YYYiDonationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        [cell SetType:-1];
         [cell SetDonationData:m_arrDonationData];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -109,12 +112,11 @@
     return pMainH;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - YYYiFriendsCell Delegate
+-(void)ClickCheckDetailsWithData:(YYFriendData *)argData
 {
-    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(Click2111)])
-    {
-        [self.propDelegate Click2111];
-    }
+    [(YYYiHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithData:argData];
+
 }
 
 @end

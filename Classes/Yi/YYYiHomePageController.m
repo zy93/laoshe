@@ -12,8 +12,9 @@
 #import "YYYiFriendDetailController.h"
 #import "YYDonationData.h"
 #import "YYFriendData.h"
+#import "YYRichTextDetailController.h"
 
-@interface YYYiHomePageController ()<YYYiHomePageViewDelegate>
+@interface YYYiHomePageController ()
 {
     YYYiHomePageView *m_pHomePageView;
     BUAFHttpRequest *m_pFriendRequest;
@@ -31,13 +32,13 @@
     m_pTopBar.hidden = YES;
     [self CreateSubViews];
     [self CreateRequest];
+
 }
 
 #pragma mark - private methods 
 -(void)CreateSubViews
 {
     m_pHomePageView = [[YYYiHomePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - TABBAR_HEIGHT)];
-    m_pHomePageView.propDelegate = self;
     [self.view addSubview:m_pHomePageView];
 }
 
@@ -56,11 +57,13 @@
     [self ShowProgressHUDWithMessage:@"Loading..."];
 }
 
--(void)Click2111
+-(void)ClickCheckDetailsWithData:(YYFriendData *)argData
 {
-    YYYiFriendDetailController *pVC = [[YYYiFriendDetailController alloc] init];
-    [self PushChildViewController:pVC];
+    YYRichTextDetailController *pFriendDetailVC = [[YYRichTextDetailController alloc] init];
+    pFriendDetailVC.propContent = argData.content;
+    [self PushChildViewController:pFriendDetailVC];
 }
+
 
 #pragma mark - BUAFHttpRequestDelegate methods
 -(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData

@@ -87,7 +87,7 @@
     });
     
     [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",data.startDate]];
-    [_m_pTitleLab setText:data.content];
+    [_m_pTitleLab setText:data.title];
     
 }
 

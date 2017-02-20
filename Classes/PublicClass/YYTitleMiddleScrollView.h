@@ -7,8 +7,17 @@
 //  好友的滑动试图
 
 #import <UIKit/UIKit.h>
+@class YYFriendData;
+
+@protocol YYTitleMiddleScrollViewDelegate <NSObject>
+
+-(void)ClickCheckDetailsWithData:(YYFriendData *)argData;
+
+@end
 
 @interface YYTitleMiddleScrollView : UIView
+
+@property (nonatomic,weak)id<YYTitleMiddleScrollViewDelegate> propDelegate;
 
 -(void)SetData:(NSArray *)argData;
 

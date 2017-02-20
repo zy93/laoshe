@@ -10,4 +10,6 @@
 
 @interface YYYanHomePageController : BUCustomViewController
 
+-(void)RequestWithType:(NSInteger)argType;
+
 @end

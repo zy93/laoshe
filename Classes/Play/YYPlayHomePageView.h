@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YYActivityData;
+
+@protocol YYPlayHomePageViewDelegate <NSObject>
+
+-(void)CheckDetail:(YYActivityData *)argData;
+
+@end
 
 @interface YYPlayHomePageView : UIView
+
+@property (nonatomic,weak)id<YYPlayHomePageViewDelegate> propDelegate;
 
 -(void)SetPlayData:(NSArray *)argData;
 

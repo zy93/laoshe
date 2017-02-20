@@ -134,7 +134,7 @@
         pNameLab.textAlignment = NSTextAlignmentLeft;
         [m_pScrollView addSubview:pNameLab];
     }
-    m_pScrollView.contentSize = CGSizeMake(fBackViewX+(10 * (m_fBackViewSizeW+fBackViewInterval)), 0);
+    m_pScrollView.contentSize = CGSizeMake(fBackViewX+(argData.count * (m_fBackViewSizeW+fBackViewInterval)), 0);
 }
 
 @end

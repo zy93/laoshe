@@ -10,6 +10,7 @@
 #import "YYYanHomePageCell.h"
 #import "YYYanChannelView.h"
 #import "YYYanContentView.h"
+#import "YYYanHomePageController.h"
 
 @interface YYYanHomePageView ()<YYYanChannelViewDelegate>
 {
@@ -65,12 +66,18 @@
     m_pYanContentView = [[YYYanContentView alloc] initWithFrame:CGRectMake(0, m_pHeadImgView.bottom + 40*[AppConfigure GetLengthAdaptRate], self.width, self.height - m_pHeadImgView.bottom - 40*[AppConfigure GetLengthAdaptRate])];
     [self addSubview:m_pYanContentView];
 }
+#pragma mark - public methods
+-(void)SetYanData:(NSArray *)argData
+{
+    [m_pYanContentView SetYanData:argData];
+}
 
 #pragma mark - YYYanChannelViewDelegate methods
 -(void)SelectIndex:(NSInteger)argIndex
 {
     m_pTitleLab.text = m_arrChannel[argIndex];
     m_pHeadImgView.image = [UIImage imageNamed:m_arrImage[argIndex]];
+    [(YYYanHomePageController *)[self GetSubordinateControllerForSelf] RequestWithType:argIndex+1];
 }
 
 @end

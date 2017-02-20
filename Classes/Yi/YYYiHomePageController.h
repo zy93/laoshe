@@ -7,7 +7,10 @@
 //  忆
 
 #import "BUCustomViewController.h"
+@class YYFriendData;
 
 @interface YYYiHomePageController : BUCustomViewController
+
+-(void)ClickCheckDetailsWithData:(YYFriendData *)argData;
 
 @end

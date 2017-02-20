@@ -13,8 +13,10 @@
 #import "YYActivityViewController.h"
 #import "YYOtherDetailViewController.h"
 #import "YYPlayData.h"
+#import "YYRichTextDetailController.h"
+#import "YYActivityData.h"
 
-@interface YYPlayHomePageController ()
+@interface YYPlayHomePageController ()<YYPlayHomePageViewDelegate>
 {
     YYPlayHomePageView *m_pHomePageView;
     BUAFHttpRequest *m_pRequest;
@@ -39,6 +41,7 @@
 -(void)CreateSubViews
 {
     m_pHomePageView = [[YYPlayHomePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - TABBAR_HEIGHT)];
+    m_pHomePageView.propDelegate = self;
     [self.view addSubview:m_pHomePageView];
 }
 
@@ -89,6 +92,14 @@
     }
     
     
+}
+
+#pragma mark - YYPlayHomePageViewDelegate methods
+-(void)CheckDetail:(YYActivityData *)argData
+{
+    YYRichTextDetailController *pXunDetailVC = [[YYRichTextDetailController alloc] init];
+    pXunDetailVC.propContent = argData.content;
+    [self PushChildViewController:pXunDetailVC];
 }
 
 #pragma mark - BUAFHttpRequestDelegate methods

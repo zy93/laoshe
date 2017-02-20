@@ -1798,6 +1798,8 @@
 				2AC696281E549E8C0061A601 /* ZYListenBookData.m */,
 				258034AF1E58914C0021BD6D /* YYYanData.h */,
 				258034B01E58914C0021BD6D /* YYYanData.m */,
+				2AAC999A1E59E8B6008C1816 /* YYActivityData.h */,
+				2AAC999B1E59E8B6008C1816 /* YYActivityData.m */,
 			);
 			path = MoudelData;
 			sourceTree = "<group>";

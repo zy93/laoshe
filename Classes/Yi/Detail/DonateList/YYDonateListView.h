@@ -10,4 +10,6 @@
 
 @interface YYDonateListView : UIView
 
+-(void)SetData:(NSArray *)argData;
+
 @end

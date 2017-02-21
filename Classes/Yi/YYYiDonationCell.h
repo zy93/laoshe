@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol YYYiDonationCellDelegate <NSObject>
+
+-(void)CheckMoreContent;
+
+@end
+
 @interface YYYiDonationCell : UITableViewCell
+
+@property (nonatomic,weak)id<YYYiDonationCellDelegate> propDelegate;
 
 -(void)SetDonationData:(NSArray *)argData;
 

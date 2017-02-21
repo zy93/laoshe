@@ -66,7 +66,7 @@
     m_pNameLabel.backgroundColor = [UIColor clearColor];
     m_pNameLabel.textAlignment = NSTextAlignmentCenter;
     m_pNameLabel.verticalAlignment = VerticalAlignmentMiddle;
-    m_pNameLabel.textColor = [AppConfigure BlackColor];
+    m_pNameLabel.textColor = UIColorFromHex(0x455cc7);
     [m_pNameLabel setFont:[UIFont fontWithName:[AppConfigure RegularFont] size:19]];
     [m_pTopBar addSubview:m_pNameLabel];
     

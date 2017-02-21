@@ -341,6 +341,9 @@
         });
     });
     
+    //缓冲条，从0开始
+    _m_pProgresSlider.middleValue = 0;
+    
     [m_pBookTitleLabel setText:[NSString stringWithFormat:@"%@ %@",chapter.title,chapter.chapter]];
     [m_pBookInfoLabel setText:[NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeIntervalString:chapter.updateTime]]];
     [_m_pCurrentTimeLabel setText:@"00:00"];

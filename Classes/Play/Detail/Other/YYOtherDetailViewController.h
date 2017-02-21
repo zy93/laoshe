@@ -12,6 +12,4 @@
 
 @property (nonatomic, assign) NSInteger mid;
 
--(void)back;
-
 @end

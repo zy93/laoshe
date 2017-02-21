@@ -8,6 +8,7 @@
 
 #import "YYOtherDetilView.h"
 #import "UIImageView+AFNetworking.h"
+#import "YYOtherDetailViewController.h"
 
 @interface YYOtherDetilView()
 {
@@ -175,7 +176,7 @@
 
 -(void)back:(UIButton *)sender
 {
-    
+    [(YYOtherDetailViewController *)[self GetSubordinateControllerForSelf] Back];
 }
 
 -(void)share:(UIButton *)sender

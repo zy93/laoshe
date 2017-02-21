@@ -1977,7 +1977,7 @@
 				TargetAttributes = {
 					2583F6091E347F9D00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5EY377SJTX;
+						DevelopmentTeam = YH5D4AY9E9;
 						ProvisioningStyle = Automatic;
 					};
 					2583F6221E347F9E00222D66 = {

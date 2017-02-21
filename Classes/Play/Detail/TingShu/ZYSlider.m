@@ -89,7 +89,11 @@
     
 //    _progressView.progress = middleValue;
 //    [_progressView setProgress:middleValue];
-    [_progressView setProgress:middleValue animated:YES];
+    BOOL isSatrt = YES;
+    if (middleValue == 0) {
+        isSatrt = NO;
+    }
+    [_progressView setProgress:middleValue animated:isSatrt];
 }
 
 - (UIColor* )minimumTrackTintColor {

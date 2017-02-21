@@ -12,6 +12,8 @@
 
 -(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType;
 
+-(void)CheckMoreContent;
+
 @end
 
 @interface YYPlayHomePageCell : UITableViewCell

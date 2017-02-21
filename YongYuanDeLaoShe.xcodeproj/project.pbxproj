@@ -302,6 +302,11 @@
 		2AF696281E5C6C030086CD17 /* YYDonateDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF696271E5C6C030086CD17 /* YYDonateDetailController.m */; };
 		2AF6962B1E5C6C160086CD17 /* YYDonateDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6962A1E5C6C160086CD17 /* YYDonateDetailView.m */; };
 		2AF6962E1E5C6D6F0086CD17 /* YYDonateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */; };
+		2AF696901E5C87F40086CD17 /* YYListenBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF696891E5C87F40086CD17 /* YYListenBookViewController.m */; };
+		2AF696911E5C87F40086CD17 /* CardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6968B1E5C87F40086CD17 /* CardLayout.m */; };
+		2AF696921E5C87F40086CD17 /* CardSelectedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6968D1E5C87F40086CD17 /* CardSelectedLayout.m */; };
+		2AF696931E5C87F40086CD17 /* CardCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6968F1E5C87F40086CD17 /* CardCellCollectionViewCell.m */; };
+		2AF696961E5C88C80086CD17 /* YYListenBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF696951E5C88C80086CD17 /* YYListenBookView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -813,6 +818,16 @@
 		2AF6962A1E5C6C160086CD17 /* YYDonateDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateDetailView.m; sourceTree = "<group>"; };
 		2AF6962C1E5C6D6F0086CD17 /* YYDonateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateData.h; sourceTree = "<group>"; };
 		2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateData.m; sourceTree = "<group>"; };
+		2AF696881E5C87F40086CD17 /* YYListenBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYListenBookViewController.h; sourceTree = "<group>"; };
+		2AF696891E5C87F40086CD17 /* YYListenBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYListenBookViewController.m; sourceTree = "<group>"; };
+		2AF6968A1E5C87F40086CD17 /* CardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardLayout.h; sourceTree = "<group>"; };
+		2AF6968B1E5C87F40086CD17 /* CardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardLayout.m; sourceTree = "<group>"; };
+		2AF6968C1E5C87F40086CD17 /* CardSelectedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSelectedLayout.h; sourceTree = "<group>"; };
+		2AF6968D1E5C87F40086CD17 /* CardSelectedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardSelectedLayout.m; sourceTree = "<group>"; };
+		2AF6968E1E5C87F40086CD17 /* CardCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCellCollectionViewCell.h; sourceTree = "<group>"; };
+		2AF6968F1E5C87F40086CD17 /* CardCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCellCollectionViewCell.m; sourceTree = "<group>"; };
+		2AF696941E5C88C80086CD17 /* YYListenBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYListenBookView.h; sourceTree = "<group>"; };
+		2AF696951E5C88C80086CD17 /* YYListenBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYListenBookView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1710,6 +1725,7 @@
 		25925C811E4F05A900EDEA69 /* TingShu */ = {
 			isa = PBXGroup;
 			children = (
+				2AF696871E5C87EA0086CD17 /* ListenBookMore */,
 				2AD5FE3B1E52068400C5F704 /* AudioPlayViewController.h */,
 				2AD5FE3C1E52068400C5F704 /* AudioPlayViewController.m */,
 				2A0F93151E584A1B00B874AA /* ZYAudioPlayView.h */,
@@ -1953,6 +1969,23 @@
 				2AF6962A1E5C6C160086CD17 /* YYDonateDetailView.m */,
 			);
 			path = DonateDetail;
+			sourceTree = "<group>";
+		};
+		2AF696871E5C87EA0086CD17 /* ListenBookMore */ = {
+			isa = PBXGroup;
+			children = (
+				2AF696881E5C87F40086CD17 /* YYListenBookViewController.h */,
+				2AF696891E5C87F40086CD17 /* YYListenBookViewController.m */,
+				2AF696941E5C88C80086CD17 /* YYListenBookView.h */,
+				2AF696951E5C88C80086CD17 /* YYListenBookView.m */,
+				2AF6968A1E5C87F40086CD17 /* CardLayout.h */,
+				2AF6968B1E5C87F40086CD17 /* CardLayout.m */,
+				2AF6968C1E5C87F40086CD17 /* CardSelectedLayout.h */,
+				2AF6968D1E5C87F40086CD17 /* CardSelectedLayout.m */,
+				2AF6968E1E5C87F40086CD17 /* CardCellCollectionViewCell.h */,
+				2AF6968F1E5C87F40086CD17 /* CardCellCollectionViewCell.m */,
+			);
+			path = ListenBookMore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2221,6 +2254,7 @@
 				2555A3C81E37851200E309F6 /* AFBaseOptionView.m in Sources */,
 				2555A5081E3785DC00E309F6 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				2555A4F41E3785DC00E309F6 /* MJRefreshGifHeader.m in Sources */,
+				2AF696921E5C87F40086CD17 /* CardSelectedLayout.m in Sources */,
 				25A6DD7C1E3989F900B230B7 /* YYXunHomePageView.m in Sources */,
 				2555A4F01E3785DC00E309F6 /* MJRefreshAutoStateFooter.m in Sources */,
 				2AC6961F1E547FF60061A601 /* ZYBookListView.m in Sources */,
@@ -2257,6 +2291,7 @@
 				2555A3E21E37851200E309F6 /* BUPageRequest.m in Sources */,
 				2555A51D1E3785DD00E309F6 /* UIImageView+AFNetworking.m in Sources */,
 				2555A4E21E3785DC00E309F6 /* NSString+SBJSON.m in Sources */,
+				2AF696931E5C87F40086CD17 /* CardCellCollectionViewCell.m in Sources */,
 				2555A5151E3785DD00E309F6 /* UIImage+Rotate.m in Sources */,
 				2555A4FC1E3785DC00E309F6 /* UIImage+MLTint.m in Sources */,
 				25ADF5DE1E38C950000FFE0E /* YYYiHeadView.m in Sources */,
@@ -2285,6 +2320,7 @@
 				2555A3D51E37851200E309F6 /* NSString+MD5.m in Sources */,
 				25AEE92B1E5B2C9B00DC9488 /* YYPlayActivityCell.m in Sources */,
 				2555A4EA1E3785DC00E309F6 /* MJRefreshBackFooter.m in Sources */,
+				2AF696911E5C87F40086CD17 /* CardLayout.m in Sources */,
 				2555A4F31E3785DC00E309F6 /* MJRefreshBackStateFooter.m in Sources */,
 				2555A4D11E3785DC00E309F6 /* AFURLSessionManager.m in Sources */,
 				2555A4D61E3785DC00E309F6 /* pinyin.c in Sources */,
@@ -2306,6 +2342,7 @@
 				2555A3D81E37851200E309F6 /* UIColor+CurrentColor.m in Sources */,
 				2555A4EC1E3785DC00E309F6 /* MJRefreshFooter.m in Sources */,
 				2555A3DE1E37851200E309F6 /* BUAFHttpRequest.m in Sources */,
+				2AF696961E5C88C80086CD17 /* YYListenBookView.m in Sources */,
 				2555A5141E3785DD00E309F6 /* UIImage+Resize.m in Sources */,
 				2555A3DD1E37851200E309F6 /* AFNetStatus.m in Sources */,
 				2555A5011E3785DC00E309F6 /* MLSelectPhotoPickerGroup.m in Sources */,
@@ -2325,6 +2362,7 @@
 				25A6DD7F1E398AA000B230B7 /* YYXunHomePageCell.m in Sources */,
 				2555A5161E3785DD00E309F6 /* UIImage+RoundedCorner.m in Sources */,
 				2555A4CB1E3785DC00E309F6 /* AFActionSheetCell.m in Sources */,
+				2AF696901E5C87F40086CD17 /* YYListenBookViewController.m in Sources */,
 				2555A4EF1E3785DC00E309F6 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2555A51E1E3785DD00E309F6 /* UIProgressView+AFNetworking.m in Sources */,
 				2555A4E81E3785DC00E309F6 /* MBProgressHUD.m in Sources */,

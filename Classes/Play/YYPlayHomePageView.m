@@ -159,6 +159,14 @@
     [(YYPlayHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithId:argId argType:argType];
 }
 
+-(void)CheckMoreContent
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(ClickListenBookMore:)])
+    {
+        [self.propDelegate ClickListenBookMore:m_pData.tingBook];
+    }
+}
+
 #pragma mark - YYPlayActivityCellDelegate methods
 -(void)CheckMoreActivity
 {

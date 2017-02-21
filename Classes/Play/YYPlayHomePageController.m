@@ -14,6 +14,7 @@
 #import "YYOtherDetailViewController.h"
 #import "YYPlayData.h"
 #import "YYRichTextDetailController.h"
+#import "YYListenBookViewController.h"
 #import "YYActivityData.h"
 
 @interface YYPlayHomePageController ()<YYPlayHomePageViewDelegate>
@@ -100,6 +101,13 @@
     YYRichTextDetailController *pXunDetailVC = [[YYRichTextDetailController alloc] init];
     pXunDetailVC.propContent = argData.content;
     [self PushChildViewController:pXunDetailVC];
+}
+
+-(void)ClickListenBookMore:(NSArray *)argData
+{
+    YYListenBookViewController *pActivityDetailVC = [[YYListenBookViewController alloc] init];
+    pActivityDetailVC.m_pDataArr = argData;
+    [self PushChildViewController:pActivityDetailVC];
 }
 
 #pragma mark - BUAFHttpRequestDelegate methods

@@ -9,7 +9,7 @@
 #import "YYYiDonationCell.h"
 #import "YYTitleBottomScrollView.h"
 
-@interface YYYiDonationCell ()
+@interface YYYiDonationCell ()<YYTitleBottomScrollViewDelegate>
 {
     YYTitleBottomScrollView *m_pDonationView;
 }
@@ -33,6 +33,7 @@
 {
     m_pDonationView = [[YYTitleBottomScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200*[AppConfigure GetLengthAdaptRate]) andYiOrPlay:YES];
     [m_pDonationView SetTitleText:@"大众捐献"];
+    m_pDonationView.propDelegate = self;
     [self.contentView addSubview:m_pDonationView];
 }
 
@@ -44,6 +45,15 @@
 -(void)SetType:(NSInteger)argType
 {
     [m_pDonationView SetType:argType];
+}
+
+#pragma mark - YYTitleBottomScrollViewDelegate methods
+-(void)CheckMoreContent
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(CheckMoreContent)])
+    {
+        [self.propDelegate CheckMoreContent];
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -12,7 +12,7 @@
 #import "YYYiDonationCell.h"
 #import "YYYiHomePageController.h"
 
-@interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYYiFriendsCellDelegate>
+@interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYYiFriendsCellDelegate,YYYiDonationCellDelegate>
 {
     YYYiHeadView *m_pHeadView;
     UITableView *m_pTableView;
@@ -96,6 +96,7 @@
             cell = [[YYYiDonationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         [cell SetType:-1];
+        cell.propDelegate = self;
         [cell SetDonationData:m_arrDonationData];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -116,7 +117,12 @@
 -(void)ClickCheckDetailsWithData:(YYFriendData *)argData
 {
     [(YYYiHomePageController *)[self GetSubordinateControllerForSelf] ClickCheckDetailsWithData:argData];
+}
 
+#pragma mark - YYYiDonationCellDelegate methods
+-(void)CheckMoreContent
+{
+    [(YYYiHomePageController *)[self GetSubordinateControllerForSelf] CheckMoreContent];
 }
 
 @end

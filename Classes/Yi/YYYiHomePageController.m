@@ -13,6 +13,7 @@
 #import "YYDonationData.h"
 #import "YYFriendData.h"
 #import "YYRichTextDetailController.h"
+#import "YYDonateListController.h"
 
 @interface YYYiHomePageController ()
 {
@@ -56,14 +57,18 @@
     
     [self ShowProgressHUDWithMessage:@"Loading..."];
 }
-
+#pragma mark - public methods
 -(void)ClickCheckDetailsWithData:(YYFriendData *)argData
 {
     YYRichTextDetailController *pFriendDetailVC = [[YYRichTextDetailController alloc] init];
     pFriendDetailVC.propContent = argData.content;
     [self PushChildViewController:pFriendDetailVC];
 }
-
+-(void)CheckMoreContent
+{
+    YYDonateListController *pDonateListVC = [[YYDonateListController alloc] init];
+    [self PushChildViewController:pDonateListVC];
+}
 
 #pragma mark - BUAFHttpRequestDelegate methods
 -(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData

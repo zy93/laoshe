@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YYDonateData;
 
-@interface YYDonateListCell : UIView
+@interface YYDonateListCell : UITableViewCell
+
+-(void)SetLineViewShow:(BOOL)argShow;
+
+-(void)SetDonateData:(YYDonateData *)argData;
 
 @end

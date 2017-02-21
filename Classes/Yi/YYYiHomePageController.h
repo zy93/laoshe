@@ -13,4 +13,6 @@
 
 -(void)ClickCheckDetailsWithData:(YYFriendData *)argData;
 
+-(void)CheckMoreContent;
+
 @end

@@ -236,6 +236,9 @@
 		25DFD0D81E51FABE0028D926 /* share_icon_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D61E51FABE0028D926 /* share_icon_select@2x.png */; };
 		25DFD0D91E51FABE0028D926 /* share_icon_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */; };
 		25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD0DC1E51FE570028D926 /* YYXunData.m */; };
+		25EE99321E5C74AC000E9DCA /* YYDonateListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99311E5C74AC000E9DCA /* YYDonateListController.m */; };
+		25EE99351E5C74B8000E9DCA /* YYDonateListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99341E5C74B8000E9DCA /* YYDonateListView.m */; };
+		25EE99381E5C74D9000E9DCA /* YYDonateListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */; };
 		2A0F93171E584A1B00B874AA /* ZYAudioPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */; };
 		2A44C2651E57275B00CFD89E /* custom_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */; };
 		2A44C2661E57275B00CFD89E /* custom_back_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */; };
@@ -722,6 +725,12 @@
 		25DFD0D71E51FABE0028D926 /* share_icon_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_icon_select@3x.png"; sourceTree = "<group>"; };
 		25DFD0DB1E51FE570028D926 /* YYXunData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunData.h; sourceTree = "<group>"; };
 		25DFD0DC1E51FE570028D926 /* YYXunData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunData.m; sourceTree = "<group>"; };
+		25EE99301E5C74AC000E9DCA /* YYDonateListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateListController.h; sourceTree = "<group>"; };
+		25EE99311E5C74AC000E9DCA /* YYDonateListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateListController.m; sourceTree = "<group>"; };
+		25EE99331E5C74B8000E9DCA /* YYDonateListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateListView.h; sourceTree = "<group>"; };
+		25EE99341E5C74B8000E9DCA /* YYDonateListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateListView.m; sourceTree = "<group>"; };
+		25EE99361E5C74D9000E9DCA /* YYDonateListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateListCell.h; sourceTree = "<group>"; };
+		25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateListCell.m; sourceTree = "<group>"; };
 		2A0F93151E584A1B00B874AA /* ZYAudioPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYAudioPlayView.h; sourceTree = "<group>"; };
 		2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYAudioPlayView.m; sourceTree = "<group>"; };
 		2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom_back_btn@2x.png"; sourceTree = "<group>"; };
@@ -1799,6 +1808,7 @@
 		25DFD0CD1E51F4990028D926 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				25EE992F1E5C747B000E9DCA /* DonateList */,
 				2AF696251E5C6BB50086CD17 /* DonateDetail */,
 				25DFD0CE1E51F4990028D926 /* FriendsDetail */,
 			);
@@ -1837,6 +1847,19 @@
 				2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */,
 			);
 			path = MoudelData;
+			sourceTree = "<group>";
+		};
+		25EE992F1E5C747B000E9DCA /* DonateList */ = {
+			isa = PBXGroup;
+			children = (
+				25EE99301E5C74AC000E9DCA /* YYDonateListController.h */,
+				25EE99311E5C74AC000E9DCA /* YYDonateListController.m */,
+				25EE99331E5C74B8000E9DCA /* YYDonateListView.h */,
+				25EE99341E5C74B8000E9DCA /* YYDonateListView.m */,
+				25EE99361E5C74D9000E9DCA /* YYDonateListCell.h */,
+				25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */,
+			);
+			path = DonateList;
 			sourceTree = "<group>";
 		};
 		2A44C2621E57272100CFD89E /* Custom */ = {
@@ -2184,6 +2207,7 @@
 				2555A50E1E3785DC00E309F6 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
 				2AD5FE3F1E52068400C5F704 /* AudioPlayViewController.m in Sources */,
 				2555A5191E3785DD00E309F6 /* AFImageDownloader.m in Sources */,
+				25EE99351E5C74B8000E9DCA /* YYDonateListView.m in Sources */,
 				2555A3DA1E37851200E309F6 /* UIImage+JP.m in Sources */,
 				2555A3ED1E37851200E309F6 /* BURegisterInputWidget.m in Sources */,
 				25DFD0A31E51E74A0028D926 /* YYShareView.m in Sources */,
@@ -2288,6 +2312,7 @@
 				2555A3DF1E37851200E309F6 /* BUBaseResponseData.m in Sources */,
 				2AAC999C1E59E8B6008C1816 /* YYActivityData.m in Sources */,
 				255C4EF61E55DB4500667816 /* YYPlayData.m in Sources */,
+				25EE99381E5C74D9000E9DCA /* YYDonateListCell.m in Sources */,
 				2AD5FE401E52068400C5F704 /* ZYSlider.m in Sources */,
 				2555A4D81E3785DC00E309F6 /* NSData+Base64.m in Sources */,
 				2555A5181E3785DD00E309F6 /* AFAutoPurgingImageCache.m in Sources */,
@@ -2331,6 +2356,7 @@
 				2555A51A1E3785DD00E309F6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2555A3F31E37851200E309F6 /* AFTabBarItem.m in Sources */,
 				2555A51B1E3785DD00E309F6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				25EE99321E5C74AC000E9DCA /* YYDonateListController.m in Sources */,
 				2555A3F61E37851200E309F6 /* AFTitleBannerView.m in Sources */,
 				258034B11E58914C0021BD6D /* YYYanData.m in Sources */,
 				2555A4E31E3785DC00E309F6 /* SBJsonBase.m in Sources */,

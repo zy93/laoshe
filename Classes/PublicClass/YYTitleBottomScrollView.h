@@ -12,6 +12,8 @@
 
 -(void)ClickCheckDetailsWithId:(NSInteger)argId andType:(NSInteger)argType;
 
+-(void)CheckMoreContent;
+
 @end
 
 @interface YYTitleBottomScrollView : UIView

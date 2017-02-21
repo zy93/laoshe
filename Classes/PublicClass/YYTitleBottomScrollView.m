@@ -59,11 +59,19 @@
     m_pLineView.backgroundColor = UIColorFromHex(0xf2f2f2);
     [self addSubview:m_pLineView];
     
-    m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(20*[AppConfigure GetLengthAdaptRate], m_pLineView.bottom + 10*[AppConfigure GetLengthAdaptRate], self.width-40*[AppConfigure GetLengthAdaptRate], 36*[AppConfigure GetLengthAdaptRate])];
+    m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(20*[AppConfigure GetLengthAdaptRate], m_pLineView.bottom + 10*[AppConfigure GetLengthAdaptRate], (self.width-40*[AppConfigure GetLengthAdaptRate])/2.0, 36*[AppConfigure GetLengthAdaptRate])];
     m_pTitleLab.text = @"电影";
     m_pTitleLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:16.0f];
     m_pTitleLab.textColor = UIColorFromHex(0x333333);
     [self addSubview:m_pTitleLab];
+    
+    m_pMoreBtn = [[UIButton alloc] initWithFrame:CGRectMake(m_pTitleLab.right, m_pTitleLab.top, m_pTitleLab.width, m_pTitleLab.height)];
+    [m_pMoreBtn setTitle:@"更多" forState:UIControlStateNormal];
+    [m_pMoreBtn setTitleColor:UIColorFromHex(0x999999) forState:UIControlStateNormal];
+    m_pMoreBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [m_pMoreBtn addTarget:self action:@selector(MoreContent) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:m_pMoreBtn];
+
     
     m_pScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, m_pTitleLab.bottom + 9*[AppConfigure GetLengthAdaptRate], self.width, self.height - m_pTitleLab.bottom - 9*[AppConfigure GetLengthAdaptRate])];
     m_pScrollView.backgroundColor = [UIColor clearColor];
@@ -71,6 +79,14 @@
     m_pScrollView.showsVerticalScrollIndicator = NO;
     m_pScrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:m_pScrollView];
+}
+
+-(void)MoreContent
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(CheckMoreContent)])
+    {
+        [self.propDelegate CheckMoreContent];
+    }
 }
 
 -(void)ClickCheckDetails:(UIButton *)argBtn

@@ -296,6 +296,9 @@
 		2AD5FF061E52085300C5F704 /* pause_def@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD5FED41E52085300C5F704 /* pause_def@3x.png */; };
 		2AD5FF091E52085300C5F704 /* next_def@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD5FED71E52085300C5F704 /* next_def@2x.png */; };
 		2AD5FF0A1E52085300C5F704 /* next_def@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD5FED81E52085300C5F704 /* next_def@3x.png */; };
+		2AF696281E5C6C030086CD17 /* YYDonateDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF696271E5C6C030086CD17 /* YYDonateDetailController.m */; };
+		2AF6962B1E5C6C160086CD17 /* YYDonateDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6962A1E5C6C160086CD17 /* YYDonateDetailView.m */; };
+		2AF6962E1E5C6D6F0086CD17 /* YYDonateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -795,6 +798,12 @@
 		2AD5FED41E52085300C5F704 /* pause_def@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_def@3x.png"; sourceTree = "<group>"; };
 		2AD5FED71E52085300C5F704 /* next_def@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next_def@2x.png"; sourceTree = "<group>"; };
 		2AD5FED81E52085300C5F704 /* next_def@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next_def@3x.png"; sourceTree = "<group>"; };
+		2AF696261E5C6C030086CD17 /* YYDonateDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateDetailController.h; sourceTree = "<group>"; };
+		2AF696271E5C6C030086CD17 /* YYDonateDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateDetailController.m; sourceTree = "<group>"; };
+		2AF696291E5C6C160086CD17 /* YYDonateDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateDetailView.h; sourceTree = "<group>"; };
+		2AF6962A1E5C6C160086CD17 /* YYDonateDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateDetailView.m; sourceTree = "<group>"; };
+		2AF6962C1E5C6D6F0086CD17 /* YYDonateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDonateData.h; sourceTree = "<group>"; };
+		2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1790,6 +1799,7 @@
 		25DFD0CD1E51F4990028D926 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				2AF696251E5C6BB50086CD17 /* DonateDetail */,
 				25DFD0CE1E51F4990028D926 /* FriendsDetail */,
 			);
 			path = Detail;
@@ -1823,6 +1833,8 @@
 				2AAC999B1E59E8B6008C1816 /* YYActivityData.m */,
 				2AC7ED3F1E5B358000010CFB /* YYPLayOtherData.h */,
 				2AC7ED401E5B358000010CFB /* YYPLayOtherData.m */,
+				2AF6962C1E5C6D6F0086CD17 /* YYDonateData.h */,
+				2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */,
 			);
 			path = MoudelData;
 			sourceTree = "<group>";
@@ -1909,6 +1921,17 @@
 			path = Play;
 			sourceTree = "<group>";
 		};
+		2AF696251E5C6BB50086CD17 /* DonateDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2AF696261E5C6C030086CD17 /* YYDonateDetailController.h */,
+				2AF696271E5C6C030086CD17 /* YYDonateDetailController.m */,
+				2AF696291E5C6C160086CD17 /* YYDonateDetailView.h */,
+				2AF6962A1E5C6C160086CD17 /* YYDonateDetailView.m */,
+			);
+			path = DonateDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1977,7 +2000,7 @@
 				TargetAttributes = {
 					2583F6091E347F9D00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = YH5D4AY9E9;
+						DevelopmentTeam = 5EY377SJTX;
 						ProvisioningStyle = Automatic;
 					};
 					2583F6221E347F9E00222D66 = {
@@ -2302,6 +2325,7 @@
 				2555A50B1E3785DC00E309F6 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				2AC7ED3E1E5B1F1200010CFB /* YYOtherDetilView.m in Sources */,
 				25DFD0DD1E51FE570028D926 /* YYXunData.m in Sources */,
+				2AF6962B1E5C6C160086CD17 /* YYDonateDetailView.m in Sources */,
 				2555A3CE1E37851200E309F6 /* AFDetailTimeSelectedView.m in Sources */,
 				258D7CBC1E389157009510C4 /* YYYiHomePageView.m in Sources */,
 				2555A51A1E3785DD00E309F6 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -2311,7 +2335,9 @@
 				258034B11E58914C0021BD6D /* YYYanData.m in Sources */,
 				2555A4E31E3785DC00E309F6 /* SBJsonBase.m in Sources */,
 				2555A3E11E37851200E309F6 /* BUInternetReportUtilities.m in Sources */,
+				2AF6962E1E5C6D6F0086CD17 /* YYDonateData.m in Sources */,
 				258D7C8E1E3886EB009510C4 /* YYYanHomePageController.m in Sources */,
+				2AF696281E5C6C030086CD17 /* YYDonateDetailController.m in Sources */,
 				2555A50D1E3785DC00E309F6 /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
 				2555A4CA1E3785DC00E309F6 /* AFActionSheet.m in Sources */,
 				2555A4E71E3785DC00E309F6 /* MBProgressHUD+Add.m in Sources */,

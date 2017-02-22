@@ -11,11 +11,21 @@
 #import "CardLayout.h"
 #import "CardSelectedLayout.h"
 #import "CardCellCollectionViewCell.h"
+#import "YYDonationData.h"
+#import "UIImageView+AFNetworking.h"
+#import "YYListenBookViewController.h"
+#import "STTimeUtility.h"
+#import "YYUtil.h"
 
 static CGFloat collectionHeight;
 
 
 @interface YYListenBookView()<UICollectionViewDelegate,UICollectionViewDataSource,CardLayoutDelegate>
+{
+    NSArray *m_pData;
+}
+
+@property(nonatomic, strong)UIImageView *m_pBGImageView;
 
 @property(nonatomic, strong)UICollectionView* cardCollectionView;
 @property(nonatomic, strong)UICollectionViewLayout* cardLayout;
@@ -39,14 +49,15 @@ static CGFloat collectionHeight;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        [self createSubview];
     }
     return self;
 }
 
 -(void)createSubview
 {
-    collectionHeight = SCREEN_HEIGHT;
+    [self createBGImgView];
+    collectionHeight = self.frame.size.height;
     
     self.cardLayoutStyle1 =  [[CardLayout alloc]initWithOffsetY:400];
     self.cardLayout = self.cardLayoutStyle1;
@@ -54,6 +65,25 @@ static CGFloat collectionHeight;
     [self addSubview:self.cardCollectionView];
 }
 
+-(void)createBGImgView
+{
+    _m_pBGImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    [self addSubview:_m_pBGImageView];
+    //模糊效果
+    UIBlurEffect *beffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithEffect:beffect];
+    view.frame = _m_pBGImageView.bounds;
+    [self addSubview:view];
+}
+
+-(void)setData:(NSArray *)data
+{
+//    m_pData = data;
+    m_pData =[[NSArray alloc] initWithObjects:data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject, nil];
+    YYDonationData *pData = data.firstObject;
+    [self.m_pBGImageView setImageWithURL:[NSURL URLWithString:pData.cover]];
+    [_cardCollectionView reloadData];
+}
 
 -(void)updateBlur
 {
@@ -91,14 +121,17 @@ static CGFloat collectionHeight;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return m_pData.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CardCellCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell" forIndexPath:indexPath];
-    cell.bgColor = [self getGameColor:indexPath.row];
-    cell.title = [NSString stringWithFormat:@"Item %d",(int)indexPath.row];
+    YYDonationData *data = m_pData[indexPath.row];
+    cell.bgColor = [UIColor whiteColor];
+    cell.title = data.title;
+    cell.subtitle = [YYUtil timeWithTimeIntervalString:@"1487777961" ];//[STTimeUtility GetTimeString:1487777961*1000];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:data.cover]];
     return cell;
 }
 
@@ -111,41 +144,45 @@ static CGFloat collectionHeight;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat offsetY = self.cardCollectionView.contentOffset.y;
-    if ([self.cardLayout isKindOfClass:[CardLayout class]]) {
-        if (!self.cardLayoutStyle2) {
-            self.cardLayoutStyle2 =  [[CardSelectedLayout alloc]initWithIndexPath:indexPath offsetY:offsetY ContentSizeHeight:((CardLayout*)self.cardLayout).contentSizeHeight];
-            self.cardLayout = self.cardLayoutStyle2;
-        }
-        else
-        {
-            ((CardSelectedLayout*)self.cardLayoutStyle2).contentOffsetY = offsetY;
-            ((CardSelectedLayout*)self.cardLayoutStyle2).contentSizeHeight = ((CardLayout*)self.cardLayout).contentSizeHeight;
-            ((CardSelectedLayout*)self.cardLayoutStyle2).selectedIndexPath = indexPath;
-            self.cardLayout = self.cardLayoutStyle2;
-        }
-        self.cardCollectionView.scrollEnabled = NO;
-        [self showMaskView]; //显示背景浮层
-        //选中的卡片不显示蒙层
-        [((CardCellCollectionViewCell*)[self.cardCollectionView cellForItemAtIndexPath:indexPath]) setBlur:0];
-    }
-    else
-    {
-        if (!self.cardLayoutStyle1) {
-            self.cardLayoutStyle1 =  [[CardLayout alloc]initWithOffsetY:offsetY];
-            self.cardLayout = self.cardLayoutStyle1;
-            ((CardLayout*)self.cardLayoutStyle1).delegate = self;
-        }
-        else
-        {
-            ((CardLayout*)self.cardLayoutStyle1).offsetY = offsetY;
-            self.cardLayout = self.cardLayoutStyle1;
-            ((CardLayout*)self.cardLayoutStyle1).delegate = self;
-        }
-        self.cardCollectionView.scrollEnabled = YES;
-        [self hideMaskView];
-    }
-    [self.cardCollectionView setCollectionViewLayout:self.cardLayout animated:YES];
+    YYDonationData *data = m_pData[indexPath.row];
+    [(YYListenBookViewController *)[self GetSubordinateControllerForSelf] ClickCheckBookWithId:data.mid];
+
+    
+//    CGFloat offsetY = self.cardCollectionView.contentOffset.y;
+//    if ([self.cardLayout isKindOfClass:[CardLayout class]]) {
+//        if (!self.cardLayoutStyle2) {
+//            self.cardLayoutStyle2 =  [[CardSelectedLayout alloc]initWithIndexPath:indexPath offsetY:offsetY ContentSizeHeight:((CardLayout*)self.cardLayout).contentSizeHeight];
+//            self.cardLayout = self.cardLayoutStyle2;
+//        }
+//        else
+//        {
+//            ((CardSelectedLayout*)self.cardLayoutStyle2).contentOffsetY = offsetY;
+//            ((CardSelectedLayout*)self.cardLayoutStyle2).contentSizeHeight = ((CardLayout*)self.cardLayout).contentSizeHeight;
+//            ((CardSelectedLayout*)self.cardLayoutStyle2).selectedIndexPath = indexPath;
+//            self.cardLayout = self.cardLayoutStyle2;
+//        }
+//        self.cardCollectionView.scrollEnabled = NO;
+//        [self showMaskView]; //显示背景浮层
+//        //选中的卡片不显示蒙层
+//        [((CardCellCollectionViewCell*)[self.cardCollectionView cellForItemAtIndexPath:indexPath]) setBlur:0];
+//    }
+//    else
+//    {
+//        if (!self.cardLayoutStyle1) {
+//            self.cardLayoutStyle1 =  [[CardLayout alloc]initWithOffsetY:offsetY];
+//            self.cardLayout = self.cardLayoutStyle1;
+//            ((CardLayout*)self.cardLayoutStyle1).delegate = self;
+//        }
+//        else
+//        {
+//            ((CardLayout*)self.cardLayoutStyle1).offsetY = offsetY;
+//            self.cardLayout = self.cardLayoutStyle1;
+//            ((CardLayout*)self.cardLayoutStyle1).delegate = self;
+//        }
+//        self.cardCollectionView.scrollEnabled = YES;
+//        [self hideMaskView];
+//    }
+//    [self.cardCollectionView setCollectionViewLayout:self.cardLayout animated:YES];
 }
 -(void)showMaskView
 {
@@ -205,7 +242,7 @@ static CGFloat collectionHeight;
         _cardCollectionView.delegate = self;
         _cardCollectionView.dataSource = self;
         [_cardCollectionView setContentOffset:CGPointMake(0, 400)];
-        _cardCollectionView.backgroundColor = UIColorFromHex(0x2D3142);
+        _cardCollectionView.backgroundColor = [UIColor clearColor];//UIColorFromHex(0x2D3142);
     }
     return _cardCollectionView;
 }

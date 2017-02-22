@@ -29,7 +29,7 @@
     UIButton *m_pPreviousBtn; //上一曲按钮
     UIButton *m_pNextBtn; //下一曲按钮
     UIButton *m_pMenuBtn; //菜单栏
-    UIButton *m_pShareBtn; //分享菜单
+    
 
 
     UILabel *m_pBookTitleLabel; //书标题

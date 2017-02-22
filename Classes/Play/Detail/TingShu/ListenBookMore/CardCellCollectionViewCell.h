@@ -11,8 +11,10 @@
 @interface CardCellCollectionViewCell : UICollectionViewCell    
 
 @property(nonatomic, strong)NSString* title;
+@property(nonatomic, strong)NSString* subtitle;
 @property(nonatomic, strong)UIColor* bgColor;
-@property(nonatomic, strong)UIImage* image;
+//@property(nonatomic, strong)UIImage* image;
+@property(nonatomic, strong)UIImageView* imageView;
 
 -(void)setBlur:(CGFloat)ratio; //设置毛玻璃效果
 

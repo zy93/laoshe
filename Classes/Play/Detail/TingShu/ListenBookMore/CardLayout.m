@@ -13,7 +13,7 @@
 
 
 static CGFloat cellWidth;  //卡片宽度
-static CGFloat cellHeight;  //卡片宽度
+static CGFloat cellHeight;  //卡片高度
 
 @interface CardLayout()
 
@@ -21,7 +21,7 @@ static CGFloat cellHeight;  //卡片宽度
 @property(nonatomic, assign)CGFloat screenHeight;
 @property(nonatomic, assign)CGFloat m0;         //是指当第0个cell从初始位置，往上滑m0个点时卡片会移动到最顶点
 @property(nonatomic, assign)CGFloat n0;         //当contentOffset.y为0时，第0个cell的y坐标为n0
-@property(nonatomic, assign)CGFloat deltaOffsetY;//每个cell之间的偏移量间距，即第0个cell往下滑动deltaOffsetY个点时会到达第1个cell的位置
+@property(nonatomic, assign)CGFloat deltaOffsetY;//每个cell之间的偏移量间距，即第0个cell往上滑动deltaOffsetY个点时会到达第1个cell的位置
 
 @property(nonatomic, strong)NSMutableArray* cellLayoutList;
 
@@ -42,14 +42,14 @@ static CGFloat cellHeight;  //卡片宽度
     self = [super init];
     if (self) {
         cellWidth = [UIScreen mainScreen].bounds.size.width -12*2;
-        cellHeight = SCREEN_HEIGHT - 200;
+        cellHeight = SCREEN_HEIGHT - 100*[AppConfigure GetLengthAdaptRate];
         self.offsetY = offsetY;
         self.cellLayoutList = [NSMutableArray array];
-        
         self.screenHeight = [UIScreen mainScreen].bounds.size.height;
-        self.m0 = 1000;
-        self.n0 = 200;
-        self.deltaOffsetY = SCREEN_HEIGHT-300;
+        self.m0 = 1500;
+        self.n0 = (SCREEN_HEIGHT - cellHeight)/2;
+        self.deltaOffsetY = SCREEN_HEIGHT * 2;
+
     }
     return self;
 }
@@ -93,7 +93,7 @@ static CGFloat cellHeight;  //卡片宽度
 {
     NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
     //如果超过两张卡片，则用多卡片布局
-    if (rowCount >2) {
+    if (rowCount >0) {
         return [self getAttributesWhen3orMoreRows:indexPath];
     }
     else
@@ -216,9 +216,9 @@ static CGFloat cellHeight;  //卡片宽度
 -(CGFloat)getSizeY
 {
     NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
-    if (rowCount <= 2) {
-        return self.collectionView.frame.size.height;
-    }
+//    if (rowCount <= 2) {
+//        return self.collectionView.frame.size.height;
+//    }
     CGFloat scrollY =  self.deltaOffsetY*(rowCount-1);
     return scrollY + self.screenHeight;
 }

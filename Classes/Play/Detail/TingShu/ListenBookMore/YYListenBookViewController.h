@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BUCustomViewController.h"
 
-@interface YYListenBookViewController : UIViewController
+@interface YYListenBookViewController : BUCustomViewController
 
 @property (nonatomic, strong) NSArray *m_pDataArr;
+
+-(void)ClickCheckBookWithId:(NSString *)mId;
 
 @end
 

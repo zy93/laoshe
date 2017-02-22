@@ -10,4 +10,6 @@
 
 @interface YYListenBookView : UIView
 
+-(void)setData:(NSArray *)data;
+
 @end

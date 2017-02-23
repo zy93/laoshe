@@ -30,8 +30,8 @@
 /**
  时间戳转时间
 
- @param timeString 时间戳
+ @param timeInt 时间戳
  @return 时间
  */
-+ (NSString *)timeWithTimeIntervalString:(NSString *)timeString;
++ (NSString *)timeWithTimeInterval:(NSTimeInterval)timeInt;
 @end

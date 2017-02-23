@@ -130,7 +130,12 @@ static CGFloat collectionHeight;
     YYDonationData *data = m_pData[indexPath.row];
     cell.bgColor = [UIColor whiteColor];
     cell.title = data.title;
-    cell.subtitle = [YYUtil timeWithTimeIntervalString:@"1487777961" ];//[STTimeUtility GetTimeString:1487777961*1000];
+    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[date timeIntervalSince1970]*1000; // *1000 是精确到毫秒，不乘就是精确到秒
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", a]; //转为字符型
+    cell.subtitle = [NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeInterval:a]];//[STTimeUtility GetTimeString:1487777961*1000];
+
+    NSLog(@"------------------timeString:%@",timeString);
     [cell.imageView setImageWithURL:[NSURL URLWithString:data.cover]];
     return cell;
 }
@@ -146,7 +151,6 @@ static CGFloat collectionHeight;
 {
     YYDonationData *data = m_pData[indexPath.row];
     [(YYListenBookViewController *)[self GetSubordinateControllerForSelf] ClickCheckBookWithId:data.mid];
-
     
 //    CGFloat offsetY = self.cardCollectionView.contentOffset.y;
 //    if ([self.cardLayout isKindOfClass:[CardLayout class]]) {

@@ -11,7 +11,7 @@
 @implementation YYUtil
 
 
-+ (NSString *)timeWithTimeIntervalString:(NSString *)timeString
++ (NSString *)timeWithTimeInterval:(NSTimeInterval)timeInt
 {
     // 格式化时间
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
@@ -21,7 +21,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     
     // 毫秒值转化为秒
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeString doubleValue]/ 1000.0];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:timeInt/ 1000.0];
     NSString* dateString = [formatter stringFromDate:date];
     return dateString;
 }

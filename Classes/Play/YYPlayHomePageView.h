@@ -12,6 +12,7 @@
 @protocol YYPlayHomePageViewDelegate <NSObject>
 
 -(void)CheckDetail:(YYActivityData *)argData;
+-(void)ClickListenBookMore:(NSArray *)argData;
 
 @end
 

@@ -60,6 +60,14 @@
     }
 }
 
+-(void)CheckMoreContent
+{
+    if (self.propDelegate != nil && [self.propDelegate respondsToSelector:@selector(CheckMoreContent)])
+    {
+        [self.propDelegate CheckMoreContent];
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

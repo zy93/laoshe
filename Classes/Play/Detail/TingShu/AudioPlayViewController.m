@@ -20,6 +20,7 @@
 @interface AudioPlayViewController () 
 {
     UIButton *m_pBackBtn;
+    UIButton *m_pShareBtn; //分享菜单
     ZYAudioPlayView *m_pPlayView;
     BUAFHttpRequest *m_pRequest;
 }
@@ -62,6 +63,7 @@
     [self.view addSubview:m_pPlayView];
     
     [self createBackButton];
+    [self createShareButton];
 }
 
 -(void)createBackButton
@@ -71,7 +73,17 @@
     [m_pBackBtn setImage:[UIImage imageNamed:@"custom_back_btn"] forState:UIControlStateNormal];
     [m_pBackBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:m_pBackBtn];
-    
+}
+
+-(void)createShareButton
+{
+    m_pShareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    m_pShareBtn.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 28 - 20, 31, 28, 28);
+    [m_pShareBtn setImage:[UIImage imageNamed:@"share_icon"] forState:UIControlStateNormal];
+    [m_pShareBtn setImage:[UIImage imageNamed:@"share_icon_select"] forState:UIControlStateHighlighted];
+
+    [m_pShareBtn addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:m_pShareBtn];
 }
 
 -(void)createRequest
@@ -92,6 +104,10 @@
     [m_pPlayView clearPlay];
 }
 
+-(void)share:(UIButton *)sender
+{
+    
+}
 
 #pragma mark - BUAFHttpRequestDelegate methods
 -(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData

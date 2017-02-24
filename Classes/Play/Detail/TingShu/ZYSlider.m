@@ -134,7 +134,7 @@
 
 -(void)slider:(UISlider *)slider
 {
-    NSLog(@"---------__%f", slider.value);
+//    NSLog(@"---------__%f", slider.value);
     if ([_delegate respondsToSelector:@selector(slider:)]) {
         [_delegate slider:slider.value];
     }

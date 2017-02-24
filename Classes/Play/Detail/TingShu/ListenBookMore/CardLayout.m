@@ -48,8 +48,7 @@ static CGFloat cellHeight;  //卡片高度
         self.screenHeight = [UIScreen mainScreen].bounds.size.height;
         self.m0 = 1500;
         self.n0 = (SCREEN_HEIGHT - cellHeight)/2;
-        self.deltaOffsetY = SCREEN_HEIGHT * 2;
-
+        self.deltaOffsetY = self.m0 -120;
     }
     return self;
 }
@@ -216,9 +215,9 @@ static CGFloat cellHeight;  //卡片高度
 -(CGFloat)getSizeY
 {
     NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
-//    if (rowCount <= 2) {
-//        return self.collectionView.frame.size.height;
-//    }
+    if (rowCount <= 1) {
+        return self.screenHeight + 100;
+    }
     CGFloat scrollY =  self.deltaOffsetY*(rowCount-1);
     return scrollY + self.screenHeight;
 }

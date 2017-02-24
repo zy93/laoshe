@@ -240,6 +240,8 @@
 		25EE99351E5C74B8000E9DCA /* YYDonateListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99341E5C74B8000E9DCA /* YYDonateListView.m */; };
 		25EE99381E5C74D9000E9DCA /* YYDonateListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */; };
 		2A0F93171E584A1B00B874AA /* ZYAudioPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */; };
+		2A2CBC341E5FC8AF004DDC77 /* YYOtherHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2CBC331E5FC8AF004DDC77 /* YYOtherHeadView.m */; };
+		2A439C8D1E5F2BAA00A3EC27 /* YYOtherTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A439C8C1E5F2BA900A3EC27 /* YYOtherTableCell.m */; };
 		2A44C2651E57275B00CFD89E /* custom_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */; };
 		2A44C2661E57275B00CFD89E /* custom_back_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */; };
 		2AAC991D1E59357D008C1816 /* YYUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC991C1E59357D008C1816 /* YYUtil.m */; };
@@ -738,6 +740,10 @@
 		25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateListCell.m; sourceTree = "<group>"; };
 		2A0F93151E584A1B00B874AA /* ZYAudioPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYAudioPlayView.h; sourceTree = "<group>"; };
 		2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYAudioPlayView.m; sourceTree = "<group>"; };
+		2A2CBC321E5FC8AF004DDC77 /* YYOtherHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYOtherHeadView.h; sourceTree = "<group>"; };
+		2A2CBC331E5FC8AF004DDC77 /* YYOtherHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYOtherHeadView.m; sourceTree = "<group>"; };
+		2A439C8B1E5F2BA900A3EC27 /* YYOtherTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYOtherTableCell.h; sourceTree = "<group>"; };
+		2A439C8C1E5F2BA900A3EC27 /* YYOtherTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYOtherTableCell.m; sourceTree = "<group>"; };
 		2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom_back_btn@2x.png"; sourceTree = "<group>"; };
 		2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom_back_btn@3x.png"; sourceTree = "<group>"; };
 		2AAC991B1E59357D008C1816 /* YYUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYUtil.h; sourceTree = "<group>"; };
@@ -1907,6 +1913,10 @@
 				2AC7ED3A1E5B1EED00010CFB /* YYOtherDetailViewController.m */,
 				2AC7ED3C1E5B1F1200010CFB /* YYOtherDetilView.h */,
 				2AC7ED3D1E5B1F1200010CFB /* YYOtherDetilView.m */,
+				2A2CBC321E5FC8AF004DDC77 /* YYOtherHeadView.h */,
+				2A2CBC331E5FC8AF004DDC77 /* YYOtherHeadView.m */,
+				2A439C8B1E5F2BA900A3EC27 /* YYOtherTableCell.h */,
+				2A439C8C1E5F2BA900A3EC27 /* YYOtherTableCell.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2404,6 +2414,8 @@
 				2AF696281E5C6C030086CD17 /* YYDonateDetailController.m in Sources */,
 				2555A50D1E3785DC00E309F6 /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
 				2555A4CA1E3785DC00E309F6 /* AFActionSheet.m in Sources */,
+				2A439C8D1E5F2BAA00A3EC27 /* YYOtherTableCell.m in Sources */,
+				2A2CBC341E5FC8AF004DDC77 /* YYOtherHeadView.m in Sources */,
 				2555A4E71E3785DC00E309F6 /* MBProgressHUD+Add.m in Sources */,
 				2AAC99921E59DC81008C1816 /* YYNavView.m in Sources */,
 				25925C701E4EF96700EDEA69 /* YYTitleBottomScrollView.m in Sources */,

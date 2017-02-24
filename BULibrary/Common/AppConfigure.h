@@ -50,6 +50,9 @@ alpha:a]
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
+//判断字符串是否为空
+#define strIsEmpty(str) (str == nil || [str length]<1 ? YES : NO )
+
 #define SIZE_HEIGHT(i)  [@"占位符" boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:i]} context:nil].size.height
 
 #define SAVE_TEST_QUSTION_PATH [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"test_question.sqlist"]

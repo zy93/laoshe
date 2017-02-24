@@ -34,4 +34,16 @@
  @return 时间
  */
 + (NSString *)timeWithTimeInterval:(NSTimeInterval)timeInt;
+
+
+/**
+ 计算文字范围
+
+ @param text 文字内容
+ @param boundSize 固定宽度的范围
+ @param font 字体大小
+ @return 文字范围
+ */
++(CGRect)computeTextSize:(NSString *)text boundSize:(CGSize)boundSize textFont:(CGFloat)font;
+
 @end

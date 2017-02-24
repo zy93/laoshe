@@ -27,4 +27,17 @@
 }
 
 
++(CGRect)computeTextSize:(NSString *)text boundSize:(CGSize)boundSize textFont:(CGFloat)font
+{
+    if (strIsEmpty(text)) {
+        text = @"  ";
+    }
+    NSAttributedString *s = [[NSAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}];
+    NSRange range = NSMakeRange(0, text.length);
+    NSDictionary *dic = [s attributesAtIndex:0 effectiveRange:&range];
+    CGRect rect = [text boundingRectWithSize:boundSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    
+    return rect;
+}
+
 @end

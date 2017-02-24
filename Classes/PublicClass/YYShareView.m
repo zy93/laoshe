@@ -58,7 +58,7 @@
     [m_pShareView addSubview:m_pIconView];
     
     UIImage *pIconImg = [UIImage imageNamed:m_arrIcon[0]];
-    CGFloat fIconSizeW = pIconImg.size.width;
+    CGFloat fIconSizeW = pIconImg.size.width *[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
     CGFloat fBackViewInterval = 18*[AppConfigure GetLengthAdaptRate];
     for (NSInteger i = 0; i<m_arrIcon.count; i++)

@@ -228,6 +228,7 @@
 		25AEE9281E5B22E800DC9488 /* YYRichTextDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AEE9271E5B22E800DC9488 /* YYRichTextDetailView.m */; };
 		25AEE92B1E5B2C9B00DC9488 /* YYPlayActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AEE92A1E5B2C9B00DC9488 /* YYPlayActivityCell.m */; };
 		25B43FA11E4B4BDE00711DC4 /* YYYiFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B43FA01E4B4BDE00711DC4 /* YYYiFriendsCell.m */; };
+		25B88C4D1E606F2E009B97E6 /* shareIcon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 25B88C4C1E606F2E009B97E6 /* shareIcon-1024.png */; };
 		25C939B31E5485A000017D17 /* YYXunDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B21E5485A000017D17 /* YYXunDetailController.m */; };
 		25C939B61E5487AE00017D17 /* YYXunDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C939B51E5487AE00017D17 /* YYXunDetailView.m */; };
 		25DFD0A31E51E74A0028D926 /* YYShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD0A21E51E74A0028D926 /* YYShareView.m */; };
@@ -756,6 +757,7 @@
 		25AEE92A1E5B2C9B00DC9488 /* YYPlayActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPlayActivityCell.m; sourceTree = "<group>"; };
 		25B43F9F1E4B4BDE00711DC4 /* YYYiFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYYiFriendsCell.h; sourceTree = "<group>"; };
 		25B43FA01E4B4BDE00711DC4 /* YYYiFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYYiFriendsCell.m; sourceTree = "<group>"; };
+		25B88C4C1E606F2E009B97E6 /* shareIcon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareIcon-1024.png"; sourceTree = "<group>"; };
 		25C939B11E5485A000017D17 /* YYXunDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunDetailController.h; sourceTree = "<group>"; };
 		25C939B21E5485A000017D17 /* YYXunDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunDetailController.m; sourceTree = "<group>"; };
 		25C939B41E5487AE00017D17 /* YYXunDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunDetailView.h; sourceTree = "<group>"; };
@@ -2061,6 +2063,7 @@
 		2A44C2621E57272100CFD89E /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				25B88C4C1E606F2E009B97E6 /* shareIcon-1024.png */,
 				2A44C2631E57275B00CFD89E /* custom_back_btn@2x.png */,
 				2A44C2641E57275B00CFD89E /* custom_back_btn@3x.png */,
 			);
@@ -2236,8 +2239,8 @@
 				TargetAttributes = {
 					2583F6091E347F9D00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5EY377SJTX;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 5DW5ZEYK47;
+						ProvisioningStyle = Manual;
 					};
 					2583F6221E347F9E00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2343,6 +2346,7 @@
 				25DFD0C01E51EB980028D926 /* share_qq_select@3x.png in Resources */,
 				258D7CAA1E388F4A009510C4 /* tabbar_play@2x.png in Resources */,
 				2555A50F1E3785DC00E309F6 /* MLSelectPhoto.bundle in Resources */,
+				25B88C4D1E606F2E009B97E6 /* shareIcon-1024.png in Resources */,
 				2AD5FEE41E52085300C5F704 /* 椭圆 1@3x.png in Resources */,
 				25671BCC1E5DCFA000E7242F /* README.txt in Resources */,
 				2AD5FEF21E52085300C5F704 /* 资源 30@3x.png in Resources */,
@@ -2749,9 +2753,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5EY377SJTX;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				DEVELOPMENT_TEAM = 5DW5ZEYK47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2788,8 +2792,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.hanyan.YongYuanDeLaoShe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
+				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
 			};
 			name = Debug;
 		};
@@ -2797,9 +2801,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5EY377SJTX;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				DEVELOPMENT_TEAM = 5DW5ZEYK47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2836,8 +2840,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.hanyan.YongYuanDeLaoShe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
+				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
 			};
 			name = Release;
 		};

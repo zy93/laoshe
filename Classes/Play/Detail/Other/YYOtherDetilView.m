@@ -9,26 +9,18 @@
 #import "YYOtherDetilView.h"
 #import "UIImageView+AFNetworking.h"
 #import "YYOtherDetailViewController.h"
+#import "YYOtherTableCell.h"
+#import "YYOtherHeadView.h"
 
-@interface YYOtherDetilView()
+@interface YYOtherDetilView() <UITableViewDelegate, UITableViewDataSource>
 {
     UIButton *m_pBackBtn;
     UIButton *m_pShareBtn;
     
-    UIImageView *m_pBGImageView;
-    UIImageView *m_pDetailImageView;
-    UILabel *m_pTitleLab;
-    UILabel *m_pSubtitleLab;
-    UILabel *m_pDirectorLab; //导演
-    UILabel *m_pWriterLab;   //编剧
-    UILabel *m_pStarringLab; //主演
+    YYOtherHeadView *m_pTableHaderView;
+    UITableView *m_pTableView;
     
-    UILabel *m_pCompanyTitle;
-    UILabel *m_pCompanyLab;
-    UILabel *m_pHonorTitle;
-    UILabel *m_pHonorLab;
-    UILabel *m_pIntroduceTitle;
-    UILabel *m_pIntroduceLab;
+    YYPLayOtherData *m_pData;
 }
 
 @end
@@ -54,10 +46,19 @@
 
 -(void)createSubview
 {
-    [self createFristView];
+//    [self createFristView];
+    
+    m_pTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
+    m_pTableView.dataSource = self;
+    m_pTableView.delegate = self;
+    m_pTableView.backgroundColor = [UIColor clearColor];
+    m_pTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self addSubview:m_pTableView];
+    
+    m_pTableView.tableHeaderView = [self createHeaderView];
     
     [self createNavBtn];
-    [self createSecondView];
+//    [self createSecondView];
 
 }
 
@@ -76,38 +77,23 @@
     [m_pShareBtn setImage:[UIImage imageNamed:@"share_icon_select"] forState:UIControlStateHighlighted];
 
     [m_pShareBtn addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:m_pShareBtn];}
+    [self addSubview:m_pShareBtn];
+}
+
+-(UIView *)createHeaderView
+{
+    if (!m_pTableHaderView) {
+        m_pTableHaderView = [[YYOtherHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 270*[AppConfigure GetLengthAdaptRate])];
+        
+        
+        
+    }
+    return m_pTableHaderView;
+}
+
 
 -(void)createFristView
 {
-    m_pBGImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 270*[AppConfigure GetLengthAdaptRate])];
-    [m_pBGImageView setImage:[UIImage imageNamed:@"我这一辈子"]];
-    [self addSubview:m_pBGImageView];
-    //模糊效果
-    UIBlurEffect *beffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithEffect:beffect];
-    view.frame = m_pBGImageView.bounds;
-    [self addSubview:view];
-    
-    
-    
-    m_pDetailImageView =[[UIImageView alloc] initWithFrame:CGRectMake(20, 82*[AppConfigure GetLengthAdaptRate], 120*[AppConfigure GetLengthAdaptRate], 159*[AppConfigure GetLengthAdaptRate])];
-    [m_pDetailImageView setImage:[UIImage imageNamed:@"我这一辈子"]];
-    [m_pDetailImageView setBackgroundColor:[UIColor grayColor]];
-//    [m_pBGImageView addSubview:m_pDetailImageView];
-    [self addSubview:m_pDetailImageView];
-    
-    m_pTitleLab     = [self createLabel:CGRectMake(CGRectGetMaxX(m_pDetailImageView.frame)+(14*[AppConfigure GetLengthAdaptRate]), CGRectGetMinY(m_pDetailImageView.frame), 0, 0) size:18 space:0 isBold:YES isWhiteColor:YES];
-    CGRect rect = m_pTitleLab.frame;
-    m_pSubtitleLab  = [self createLabel:rect size:12 space:12 isBold:NO isWhiteColor:YES];
-    rect = m_pSubtitleLab.frame;
-    m_pDirectorLab  = [self createLabel:rect size:14 space:38 isBold:NO isWhiteColor:YES];
-    rect = m_pDirectorLab.frame;
-    m_pWriterLab    = [self createLabel:rect size:14 space:8 isBold:NO isWhiteColor:YES];
-    rect = m_pWriterLab.frame;
-    m_pStarringLab  = [self createLabel:rect size:14 space:8 isBold:NO isWhiteColor:YES];
-
-    
 }
 
 -(UILabel*)createLabel:(CGRect)frame size:(CGFloat)size space:(CGFloat)ySpace isBold:(BOOL)isBold isWhiteColor:(BOOL)isWhite;
@@ -126,50 +112,30 @@
     else {
         [lab setFont:[UIFont systemFontOfSize:size]];
     }
-//    [lab setBackgroundColor:[UIColor redColor]];
     [self addSubview:lab];
     return lab;
 }
 
--(void)createSecondView
+-(CGRect)computeTextSize:(NSString *)text boundSize:(CGSize)boundSize textFont:(CGFloat)font
 {
-    CGRect rect = CGRectMake(20, CGRectGetMaxY(m_pBGImageView.frame), SCREEN_WIDTH-50, 15);
-    m_pCompanyTitle = [self createLabel:rect size:15 space:0 isBold:YES isWhiteColor:NO];
-    rect = m_pCompanyTitle.frame;
-    m_pCompanyLab = [self createLabel:rect size:14 space:10 isBold:NO isWhiteColor:NO];
-    rect = m_pCompanyLab.frame;
-    m_pHonorTitle = [self createLabel:rect size:15 space:21 isBold:YES isWhiteColor:NO];
-    rect = m_pHonorTitle.frame;
-    m_pHonorLab = [self createLabel:rect size:14 space:10 isBold:NO isWhiteColor:NO];
-    rect = m_pHonorLab.frame;
-    m_pIntroduceTitle = [self createLabel:rect size:15 space:21 isBold:YES isWhiteColor:NO];
-    rect = m_pIntroduceTitle.frame;
-    m_pIntroduceLab = [self createLabel:rect size:14 space:10 isBold:NO isWhiteColor:NO];
-
-}
-
-
--(void)updateView
-{
-    //更新view
+    if (strIsEmpty(text)) {
+        text = @"  ";
+    }
+    NSAttributedString *s = [[NSAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]}];
+    NSRange range = NSMakeRange(0, text.length);
+    NSDictionary *dic = [s attributesAtIndex:0 effectiveRange:&range];
+    CGRect rect = [text boundingRectWithSize:boundSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    
+    return rect;
 }
 
 -(void)setData:(YYPLayOtherData *)data
 {
-    [m_pTitleLab setText:data.title];
-    [m_pSubtitleLab setText:data.strring];
-    [m_pDirectorLab setText:[NSString stringWithFormat:@"导演：%@",data.director]];
-    [m_pWriterLab setText:[NSString stringWithFormat:@"编剧：%@", data.writers]];
-    [m_pStarringLab setText:[NSString stringWithFormat:@"主演：%@", data.strring]];
-    [m_pCompanyTitle setText:[NSString stringWithFormat:@"制作公司"]];
-    [m_pCompanyLab setText:[NSString stringWithFormat:@"%@", data.company]];
-    [m_pHonorTitle setText:[NSString stringWithFormat:@"荣誉"]];
-    [m_pHonorLab setText:[NSString stringWithFormat:@"%@", data.honor]];
-    [m_pIntroduceTitle setText:[NSString stringWithFormat:@"电影概述"]];
-    [m_pIntroduceLab setText:[NSString stringWithFormat:@"%@", data.introduce]];
     
-    [m_pBGImageView setImageWithURL:[NSURL URLWithString:data.cover] placeholderImage:nil];
-    [m_pDetailImageView setImageWithURL:[NSURL URLWithString:data.cover] placeholderImage:nil];
+    m_pData = data;
+    [m_pTableHaderView setData:data];
+    [m_pTableView reloadData];
+    
 }
 
 #pragma mark - action
@@ -179,9 +145,92 @@
     [(YYOtherDetailViewController *)[self GetSubordinateControllerForSelf] Back];
 }
 
+//分享
 -(void)share:(UIButton *)sender
 {
     
 }
+
+#pragma mark - table delegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat sum = 30;
+    CGFloat titlH = 18;
+    sum += titlH;
+    CGRect rect;
+    CGFloat labWidth = SCREEN_WIDTH - 40;
+    CGSize boundSize = CGSizeMake(labWidth, FLT_MAX);
+
+
+    switch (indexPath.row) {
+        case 0:
+        {
+            rect = [self computeTextSize:m_pData.company boundSize:boundSize textFont:14];
+            
+        }
+            break;
+        case 1:
+        {
+            rect = [self computeTextSize:m_pData.honor boundSize:boundSize textFont:14];
+        }
+            break;
+        case 2:
+        {
+            rect = [self computeTextSize:m_pData.introduce boundSize:boundSize textFont:14];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    sum += rect.size.height;
+    return  sum;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YYOtherTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YYOtherTableCell"];
+    if (cell == nil) {
+        cell = [[YYOtherTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YYOtherTableCell"];
+    }
+    
+    NSString *str = nil;
+    int type = [m_pData.type intValue];
+    switch (type) {
+        case 1:
+            str = @"电影概述";
+            break;
+        case 2:
+            str = @"电视剧概述";
+            break;
+        case 3:
+            str = @"话剧概述";
+            break;
+        case 4:
+            str = @"曲剧概述";
+            break;
+        default:
+            str = @"概述";
+            break;
+    }
+    
+    NSString *title = indexPath.row == 0 ? @"制作公司": indexPath.row == 1 ? @"荣誉": str;
+    cell.m_pTitle = title;
+    cell.m_pSubtitle = indexPath.row == 0 ? m_pData.company: indexPath.row == 1 ? m_pData.honor : m_pData.introduce;
+    
+    return cell;
+}
+
 
 @end

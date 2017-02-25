@@ -78,10 +78,12 @@ static CGFloat collectionHeight;
 
 -(void)setData:(NSArray *)data
 {
-//    m_pData = data;
-    m_pData =[[NSArray alloc] initWithObjects:data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject,data.firstObject, nil];
+    m_pData = data;
     YYDonationData *pData = data.firstObject;
     [self.m_pBGImageView setImageWithURL:[NSURL URLWithString:pData.cover]];
+    if (m_pData.count <= 1) {
+        [_cardCollectionView setContentOffset:CGPointMake(0, 100)];
+    }
     [_cardCollectionView reloadData];
 }
 
@@ -130,7 +132,7 @@ static CGFloat collectionHeight;
     YYDonationData *data = m_pData[indexPath.row];
     cell.bgColor = [UIColor whiteColor];
     cell.title = data.title;
-    cell.subtitle = [YYUtil timeWithTimeIntervalString:@"1487777961" ];//[STTimeUtility GetTimeString:1487777961*1000];
+    cell.subtitle = [NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeInterval:[data.update_at integerValue]]];
     [cell.imageView setImageWithURL:[NSURL URLWithString:data.cover]];
     return cell;
 }
@@ -146,7 +148,6 @@ static CGFloat collectionHeight;
 {
     YYDonationData *data = m_pData[indexPath.row];
     [(YYListenBookViewController *)[self GetSubordinateControllerForSelf] ClickCheckBookWithId:data.mid];
-
     
 //    CGFloat offsetY = self.cardCollectionView.contentOffset.y;
 //    if ([self.cardLayout isKindOfClass:[CardLayout class]]) {
@@ -240,8 +241,8 @@ static CGFloat collectionHeight;
         _cardCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, collectionHeight) collectionViewLayout:self.cardLayout];
         [_cardCollectionView registerClass:[CardCellCollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
         _cardCollectionView.delegate = self;
-        _cardCollectionView.dataSource = self;
         [_cardCollectionView setContentOffset:CGPointMake(0, 400)];
+        _cardCollectionView.dataSource = self;
         _cardCollectionView.backgroundColor = [UIColor clearColor];//UIColorFromHex(0x2D3142);
     }
     return _cardCollectionView;

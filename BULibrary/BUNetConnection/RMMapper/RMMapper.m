@@ -108,7 +108,7 @@ static const char *getPropertyType(objc_property_t property) {
         // For string-key
         id value = [dict objectForKey:key];
         
-        NSLog(@"key=%@",key);
+//        NSLog(@"key=%@",key);
         // If the property type is NSString and the value is array,
         // join them with ","
         NSString *propertyType = [properties objectForKey:key];

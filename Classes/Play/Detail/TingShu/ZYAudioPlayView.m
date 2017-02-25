@@ -76,7 +76,7 @@
 
 -(void)createBackgroundImage
 {
-    m_pBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 375)];
+    m_pBackgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375*[AppConfigure GetLengthAdaptRate], 375*[AppConfigure GetLengthAdaptRate])];
     m_pBackgroundImage.userInteractionEnabled = YES;
     m_pBackgroundImage.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:m_pBackgroundImage];
@@ -88,20 +88,20 @@
     [self addSubview:view];
     
     //cd
-    UIImageView *cdImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112, 112)];
+    UIImageView *cdImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112*[AppConfigure GetLengthAdaptRate], 112*[AppConfigure GetLengthAdaptRate])];
     cdImgView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2+30, m_pBackgroundImage.frame.size.height/2);
     [cdImgView setImage:[UIImage imageNamed:@"cd"]];
     [self addSubview:cdImgView];
     //上面的小图片
-    UIView *bookIconBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 124, 124)];
+    UIView *bookIconBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 124*[AppConfigure GetLengthAdaptRate], 124*[AppConfigure GetLengthAdaptRate])];
     bookIconBackgroundView.backgroundColor =[UIColor whiteColor];
     bookIconBackgroundView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2-30, m_pBackgroundImage.frame.size.height/2);
     [self addSubview:bookIconBackgroundView];
     
     
-    m_pBookIconImage =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 114, 114)];
+    m_pBookIconImage =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 114*[AppConfigure GetLengthAdaptRate], 114*[AppConfigure GetLengthAdaptRate])];
     m_pBookIconImage.center = CGPointMake(bookIconBackgroundView.frame.size.width/2, bookIconBackgroundView.frame.size.height/2);
-    [m_pBookIconImage setImage:[UIImage imageNamed:@"我这一辈子"]];
+//    [m_pBookIconImage setImage:[UIImage imageNamed:@"我这一辈子"]];
     [m_pBookIconImage setBackgroundColor:[UIColor grayColor]];
     [bookIconBackgroundView addSubview:m_pBookIconImage];
     //
@@ -147,7 +147,7 @@
 {
     m_pBookTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(m_pBackgroundImage.frame)+63, CGRectGetWidth(self.frame), 18)];
     [m_pBookTitleLabel setTextAlignment:NSTextAlignmentCenter];
-    [m_pBookTitleLabel setText:@"我这一辈子 第二章"];
+    [m_pBookTitleLabel setText:@" "];
     [m_pBookTitleLabel setFont:[UIFont systemFontOfSize:18.f]];
     [m_pBookTitleLabel setTextColor:UIColorFromHex(black_33)];
     [m_pBookTitleLabel setTextColor:[UIColor blackColor]];
@@ -156,7 +156,7 @@
     
     m_pBookInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(m_pBookTitleLabel.frame)+13, CGRectGetWidth(self.frame), 12)];
     [m_pBookInfoLabel setTextAlignment:NSTextAlignmentCenter];
-    [m_pBookInfoLabel setText:@"最后更新：2016-09-22"];
+    [m_pBookInfoLabel setText:@" "];
     [m_pBookInfoLabel setFont:[UIFont systemFontOfSize:12.f]];
     [m_pBookInfoLabel setTextColor:UIColorFromHex(black_66)];
     [m_pBookInfoLabel setTextColor:[UIColor blackColor]];
@@ -344,7 +344,7 @@
     _m_pProgresSlider.middleValue = 0;
     
     [m_pBookTitleLabel setText:[NSString stringWithFormat:@"%@ %@",chapter.title,chapter.chapter]];
-    [m_pBookInfoLabel setText:[NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeIntervalString:chapter.updateTime]]];
+    [m_pBookInfoLabel setText:[NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeInterval:[chapter.updateTime doubleValue]]]];
     [_m_pCurrentTimeLabel setText:@"00:00"];
     [_m_pDurationLabel setText:chapter.time];
     

@@ -96,7 +96,7 @@
 -(void)layoutTableView
 {
     if (!_tableView) {
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, NavHight, WIDTH, HEIGHT-NavHight) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, NavHight, WIDTH, HEIGHT-NavHight-1) style:UITableViewStylePlain];
         _tableView.backgroundColor=[UIColor clearColor];
         _tableView.showsVerticalScrollIndicator=NO;
         _tableView.dataSource=self;

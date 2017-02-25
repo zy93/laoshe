@@ -47,7 +47,7 @@
 -(void)createSubview
 {
     m_pBGImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 270*[AppConfigure GetLengthAdaptRate])];
-    [m_pBGImageView setImage:[UIImage imageNamed:@"我这一辈子"]];
+//    [m_pBGImageView setImage:[UIImage imageNamed:@"我这一辈子"]];
     [self addSubview:m_pBGImageView];
     //模糊效果
     UIBlurEffect *beffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -58,7 +58,7 @@
     
     
     m_pDetailImageView =[[UIImageView alloc] initWithFrame:CGRectMake(20, 82*[AppConfigure GetLengthAdaptRate], 120*[AppConfigure GetLengthAdaptRate], 159*[AppConfigure GetLengthAdaptRate])];
-    [m_pDetailImageView setImage:[UIImage imageNamed:@"我这一辈子"]];
+//    [m_pDetailImageView setImage:[UIImage imageNamed:@"我这一辈子"]];
     [m_pDetailImageView setBackgroundColor:[UIColor grayColor]];
     //    [m_pBGImageView addSubview:m_pDetailImageView];
     [self addSubview:m_pDetailImageView];

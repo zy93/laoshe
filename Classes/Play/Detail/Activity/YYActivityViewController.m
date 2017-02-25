@@ -64,7 +64,7 @@
 }
 
 -(void)backImageView{
-    UIImage *image=[UIImage imageNamed:@"活动"];
+    UIImage *image=[UIImage imageNamed:@"activity_bg"];
     
     _backgroundImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, image.size.height)];
     _backgroundImgV.image=image;
@@ -81,7 +81,7 @@
     self.NavView.title = @"活动列表";
     self.NavView.color = [UIColor whiteColor];
     self.NavView.left_bt_Image = @"custom_back_btn";
-    self.NavView.right_bt_Image = @"资源 33";
+//    self.NavView.right_bt_Image = @"资源 33";
     self.NavView.delegate = self;
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.NavView.frame)-titleBottom, CGRectGetWidth(self.view.frame), 20)];
     _titleLabel.font = [UIFont systemFontOfSize:20.f];

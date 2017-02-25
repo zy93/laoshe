@@ -25,7 +25,7 @@
     [super viewDidLoad];
     [self createSubview];
     [self createBackButton];
-    [self createShareButton];
+//    [self createShareButton];
 }
 
 

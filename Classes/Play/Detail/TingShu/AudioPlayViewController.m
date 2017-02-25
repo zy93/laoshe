@@ -11,17 +11,19 @@
 
 #import "ZYListenBookData.h"
 #import "ZYAudioPlayView.h"
+#import "YYShareView.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 
 
 
 
-
-@interface AudioPlayViewController () 
+@interface AudioPlayViewController ()<YYShareViewDelegate>
 {
     UIButton *m_pBackBtn;
     UIButton *m_pShareBtn; //分享菜单
     ZYAudioPlayView *m_pPlayView;
+    YYShareView *m_pShareView;
     BUAFHttpRequest *m_pRequest;
 }
 
@@ -61,6 +63,10 @@
     //
     m_pPlayView = [[ZYAudioPlayView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:m_pPlayView];
+    
+    m_pShareView = [[YYShareView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+    m_pShareView.propDelegate = self;
+    [self.view addSubview:m_pShareView];
     
     [self createBackButton];
     [self createShareButton];
@@ -106,9 +112,47 @@
 
 -(void)share:(UIButton *)sender
 {
-    
+    [m_pShareView ShowView];
 }
 
+
+#pragma mark - YYShareViewDelegate methods
+-(void)ClickShareWithType:(NSInteger)argType
+{
+    UMSocialPlatformType socialPlatformType;
+    switch (argType)
+    {
+        case 0:
+            socialPlatformType = UMSocialPlatformType_WechatSession;
+            break;
+        case 1:
+            socialPlatformType = UMSocialPlatformType_WechatTimeLine;
+            break;
+        case 2:
+            socialPlatformType = UMSocialPlatformType_QQ;
+            break;
+        case 3:
+            socialPlatformType = UMSocialPlatformType_Qzone;
+            break;
+        case 4:
+            socialPlatformType = UMSocialPlatformType_Sina;
+            break;
+        default:
+            break;
+    }
+    NSString *pTitle = @"永远的老舍";
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    messageObject.text = pTitle;
+    
+    UMShareWebpageObject *pMessageObject = [UMShareWebpageObject shareObjectWithTitle:pTitle descr:@"永远的老舍" thumImage:[UIImage imageNamed:@"shareIcon-1024.png"]];
+    pMessageObject.webpageUrl = @"http://www.baidu.com";
+    messageObject.shareObject = pMessageObject;
+
+    [[UMSocialManager defaultManager] shareToPlatform:socialPlatformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        NSLog(@"%@error",error);
+    }];
+
+}
 #pragma mark - BUAFHttpRequestDelegate methods
 -(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData
 {

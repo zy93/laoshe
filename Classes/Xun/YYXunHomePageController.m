@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     m_pNameLabel.text = @"寻";
+    m_pBackButton.hidden = YES;
     [self CreateSubViews];
     [self CreateRequest];
     

@@ -49,7 +49,7 @@
     m_pHeadImgView.clipsToBounds = YES;
     [self addSubview:m_pHeadImgView];
     
-    m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 121, self.width, 20)];
+    m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 121*[AppConfigure GetLengthAdaptRate], self.width, 20)];
     m_pTitleLab.text = m_arrChannel[0];
     m_pTitleLab.textColor = UIColorFromHex(0xffffff);
     m_pTitleLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:18.0];

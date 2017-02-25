@@ -58,7 +58,7 @@
     if([AppConfigure iOSVersion]>=7.0)
         self.automaticallyAdjustsScrollViewInsets = NO;
     m_pTopBar =[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44+[AppConfigure GetYStartPos])];
-    m_pTopBar.backgroundColor = UIColorFromHex(0xf4f4f5);
+    m_pTopBar.backgroundColor = UIColorFromHex(0xffffff);
     [self.view addSubview:m_pTopBar];
     
     //Name Lable
@@ -76,8 +76,8 @@
 //    [m_pBackButton setTitle:@"返回" forState:UIControlStateNormal];
     [m_pBackButton setTitleColor:[AppConfigure WhiteColor] forState:UIControlStateNormal];
     m_pBackButton.titleLabel.font = [UIFont fontWithName:[AppConfigure LightFont] size:15];
-    [m_pBackButton setImage:[BUCoreUtility newImageFromResource:@"custom_back_btn"] forState:UIControlStateNormal];
-    [m_pBackButton setImage:[BUCoreUtility newImageFromResource:@"custom_back_btn"] forState:UIControlStateHighlighted];
+    [m_pBackButton setImage:[BUCoreUtility newImageFromResource:@"back.png"] forState:UIControlStateNormal];
+    [m_pBackButton setImage:[BUCoreUtility newImageFromResource:@"back_select.png"] forState:UIControlStateHighlighted];
     [m_pBackButton addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];
     [m_pTopBar addSubview:m_pBackButton];
     

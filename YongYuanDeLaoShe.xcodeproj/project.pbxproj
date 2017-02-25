@@ -2207,8 +2207,8 @@
 				TargetAttributes = {
 					2583F6091E347F9D00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5DW5ZEYK47;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = R6VMG3LZ6L;
+						ProvisioningStyle = Automatic;
 					};
 					2583F6221E347F9E00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2709,9 +2709,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
-				DEVELOPMENT_TEAM = 5DW5ZEYK47;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ting he (R6VMG3LZ6L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = R6VMG3LZ6L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2729,6 +2729,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YongYuanDeLaoShe/YongYuanDeLaoShe_Perfix.pch";
 				INFOPLIST_FILE = YongYuanDeLaoShe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2746,10 +2747,10 @@
 					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/SocialLibraries/WeChat",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.hanyan.YongYuanDeLaoShe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.laosheforever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
-				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -2757,9 +2758,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
-				DEVELOPMENT_TEAM = 5DW5ZEYK47;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ting he (R6VMG3LZ6L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = R6VMG3LZ6L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2777,6 +2778,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YongYuanDeLaoShe/YongYuanDeLaoShe_Perfix.pch";
 				INFOPLIST_FILE = YongYuanDeLaoShe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2794,10 +2796,10 @@
 					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/SocialLibraries/WeChat",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.hanyan.YongYuanDeLaoShe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.laosheforever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
-				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -2847,6 +2849,120 @@
 			};
 			name = Release;
 		};
+		2AEA36351E611070004FB4C4 /* ad hoc distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "ad hoc distribution";
+		};
+		2AEA36361E611070004FB4C4 /* ad hoc distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ting he (R6VMG3LZ6L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/BaiduMap_IOSSDK_v3",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/EC_IM/thirdparty/ShareSDK",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/EC_IM/thirdparty/ShareSDK/Support/Optional",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/EC_IM/thirdparty/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/Pingpp/Channels/Alipay",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/umeng_ios_social_sdk_6.0.2_arm64_custom/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/umeng_ios_social_sdk_6.0.2_arm64_custom/UMSocialSDK",
+					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/UMSocialUI",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/YongYuanDeLaoShe/YongYuanDeLaoShe_Perfix.pch";
+				INFOPLIST_FILE = YongYuanDeLaoShe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/EC_IM/thirdparty/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/EC_IM/YTX_iOS_IM_SDK/lib",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/Pingpp/Channels/Alipay",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/Pingpp/Dependencies/Network",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/Pingpp",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/umeng_ios_social_sdk_6.0.2_arm64_custom/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/umeng_ios_social_sdk_6.0.2_arm64_custom/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/umeng_ios_social_sdk_6.0.2_arm64_custom/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/xg_sdk",
+					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/Support_library/umeng_ios_social_sdk_6.2.2_arm64_custom/UMSocial/SocialLibraries/WeChat",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laosheforever;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = "ad hoc distribution";
+		};
+		2AEA36371E611070004FB4C4 /* ad hoc distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YongYuanDeLaoSheTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.hanyan.YongYuanDeLaoSheTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YongYuanDeLaoShe.app/YongYuanDeLaoShe";
+			};
+			name = "ad hoc distribution";
+		};
+		2AEA36381E611070004FB4C4 /* ad hoc distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YongYuanDeLaoSheUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.hanyan.YongYuanDeLaoSheUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = YongYuanDeLaoShe;
+			};
+			name = "ad hoc distribution";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2855,6 +2971,7 @@
 			buildConfigurations = (
 				2583F6351E347F9E00222D66 /* Debug */,
 				2583F6361E347F9E00222D66 /* Release */,
+				2AEA36351E611070004FB4C4 /* ad hoc distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2864,6 +2981,7 @@
 			buildConfigurations = (
 				2583F6381E347F9E00222D66 /* Debug */,
 				2583F6391E347F9E00222D66 /* Release */,
+				2AEA36361E611070004FB4C4 /* ad hoc distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2873,6 +2991,7 @@
 			buildConfigurations = (
 				2583F63B1E347F9E00222D66 /* Debug */,
 				2583F63C1E347F9E00222D66 /* Release */,
+				2AEA36371E611070004FB4C4 /* ad hoc distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2882,6 +3001,7 @@
 			buildConfigurations = (
 				2583F63E1E347F9E00222D66 /* Debug */,
 				2583F63F1E347F9E00222D66 /* Release */,
+				2AEA36381E611070004FB4C4 /* ad hoc distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

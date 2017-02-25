@@ -31,9 +31,9 @@
 
 + (NSString*)GetFileDomain
 {
-    if (!DEBUG)
-        return @"http://api.shijianqiyue.com/index.php?s=/API/";     //正式服务器
-    else
+//    if (!DEBUG)
+//        return @"http://api.shijianqiyue.com/index.php?s=/API/";     //正式服务器
+//    else
         return @"http://sjqy.1bu2bu.com/index.php?s=/Api/";    //测试服务器
 }
 

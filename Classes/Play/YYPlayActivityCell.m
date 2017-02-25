@@ -60,7 +60,6 @@
     
     
     m_pCoverView = [[UIImageView alloc] initWithFrame:CGRectMake(m_pTitleLab.left, m_pTitleLab.bottom + 9*[AppConfigure GetLengthAdaptRate], m_pLineView.width, 180*[AppConfigure GetLengthAdaptRate])];
-//    m_pCoverView.backgroundColor = [UIColor redColor];
     [m_pBackView addSubview:m_pCoverView];
     
     m_pActNameLab = [[UILabel alloc] initWithFrame:CGRectMake(28*[AppConfigure GetLengthAdaptRate], m_pCoverView.bottom + 12*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH - 56*[AppConfigure GetLengthAdaptRate] /2.0, 15.0)];

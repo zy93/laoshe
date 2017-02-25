@@ -80,7 +80,6 @@
     m_pBackgroundImage.userInteractionEnabled = YES;
     m_pBackgroundImage.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:m_pBackgroundImage];
-    [m_pBackgroundImage setBackgroundColor:[UIColor redColor]];
     [m_pBackgroundImage setImage:[UIImage imageNamed:@"我这一辈子"]];
     //模糊效果
     UIBlurEffect *beffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];

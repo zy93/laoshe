@@ -49,6 +49,13 @@
 -(void)SetType:(NSInteger)argType
 {
     [m_pYanDirectoryScrollView SetType:argType];
+    if (argType != 5)
+    {
+        [m_pYanDirectoryScrollView SetShowMore:YES];
+    }else
+    {
+        [m_pYanDirectoryScrollView SetShowMore:NO];
+    }
 }
 #pragma mark - YYTitleBottomScrollViewDelegate methods
 -(void)ClickCheckDetailsWithId:(NSInteger)argId andType:(NSInteger)argType

@@ -34,7 +34,6 @@
 -(void)CreateSubViews
 {
     m_pBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], 8*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH - 20*[AppConfigure GetLengthAdaptRate], 116*[AppConfigure GetLengthAdaptRate])];
-//    m_pBackgroundView.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:m_pBackgroundView];
     
     m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, m_pBackgroundView.width, m_pBackgroundView.height)];

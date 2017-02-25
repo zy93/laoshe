@@ -126,7 +126,6 @@
     else {
         [lab setFont:[UIFont systemFontOfSize:size]];
     }
-//    [lab setBackgroundColor:[UIColor redColor]];
     [self addSubview:lab];
     return lab;
 }

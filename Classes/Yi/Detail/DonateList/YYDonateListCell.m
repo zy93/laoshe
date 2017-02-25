@@ -8,6 +8,7 @@
 
 #import "YYDonateListCell.h"
 #import "YYDonateData.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface YYDonateListCell ()
 {
@@ -38,14 +39,12 @@
     [self.contentView addSubview:m_pLineView];
     
     m_pCoverImgView = [[UIImageView alloc] initWithFrame:CGRectMake(20*[AppConfigure GetLengthAdaptRate], m_pLineView.bottom + 10*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH - 40*[AppConfigure GetLengthAdaptRate], 200*[AppConfigure GetLengthAdaptRate])];
-    m_pCoverImgView.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:m_pCoverImgView];
     
     m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(20*[AppConfigure GetLengthAdaptRate], m_pCoverImgView.bottom, SCREEN_WIDTH-40*[AppConfigure GetLengthAdaptRate], 36*[AppConfigure GetLengthAdaptRate])];
-    m_pTitleLab.text = @"什么鬼辣鸡";
     m_pTitleLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:14.0f];
     m_pTitleLab.textColor = UIColorFromHex(0x333333);
-    [self addSubview:m_pTitleLab];
+    [self.contentView addSubview:m_pTitleLab];
 }
 
 #pragma mark - public methods
@@ -56,6 +55,28 @@
 -(void)SetDonateData:(YYDonateData *)argData
 {
     m_pTitleLab.text = argData.title;
+    
+    [m_pCoverImgView setImageWithURL:[NSURL URLWithString:argData.cover] placeholderImage:nil];
+    
+    m_pCoverImgView.frame = CGRectMake(m_pCoverImgView.left, m_pLineView.bottom + 10*[AppConfigure GetLengthAdaptRate], m_pCoverImgView.width, m_pCoverImgView.image.size.height);
+
+    m_pTitleLab.frame = CGRectMake(m_pTitleLab.left, m_pCoverImgView.bottom, m_pTitleLab.width, m_pTitleLab.height);
+}
+
+
+-(void)ClearData
+{
+    m_pTitleLab.text = @"";
+    [m_pCoverImgView setImage:nil];
+}
+
+
++(CGFloat)GetHeight:(YYDonateData *)argData
+{
+    UIImageView *pImageView = [[UIImageView alloc] init];
+    [pImageView setImageWithURL:[NSURL URLWithString:argData.cover] placeholderImage:nil];
+    NSLog(@"%f",pImageView.image.size.height);
+    return pImageView.image.size.height + 50*[AppConfigure GetLengthAdaptRate];
 }
 
 @end

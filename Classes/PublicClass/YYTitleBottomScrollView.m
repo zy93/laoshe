@@ -8,6 +8,7 @@
 
 #import "YYTitleBottomScrollView.h"
 #import "YYDonationData.h"
+#import "UIImageView+AFNetworking.h"
 
 #define VIEWBTNTAG 1000
 
@@ -44,7 +45,7 @@
             m_fBackViewSizeH = 71*[AppConfigure GetLengthAdaptRate];
         }else
         {
-            m_fFont = 16.0f;
+            m_fFont = 14.0f;
             m_fBackViewSizeW = 90*[AppConfigure GetLengthAdaptRate];
             m_fBackViewSizeH = 115*[AppConfigure GetLengthAdaptRate];
         }
@@ -107,6 +108,10 @@
 {
     m_pTitleLab.text = argTitle;
 }
+-(void)SetShowMore:(BOOL)argShow
+{
+    m_pMoreBtn.hidden = argShow;
+}
 -(void)ClearData
 {
     for (UIView *pView in m_pScrollView.subviews)
@@ -126,15 +131,7 @@
 
         YYDonationData *pData = argData[i];
         UIImageView *pBackgroupView = [[UIImageView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (m_fBackViewSizeW + fBackViewInterval)), 0, m_fBackViewSizeW, m_fBackViewSizeH)];
-        pBackgroupView.backgroundColor = [UIColor redColor];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSURL *url = [NSURL URLWithString:pData.cover];
-            NSData *data = [NSData dataWithContentsOfURL:url];
-            UIImage *image = [[UIImage alloc] initWithData:data];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [pBackgroupView setImage:image];
-            });
-        });
+        [pBackgroupView setImageWithURL:[NSURL URLWithString:pData.cover] placeholderImage:nil];
         [m_pScrollView addSubview:pBackgroupView];
         
         UIButton *pPhotoBtn = [[UIButton alloc] initWithFrame:pBackgroupView.frame];

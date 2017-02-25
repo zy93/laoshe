@@ -70,6 +70,7 @@
     {
         [cell SetLineViewShow:NO];
     }
+    [cell ClearData];
 //    cell.propDelegate = self;
     [cell SetDonateData:m_arrData[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -77,7 +78,8 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  250*[AppConfigure GetLengthAdaptRate];
+    CGFloat fHeight = [YYDonateListCell GetHeight:m_arrData[indexPath.row]];
+    return  fHeight;
 }
 
 

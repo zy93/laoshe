@@ -15,4 +15,8 @@
 
 -(void)SetDonateData:(YYDonateData *)argData;
 
++(CGFloat)GetHeight:(YYDonateData *)argData;
+
+-(void)ClearData;
+
 @end

@@ -15,7 +15,6 @@
 @interface YYOtherDetilView() <UITableViewDelegate, UITableViewDataSource>
 {
     UIButton *m_pBackBtn;
-    UIButton *m_pShareBtn;
     
     YYOtherHeadView *m_pTableHaderView;
     UITableView *m_pTableView;
@@ -71,13 +70,7 @@
     [self addSubview:m_pBackBtn];
     
     
-    m_pShareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [m_pShareBtn setFrame:CGRectMake(SCREEN_WIDTH-20-28, 31, 28, 28)];
-    [m_pShareBtn setImage:[UIImage imageNamed:@"share_icon"] forState:UIControlStateNormal];
-    [m_pShareBtn setImage:[UIImage imageNamed:@"share_icon_select"] forState:UIControlStateHighlighted];
 
-    [m_pShareBtn addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:m_pShareBtn];
 }
 
 -(UIView *)createHeaderView
@@ -145,11 +138,6 @@
     [(YYOtherDetailViewController *)[self GetSubordinateControllerForSelf] Back];
 }
 
-//分享
--(void)share:(UIButton *)sender
-{
-    
-}
 
 #pragma mark - table delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

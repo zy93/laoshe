@@ -13,14 +13,15 @@
 #import "YYPlayData.h"
 #import "YYPlayActivityCell.h"
 #import "YYActivityData.h"
+#import "BUTopBannerView.h"
 
 @interface YYPlayHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYPlayHomePageCellDelgate,YYPlayActivityCellDelegate>
 {
-    YYPlayHeadView *m_pHeadView;
     UITableView *m_pTableView;
     NSMutableArray *m_arrTitle;
     NSMutableArray *m_arrData;
     YYPlayData *m_pData;
+    BUTopBannerView *m_pTopBannerView;
 }
 @end
 @implementation YYPlayHomePageView
@@ -40,7 +41,9 @@
 #pragma mark - private methods
 -(void)CreateSubViews
 {
-    m_pHeadView = [[YYPlayHeadView alloc] initWithFrame:CGRectMake(0, 0, self.width, 255*[AppConfigure GetLengthAdaptRate])];
+    m_pTopBannerView = [[BUTopBannerView alloc] initWithFrame:CGRectMake(0, 0, self.width, 255*[AppConfigure GetLengthAdaptRate])];
+    
+
     
     m_pTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
     m_pTableView.delegate = self;
@@ -49,7 +52,7 @@
     m_pTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:m_pTableView];
     
-    m_pTableView.tableHeaderView = m_pHeadView;
+    m_pTableView.tableHeaderView = m_pTopBannerView;
 }
 
 #pragma mark - public methods
@@ -58,6 +61,12 @@
     m_pData = [argData firstObject];
     [m_arrData removeAllObjects];
     [m_arrData addObjectsFromArray:argData];
+    [m_pTableView reloadData];
+}
+
+-(void)SetBannerData:(NSArray *)argData
+{
+    [m_pTopBannerView SetData:argData andImageUrls:nil andTitle:nil];
     [m_pTableView reloadData];
 }
 

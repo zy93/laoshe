@@ -11,5 +11,6 @@
 @interface YYRichTextDetailController : BUCustomViewController
 
 @property (nonatomic,copy)NSString *propContent;
+@property (nonatomic,copy)NSString *propActId;
 
 @end

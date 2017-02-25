@@ -66,8 +66,6 @@
 		2555A3F21E37851200E309F6 /* BUChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3AA1E37851200E309F6 /* BUChannelsView.m */; };
 		2555A3F31E37851200E309F6 /* AFTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3AD1E37851200E309F6 /* AFTabBarItem.m */; };
 		2555A3F41E37851200E309F6 /* AFTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3AF1E37851200E309F6 /* AFTabBarViewController.m */; };
-		2555A3F51E37851200E309F6 /* AFTitleBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3B21E37851200E309F6 /* AFTitleBannerCell.m */; };
-		2555A3F61E37851200E309F6 /* AFTitleBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3B41E37851200E309F6 /* AFTitleBannerView.m */; };
 		2555A3F71E37851200E309F6 /* AppConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3B71E37851200E309F6 /* AppConfigure.m */; };
 		2555A3F81E37851200E309F6 /* STTimeUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3BA1E37851200E309F6 /* STTimeUtility.m */; };
 		2555A3F91E37851200E309F6 /* TSImageEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2555A3BD1E37851200E309F6 /* TSImageEditorView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -196,6 +194,8 @@
 		25925C761E4EFD7B00EDEA69 /* YYPlayHomePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25925C751E4EFD7B00EDEA69 /* YYPlayHomePageCell.m */; };
 		25925C791E4EFD9600EDEA69 /* YYPlayHomePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25925C781E4EFD9600EDEA69 /* YYPlayHomePageView.m */; };
 		25925C7C1E4EFDB400EDEA69 /* YYPlayHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25925C7B1E4EFDB400EDEA69 /* YYPlayHeadView.m */; };
+		25A0DB8B1E611F5D00B5FEDD /* BUTopBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A0DB8A1E611F5D00B5FEDD /* BUTopBannerView.m */; };
+		25A0DB8E1E6120AA00B5FEDD /* YYBannerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A0DB8D1E6120AA00B5FEDD /* YYBannerData.m */; };
 		25A6DD7C1E3989F900B230B7 /* YYXunHomePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A6DD7B1E3989F900B230B7 /* YYXunHomePageView.m */; };
 		25A6DD7F1E398AA000B230B7 /* YYXunHomePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A6DD7E1E398AA000B230B7 /* YYXunHomePageCell.m */; };
 		25A6DD841E3A1ED300B230B7 /* YYTitleMiddleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A6DD831E3A1ED300B230B7 /* YYTitleMiddleScrollView.m */; };
@@ -421,10 +421,6 @@
 		2555A3AD1E37851200E309F6 /* AFTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTabBarItem.m; sourceTree = "<group>"; };
 		2555A3AE1E37851200E309F6 /* AFTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTabBarViewController.h; sourceTree = "<group>"; };
 		2555A3AF1E37851200E309F6 /* AFTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTabBarViewController.m; sourceTree = "<group>"; };
-		2555A3B11E37851200E309F6 /* AFTitleBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTitleBannerCell.h; sourceTree = "<group>"; };
-		2555A3B21E37851200E309F6 /* AFTitleBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTitleBannerCell.m; sourceTree = "<group>"; };
-		2555A3B31E37851200E309F6 /* AFTitleBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTitleBannerView.h; sourceTree = "<group>"; };
-		2555A3B41E37851200E309F6 /* AFTitleBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTitleBannerView.m; sourceTree = "<group>"; };
 		2555A3B61E37851200E309F6 /* AppConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigure.h; sourceTree = "<group>"; };
 		2555A3B71E37851200E309F6 /* AppConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfigure.m; sourceTree = "<group>"; };
 		2555A3B81E37851200E309F6 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
@@ -664,6 +660,10 @@
 		25925C781E4EFD9600EDEA69 /* YYPlayHomePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPlayHomePageView.m; sourceTree = "<group>"; };
 		25925C7A1E4EFDB400EDEA69 /* YYPlayHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPlayHeadView.h; sourceTree = "<group>"; };
 		25925C7B1E4EFDB400EDEA69 /* YYPlayHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPlayHeadView.m; sourceTree = "<group>"; };
+		25A0DB891E611F5D00B5FEDD /* BUTopBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUTopBannerView.h; sourceTree = "<group>"; };
+		25A0DB8A1E611F5D00B5FEDD /* BUTopBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUTopBannerView.m; sourceTree = "<group>"; };
+		25A0DB8C1E6120AA00B5FEDD /* YYBannerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYBannerData.h; sourceTree = "<group>"; };
+		25A0DB8D1E6120AA00B5FEDD /* YYBannerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYBannerData.m; sourceTree = "<group>"; };
 		25A6DD7A1E3989F900B230B7 /* YYXunHomePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunHomePageView.h; sourceTree = "<group>"; };
 		25A6DD7B1E3989F900B230B7 /* YYXunHomePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXunHomePageView.m; sourceTree = "<group>"; };
 		25A6DD7D1E398AA000B230B7 /* YYXunHomePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXunHomePageCell.h; sourceTree = "<group>"; };
@@ -1035,10 +1035,10 @@
 		2555A3911E37851200E309F6 /* BUWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				25A0DB881E611F5D00B5FEDD /* Banner */,
 				2555A3951E37851200E309F6 /* BasicWidgets */,
 				2555A3A61E37851200E309F6 /* Channel */,
 				2555A3AB1E37851200E309F6 /* TabBar */,
-				2555A3B01E37851200E309F6 /* TitleBanner */,
 			);
 			path = BUWidgets;
 			sourceTree = "<group>";
@@ -1086,17 +1086,6 @@
 				2555A3AF1E37851200E309F6 /* AFTabBarViewController.m */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		2555A3B01E37851200E309F6 /* TitleBanner */ = {
-			isa = PBXGroup;
-			children = (
-				2555A3B11E37851200E309F6 /* AFTitleBannerCell.h */,
-				2555A3B21E37851200E309F6 /* AFTitleBannerCell.m */,
-				2555A3B31E37851200E309F6 /* AFTitleBannerView.h */,
-				2555A3B41E37851200E309F6 /* AFTitleBannerView.m */,
-			);
-			path = TitleBanner;
 			sourceTree = "<group>";
 		};
 		2555A3B51E37851200E309F6 /* Common */ = {
@@ -1750,6 +1739,15 @@
 			path = TingShu;
 			sourceTree = "<group>";
 		};
+		25A0DB881E611F5D00B5FEDD /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				25A0DB891E611F5D00B5FEDD /* BUTopBannerView.h */,
+				25A0DB8A1E611F5D00B5FEDD /* BUTopBannerView.m */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
 		25A6DD811E3A1DB800B230B7 /* PublicClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -1871,6 +1869,8 @@
 				2AC7ED401E5B358000010CFB /* YYPLayOtherData.m */,
 				2AF6962C1E5C6D6F0086CD17 /* YYDonateData.h */,
 				2AF6962D1E5C6D6F0086CD17 /* YYDonateData.m */,
+				25A0DB8C1E6120AA00B5FEDD /* YYBannerData.h */,
+				25A0DB8D1E6120AA00B5FEDD /* YYBannerData.m */,
 			);
 			path = MoudelData;
 			sourceTree = "<group>";
@@ -2057,8 +2057,8 @@
 				TargetAttributes = {
 					2583F6091E347F9D00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R6VMG3LZ6L;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 5DW5ZEYK47;
+						ProvisioningStyle = Manual;
 					};
 					2583F6221E347F9E00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2302,6 +2302,7 @@
 				2555A3D51E37851200E309F6 /* NSString+MD5.m in Sources */,
 				25AEE92B1E5B2C9B00DC9488 /* YYPlayActivityCell.m in Sources */,
 				2555A4EA1E3785DC00E309F6 /* MJRefreshBackFooter.m in Sources */,
+				25A0DB8E1E6120AA00B5FEDD /* YYBannerData.m in Sources */,
 				2AF696911E5C87F40086CD17 /* CardLayout.m in Sources */,
 				2555A4F31E3785DC00E309F6 /* MJRefreshBackStateFooter.m in Sources */,
 				2555A4D11E3785DC00E309F6 /* AFURLSessionManager.m in Sources */,
@@ -2366,10 +2367,10 @@
 				2555A3CE1E37851200E309F6 /* AFDetailTimeSelectedView.m in Sources */,
 				258D7CBC1E389157009510C4 /* YYYiHomePageView.m in Sources */,
 				2555A51A1E3785DD00E309F6 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				25A0DB8B1E611F5D00B5FEDD /* BUTopBannerView.m in Sources */,
 				2555A3F31E37851200E309F6 /* AFTabBarItem.m in Sources */,
 				2555A51B1E3785DD00E309F6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				25EE99321E5C74AC000E9DCA /* YYDonateListController.m in Sources */,
-				2555A3F61E37851200E309F6 /* AFTitleBannerView.m in Sources */,
 				258034B11E58914C0021BD6D /* YYYanData.m in Sources */,
 				2555A4E31E3785DC00E309F6 /* SBJsonBase.m in Sources */,
 				2555A3E11E37851200E309F6 /* BUInternetReportUtilities.m in Sources */,
@@ -2384,7 +2385,6 @@
 				25925C701E4EF96700EDEA69 /* YYTitleBottomScrollView.m in Sources */,
 				258D7C941E38872E009510C4 /* YYPlayHomePageController.m in Sources */,
 				2555A4FA1E3785DC00E309F6 /* UIScrollView+MJRefresh.m in Sources */,
-				2555A3F51E37851200E309F6 /* AFTitleBannerCell.m in Sources */,
 				2555A3C71E37851200E309F6 /* AFBaseModuleData.m in Sources */,
 				2555A4CE1E3785DC00E309F6 /* AFSecurityPolicy.m in Sources */,
 				2555A4F61E3785DC00E309F6 /* MJRefreshStateHeader.m in Sources */,
@@ -2539,9 +2539,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ting he (R6VMG3LZ6L)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				DEVELOPMENT_TEAM = 5DW5ZEYK47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2579,8 +2579,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laosheforever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
+				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
 			};
 			name = Debug;
 		};
@@ -2588,9 +2588,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ting he (R6VMG3LZ6L)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				DEVELOPMENT_TEAM = 5DW5ZEYK47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2628,8 +2628,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laosheforever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
+				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
 			};
 			name = Release;
 		};
@@ -2725,9 +2725,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ting he (R6VMG3LZ6L)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jie zhou (C8QN3RBV42)";
+				DEVELOPMENT_TEAM = 5DW5ZEYK47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2765,8 +2765,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laosheforever;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e87641fe-2f96-4827-8934-86f54a5d6eda";
+				PROVISIONING_PROFILE_SPECIFIER = "1bu2bu Group";
 			};
 			name = "ad hoc distribution";
 		};

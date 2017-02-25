@@ -16,13 +16,13 @@
 #import "YYRichTextDetailController.h"
 #import "YYListenBookViewController.h"
 #import "YYActivityData.h"
+#import "YYBannerData.h"
 
 @interface YYPlayHomePageController ()<YYPlayHomePageViewDelegate>
 {
     YYPlayHomePageView *m_pHomePageView;
     BUAFHttpRequest *m_pRequest;
-    
-    NSArray *m_pResponseData;
+    BUAFHttpRequest *m_pBannerRequest;
 }
 
 @end
@@ -52,6 +52,11 @@
     m_pRequest.propDelegate = self;
     m_pRequest.propDataClass = [YYPlayData class];
     [m_pRequest GetAsynchronous];
+    
+    m_pBannerRequest = [[BUAFHttpRequest alloc] initWithUrl:[NSString stringWithFormat:@"Banner/getBanner"] andTag:@"getBanner"];
+    m_pBannerRequest.propDelegate = self;
+    m_pBannerRequest.propDataClass = [YYBannerData class];
+    [m_pBannerRequest GetAsynchronous];
 }
 #pragma mark - public methods
 -(void)ClickCheckDetailsWithId:(NSInteger)argId argType:(NSInteger)argType
@@ -98,9 +103,10 @@
 #pragma mark - YYPlayHomePageViewDelegate methods
 -(void)CheckDetail:(YYActivityData *)argData
 {
-    YYRichTextDetailController *pXunDetailVC = [[YYRichTextDetailController alloc] init];
-    pXunDetailVC.propContent = argData.content;
-    [self PushChildViewController:pXunDetailVC];
+    YYRichTextDetailController *pActDetailVC = [[YYRichTextDetailController alloc] init];
+    pActDetailVC.propContent = argData.content;
+    pActDetailVC.propActId = argData.mid;
+    [self PushChildViewController:pActDetailVC];
 }
 
 -(void)ClickListenBookMore:(NSArray *)argData
@@ -116,7 +122,13 @@
     if ([argRequestTag isEqualToString:@"getYan"])
     {
         [m_pHomePageView SetPlayData:argData];
-        m_pResponseData = argData;
+    }
+    if ([argRequestTag isEqualToString:@"getBanner"])
+    {
+        [m_pHomePageView SetBannerData:argData];
+    }
+    if (m_pRequest.proRequestRunning == NO && m_pBannerRequest.proRequestRunning == NO)
+    {
         [self HideProgressHUD];
     }
 }

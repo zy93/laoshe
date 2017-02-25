@@ -22,6 +22,8 @@
 
 -(void)SetPlayData:(NSArray *)argData;
 
+-(void)SetBannerData:(NSArray *)argData;
+
 -(NSArray *)GetAccivity;
 
 @end

@@ -95,6 +95,9 @@
         {
             cell = [[YYYiDonationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        if (indexPath.row == 2) {
+            cell.backgroundColor = [UIColor redColor];
+        }
         [cell SetType:-1];
         cell.propDelegate = self;
         [cell SetDonationData:m_arrDonationData];

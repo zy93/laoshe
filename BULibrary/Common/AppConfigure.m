@@ -23,7 +23,7 @@
 + (NSString*)GetWebServiceDomain
 {
 //    if (DEBUG)
-        return @"http://123.56.226.177/laoshe/index.php?s=/Api/";    //测试服务器
+        return @"http://123.56.226.177/index.php?s=/Api/";    //测试服务器
 //    else
 //        return @"http://api.shijianqiyue.com/index.php?s=/API/";     //正式服务器
 }

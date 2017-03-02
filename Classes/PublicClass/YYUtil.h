@@ -34,6 +34,7 @@
  @return 时间
  */
 + (NSString *)timeWithTimeInterval:(NSTimeInterval)timeInt;
++ (NSString *)timeForYearWithTimeInterval:(NSTimeInterval)timeInt;
 
 
 /**

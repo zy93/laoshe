@@ -31,7 +31,7 @@
     self.backgroundColor = [UIColor clearColor];
     _slider = [[UISlider alloc] initWithFrame:self.bounds];
     _slider.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [_slider setThumbImage:[UIImage imageNamed:@"椭圆 1"] forState:UIControlStateNormal];
+    [_slider setThumbImage:[UIImage imageNamed:@"select_blue"] forState:UIControlStateNormal];
     [_slider addTarget:self action:@selector(slider:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_slider];
     

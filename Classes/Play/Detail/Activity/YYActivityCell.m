@@ -7,7 +7,7 @@
 //
 
 #import "YYActivityCell.h"
-
+#import "YYUtil.h"
 
 @interface YYActivityCell()
 
@@ -86,7 +86,9 @@
         });
     });
     
-    [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",data.startDate]];
+    NSInteger time = [data.startDate integerValue];
+    
+    [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",[YYUtil timeForYearWithTimeInterval:time*1000]]];
     [_m_pTitleLab setText:data.title];
     
 }

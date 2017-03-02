@@ -88,17 +88,17 @@
     
     //cd
     UIImageView *cdImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 112*[AppConfigure GetLengthAdaptRate], 112*[AppConfigure GetLengthAdaptRate])];
-    cdImgView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2+30, m_pBackgroundImage.frame.size.height/2);
+    cdImgView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2+20, m_pBackgroundImage.frame.size.height/2);
     [cdImgView setImage:[UIImage imageNamed:@"cd"]];
     [self addSubview:cdImgView];
     //上面的小图片
-    UIView *bookIconBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 124*[AppConfigure GetLengthAdaptRate], 124*[AppConfigure GetLengthAdaptRate])];
+    UIView *bookIconBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 90*[AppConfigure GetLengthAdaptRate], 124*[AppConfigure GetLengthAdaptRate])];
     bookIconBackgroundView.backgroundColor =[UIColor whiteColor];
-    bookIconBackgroundView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2-30, m_pBackgroundImage.frame.size.height/2);
+    bookIconBackgroundView.center = CGPointMake(m_pBackgroundImage.frame.size.width/2-25, m_pBackgroundImage.frame.size.height/2);
     [self addSubview:bookIconBackgroundView];
     
     
-    m_pBookIconImage =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 114*[AppConfigure GetLengthAdaptRate], 114*[AppConfigure GetLengthAdaptRate])];
+    m_pBookIconImage =[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (CGRectGetWidth(bookIconBackgroundView.frame)-10), 114*[AppConfigure GetLengthAdaptRate])];
     m_pBookIconImage.center = CGPointMake(bookIconBackgroundView.frame.size.width/2, bookIconBackgroundView.frame.size.height/2);
 //    [m_pBookIconImage setImage:[UIImage imageNamed:@"我这一辈子"]];
     [m_pBookIconImage setBackgroundColor:[UIColor grayColor]];
@@ -343,7 +343,8 @@
     _m_pProgresSlider.middleValue = 0;
     
     [m_pBookTitleLabel setText:[NSString stringWithFormat:@"%@ %@",chapter.title,chapter.chapter]];
-    [m_pBookInfoLabel setText:[NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeInterval:[chapter.updateTime doubleValue]]]];
+    NSTimeInterval time = [chapter.update_at doubleValue]*1000;
+    [m_pBookInfoLabel setText:[NSString stringWithFormat:@"最后更新时间:%@",[YYUtil timeWithTimeInterval:time]]];
     [_m_pCurrentTimeLabel setText:@"00:00"];
     [_m_pDurationLabel setText:chapter.time];
     
@@ -458,7 +459,7 @@
 {
     ZYListenBookData *pData = argData.firstObject;
     NSLog(@"***************%@",pData);
-
+//    _m_pDurationLabel.text = pData.time;
     //自动播放第一章，
 //    NSString *allChapter = argData.allChapter;
     m_pChapterList = [NSArray arrayWithArray:pData.allChapter];

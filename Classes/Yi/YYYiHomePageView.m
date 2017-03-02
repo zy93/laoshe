@@ -11,6 +11,7 @@
 #import "YYYiFriendsCell.h"
 #import "YYYiDonationCell.h"
 #import "YYYiHomePageController.h"
+#import "MJRefresh.h"
 
 @interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYYiFriendsCellDelegate,YYYiDonationCellDelegate>
 {
@@ -32,6 +33,8 @@
         m_arrFriendData = [NSMutableArray array];
         m_arrDonationData = [NSMutableArray array];
         [self CreateSubViews];
+        [self AddRefreshHeader];
+
     }
     return self;
 }
@@ -53,18 +56,49 @@
 
 }
 
+#pragma mark -- Refresh method
+/**
+ *  添加下拉刷新事件
+ */
+- (void)AddRefreshHeader
+{
+    __weak UITableView *pTableView = m_pTableView;
+    ///添加刷新事件
+    pTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(StartRefresh)];
+    pTableView.mj_header.automaticallyChangeAlpha = YES;
+}
+
+- (void)StartRefresh
+{
+    if (m_pTableView.mj_footer != nil && [m_pTableView.mj_footer isRefreshing])
+    {
+        [m_pTableView.mj_footer endRefreshing];
+    }
+    [(YYYiHomePageController *)[self GetSubordinateControllerForSelf] RefreshData];
+}
+
+- (void)StopRefresh
+{
+    if (m_pTableView.mj_header != nil && [m_pTableView.mj_header isRefreshing])
+    {
+        [m_pTableView.mj_header endRefreshing];
+    }
+}
+
 #pragma mark - public methods
 -(void)SetFriendData:(NSArray *)argData
 {
     [m_arrFriendData removeAllObjects];
     [m_arrFriendData addObjectsFromArray:argData];
     [m_pTableView reloadData];
+    [self StopRefresh];
 }
 -(void)SetDonationData:(NSArray *)argData
 {
     [m_arrDonationData removeAllObjects];
     [m_arrDonationData addObjectsFromArray:argData];
     [m_pTableView reloadData];
+    [self StopRefresh];
 }
 
 #pragma mark - UITableViewDelegate methods

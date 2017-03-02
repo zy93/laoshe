@@ -15,4 +15,6 @@
 
 -(void)CheckMoreContent;
 
+-(void)RefreshData;
+
 @end

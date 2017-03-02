@@ -69,6 +69,11 @@
     YYDonateListController *pDonateListVC = [[YYDonateListController alloc] init];
     [self PushChildViewController:pDonateListVC];
 }
+-(void)RefreshData
+{
+    [m_pFriendRequest GetAsynchronous];
+    [m_pDonateRequest GetAsynchronous];
+}
 
 #pragma mark - BUAFHttpRequestDelegate methods
 -(void)RequestSucceeded:(NSString *)argRequestTag withResponseData:(NSArray *)argData

@@ -21,7 +21,7 @@
 @property (nonatomic, copy) NSString *isTop;
 @property (nonatomic, copy) NSString *mid;
 @property (nonatomic, copy) NSString *sort;
-@property (nonatomic, copy) NSString *startDate;
+@property (nonatomic, assign)NSTimeInterval startDate;
 @property (nonatomic, copy) NSString *title;
 
 

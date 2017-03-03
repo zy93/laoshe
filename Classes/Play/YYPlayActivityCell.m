@@ -62,7 +62,7 @@
     m_pCoverView = [[UIImageView alloc] initWithFrame:CGRectMake(m_pTitleLab.left, m_pTitleLab.bottom + 9*[AppConfigure GetLengthAdaptRate], m_pLineView.width, 180*[AppConfigure GetLengthAdaptRate])];
     [m_pBackView addSubview:m_pCoverView];
     
-    m_pActNameLab = [[UILabel alloc] initWithFrame:CGRectMake(28*[AppConfigure GetLengthAdaptRate], m_pCoverView.bottom + 12*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH - 56*[AppConfigure GetLengthAdaptRate] /2.0, 15.0)];
+    m_pActNameLab = [[UILabel alloc] initWithFrame:CGRectMake(28*[AppConfigure GetLengthAdaptRate], m_pCoverView.bottom + 12*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH - 56*[AppConfigure GetLengthAdaptRate], 15.0)];
     m_pActNameLab.text = @"活动";
     m_pActNameLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:14.0f];
     m_pActNameLab.textColor = UIColorFromHex(0x333333);

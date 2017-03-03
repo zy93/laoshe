@@ -49,6 +49,8 @@
 {
     m_pTitleLab.text = argData.title;
     [m_pBackgroundView setImageWithURL:[NSURL URLWithString:argData.cover] placeholderImage:nil];
+//    m_pBackgroundView.contentMode = UIViewContentModeScaleAspectFill;
+//    m_pBackgroundView.clipsToBounds = YES;10355025
 }
 
 - (void)awakeFromNib {

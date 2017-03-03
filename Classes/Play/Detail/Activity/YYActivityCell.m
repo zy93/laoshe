@@ -8,6 +8,7 @@
 
 #import "YYActivityCell.h"
 #import "YYUtil.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface YYActivityCell()
 
@@ -36,7 +37,8 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    if (self)
+    {
         [self createSubview];
     }
     
@@ -46,9 +48,9 @@
 -(void)createSubview
 {
     
-    _m_pLineView = [[UIView alloc] initWithFrame:CGRectMake(35*[AppConfigure GetLengthAdaptRate], 0, 1, 180*[AppConfigure GetLengthAdaptRate])];
+    _m_pLineView = [[UIView alloc] initWithFrame:CGRectMake(35*[AppConfigure GetLengthAdaptRate], 0, 1, 185*[AppConfigure GetLengthAdaptRate])];
     _m_pLineView.backgroundColor = UIColorFromHex(0xcccccc);
-    [self addSubview:_m_pLineView];
+    [self.contentView addSubview:_m_pLineView];
     
     _m_pTimeLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 33, 33)];
     _m_pTimeLab.center = CGPointMake(CGRectGetMinX(_m_pLineView.frame), 33);
@@ -59,36 +61,26 @@
     _m_pTimeLab.textAlignment = NSTextAlignmentCenter;
     _m_pTimeLab.text = @"12-25";
 //    _m_pTitleLab.layer.
-    [self addSubview:_m_pTimeLab];
+    [self.contentView addSubview:_m_pTimeLab];
     
     
-    _m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(60*[AppConfigure GetLengthAdaptRate], 25*[AppConfigure GetLengthAdaptRate], 200, 14)];
+    _m_pTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(60*[AppConfigure GetLengthAdaptRate], 25*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH - 80*[AppConfigure GetLengthAdaptRate], 14)];
     _m_pTitleLab.textAlignment = NSTextAlignmentLeft;
-    _m_pTitleLab.text = @"fFFFFFFFFFFFFFFF";
     _m_pTitleLab.font = [UIFont systemFontOfSize:14.f];
-    [self addSubview:_m_pTitleLab];
+    [self.contentView addSubview:_m_pTitleLab];
     
-    _m_pImageView = [[UIImageView alloc] initWithFrame:CGRectMake(59*[AppConfigure GetLengthAdaptRate], 52*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH, 131*[AppConfigure GetLengthAdaptRate])];
-    [_m_pImageView setImage:[UIImage imageNamed:@"1126"]];
-    [self addSubview:_m_pImageView];
+    _m_pImageView = [[UIImageView alloc] initWithFrame:CGRectMake(59*[AppConfigure GetLengthAdaptRate], 52*[AppConfigure GetLengthAdaptRate], SCREEN_WIDTH-59*[AppConfigure GetLengthAdaptRate], 131*[AppConfigure GetLengthAdaptRate])];
+    [self.contentView addSubview:_m_pImageView];
     
 }
 
 -(void)setData:(YYActivityData *)data
 {
-    __weak UIImageView *weakVIew = _m_pImageView;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSURL *url = [NSURL URLWithString:data.banner];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage *image = [[UIImage alloc] initWithData:data];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakVIew setImage:image];
-        });
-    });
-    
-    NSInteger time = [data.startDate integerValue];
-    
-    [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",[YYUtil timeForYearWithTimeInterval:time*1000]]];
+    [_m_pImageView setImageWithURL:[NSURL URLWithString:data.cover1] placeholderImage:nil];
+    _m_pImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _m_pImageView.clipsToBounds = YES;
+
+    [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",[YYUtil timeForYearWithTimeInterval:data.startDate*1000]]];
     [_m_pTitleLab setText:data.title];
     
 }

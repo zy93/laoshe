@@ -12,6 +12,7 @@
 #import "YYYiDonationCell.h"
 #import "YYYiHomePageController.h"
 #import "MJRefresh.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface YYYiHomePageView ()<UITableViewDelegate,UITableViewDataSource,YYYiFriendsCellDelegate,YYYiDonationCellDelegate>
 {
@@ -34,7 +35,6 @@
         m_arrDonationData = [NSMutableArray array];
         [self CreateSubViews];
         [self AddRefreshHeader];
-
     }
     return self;
 }
@@ -100,6 +100,20 @@
     [m_pTableView reloadData];
     [self StopRefresh];
 }
+
+/////  获取音频文件的时长
+//
+//-(NSInteger)durationWithVideo:(NSURL *)urlPath
+//
+//{
+//    
+//    AVURLAsset *audioAsset=[AVURLAsset assetWithURL:urlPath];
+//    CMTime   durationTime = audioAsset.duration;
+//    NSInteger    reultTime=0;
+//    reultTime = CMTimeGetSeconds(durationTime);
+//    return  reultTime;
+//    
+//}
 
 #pragma mark - UITableViewDelegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

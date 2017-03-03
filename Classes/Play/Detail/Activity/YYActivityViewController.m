@@ -11,6 +11,7 @@
 #import "YYActivityCell.h"
 #import "YYActivityData.h"
 #import "YYRichTextDetailController.h"
+#import "YYUtil.h"
 
 #define kColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define WIDTH [UIScreen mainScreen].bounds.size.width
@@ -30,6 +31,7 @@
     UILabel *_nameLabel;
     UILabel *_titleLabel;
     NSArray *_ColorArray;
+    YYActivityData *m_pData;
 }
 
 @property(nonatomic,strong)UIImageView *backgroundImgV;
@@ -83,12 +85,18 @@
     self.NavView.left_bt_Image = @"custom_back_btn";
 //    self.NavView.right_bt_Image = @"资源 33";
     self.NavView.delegate = self;
+    
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.NavView.frame)-titleBottom, CGRectGetWidth(self.view.frame), 20)];
     _titleLabel.font = [UIFont systemFontOfSize:20.f];
-    _titleLabel.text = @"2017";
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.textColor = [UIColor whiteColor];
     [self.NavView addSubview:_titleLabel];
+    
+    if (_m_pActivityList.count != 0)
+    {
+        m_pData = [_m_pActivityList firstObject];
+        [_titleLabel setText:[NSString stringWithFormat:@"%@",[YYUtil timeForYearWithTimeInterval:m_pData.startDate*1000]]];
+    }
     
     [self.view addSubview:self.NavView];
 }
@@ -145,6 +153,7 @@
 -(void)setM_pActivityList:(NSArray *)m_pActivityList
 {
     _m_pActivityList = m_pActivityList;
+
     [_tableView reloadData];
 }
 
@@ -193,7 +202,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180*[AppConfigure GetLengthAdaptRate];
+    return 185*[AppConfigure GetLengthAdaptRate];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -205,9 +214,8 @@
         cell = [[YYActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setData:_m_pActivityList[indexPath.row]];
     
-    YYActivityData *actData = _m_pActivityList[indexPath.row];
-    [cell setData:actData];
     NSInteger xx = [_ColorArray[indexPath.row%5] integerValue];
     [cell setColor:UIColorFromHex(xx)];
     
@@ -222,9 +230,21 @@
     [self PushChildViewController:pXunDetailVC];
     
 }
+
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     int contentOffsety = scrollView.contentOffset.y;
+    
+    NSInteger iOffSetIndex = scrollView.contentOffset.y/(185*[AppConfigure GetLengthAdaptRate]);
+    NSLog(@"iOffSetIndex%ld",iOffSetIndex);
+    if (_m_pActivityList.count != 0)
+    {
+        m_pData = _m_pActivityList[iOffSetIndex];
+        [_titleLabel setText:[NSString stringWithFormat:@"%@",[YYUtil timeForYearWithTimeInterval:m_pData.startDate*1000]]];
+    }
+
+    
     if (contentOffsety<0) {
         CGRect rect = _backgroundImgV.frame;
         rect.size.height = _backImgHeight-contentOffsety;
@@ -263,6 +283,8 @@
     }
 
 }
+
+
 
 /*
 #pragma mark - Navigation

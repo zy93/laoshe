@@ -33,7 +33,7 @@
     {
         self.hidden = YES;
         self.backgroundColor = [UIColor clearColor];
-        m_arrTitle = [NSMutableArray arrayWithObjects:@"微信好友",@"微信朋友圈",@"QQ好友",@"QQ空间",@"新浪微博", nil];
+        m_arrTitle = [NSMutableArray arrayWithObjects:@"微信好友",@"朋友圈",@"QQ好友",@"QQ空间",@"新浪微博", nil];
         m_arrIcon = [NSMutableArray arrayWithObjects:@"share_weixin.png",@"share_pengyouquan.png",@"share_qq.png",@"share_qqkongjian.png", @"share_sina.png",nil];
         m_arrSelectIcon = [NSMutableArray arrayWithObjects:@"share_weixin_select.png",@"share_pengyouquan_select.png",@"share_qq_select.png",@"share_qqkongjian_select.png",@"share_sina_select.png", nil];
         [self CreateSubViews];

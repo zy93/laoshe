@@ -80,7 +80,8 @@
 }
 
 +(NSAttributedString *)setTextString:(NSString *)text
-{  NSMutableAttributedString *mAbStr = [[NSMutableAttributedString alloc] initWithString:text];
+{
+    NSMutableAttributedString *mAbStr = [[NSMutableAttributedString alloc] initWithString:text];
     NSMutableParagraphStyle *npgStyle = [[NSMutableParagraphStyle alloc] init];
     npgStyle.alignment = NSTextAlignmentJustified;
     npgStyle.paragraphSpacing = 11.0;
@@ -89,7 +90,7 @@
     npgStyle.headIndent = 0.0;
     NSDictionary *dic = @{
                           NSForegroundColorAttributeName:[UIColor blackColor],
-                          NSFontAttributeName      :[UIFont systemFontOfSize:15.0],
+                          NSFontAttributeName      :[UIFont systemFontOfSize:14.0],
                           NSParagraphStyleAttributeName :npgStyle,
                           NSUnderlineStyleAttributeName :[NSNumber numberWithInteger:NSUnderlineStyleNone]
                           };
@@ -101,7 +102,7 @@
 
 +(CGFloat)GetTextHeight:(NSString *)argContent
 {
-    UILabel *pLab = [[UILabel alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], 0, SCREEN_WIDTH - 20*[AppConfigure GetLengthAdaptRate], 247*[AppConfigure GetLengthAdaptRate])];
+    UILabel *pLab = [[UILabel alloc] initWithFrame:CGRectMake(20*[AppConfigure GetLengthAdaptRate], 0, SCREEN_WIDTH - 40*[AppConfigure GetLengthAdaptRate], 247*[AppConfigure GetLengthAdaptRate])];
     [pLab setAttributedText:[self setTextString:argContent]];
 
     pLab.numberOfLines = 0;

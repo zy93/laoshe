@@ -2078,7 +2078,6 @@
 				TargetAttributes = {
 					2583F6091E347F9D00222D66 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R6VMG3LZ6L;
 						ProvisioningStyle = Automatic;
 					};
 					2583F6221E347F9E00222D66 = {
@@ -2570,7 +2569,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2621,7 +2620,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",
@@ -2760,7 +2759,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: jie zhou (C8QN3RBV42)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R6VMG3LZ6L;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YongYuanDeLaoShe/Support_library/aliyun_OSS_iOS_SDK_20160828",

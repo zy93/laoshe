@@ -30,6 +30,12 @@
     
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+
 #pragma mark - private methods
 -(void)CreateSubViews
 {

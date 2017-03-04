@@ -35,7 +35,7 @@
  */
 + (NSString *)timeWithTimeInterval:(NSTimeInterval)timeInt;
 + (NSString *)timeForYearWithTimeInterval:(NSTimeInterval)timeInt;
-
++ (NSString *)timeForMonthWithTimeInterval:(NSTimeInterval)timeInt;
 
 /**
  计算文字范围

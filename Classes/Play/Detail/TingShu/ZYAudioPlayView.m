@@ -131,7 +131,7 @@
     [self.m_pDurationLabel setFont:[UIFont systemFontOfSize:12.f]];
     [self.m_pDurationLabel setTextColor:[UIColor whiteColor]];
     [self.m_pDurationLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.m_pDurationLabel setText:@"20:32"];
+//    [self.m_pDurationLabel setText:@"20:32"];
     //    [m_pDurationLabel setBackgroundColor:[UIColor blackColor]];
     
     [self addSubview:self.m_pDurationLabel];
@@ -234,7 +234,9 @@
     __weak ZYAudioPlayView *weakView = self;
     __weak AVPlayer *weakPlayer = m_pAVPlayer;
     
-    
+    CGFloat totoalDuration = [self durationWithVideo:url1];
+    [self.m_pDurationLabel setText:[weakView stringWithTime:totoalDuration]];
+
     m_pPlayObserver = [m_pAVPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         CMTime duration = weakPlayer.currentItem.duration;
         CGFloat totalDuration = CMTimeGetSeconds(duration);
@@ -247,7 +249,7 @@
         //更新缓冲
         NSTimeInterval timeInterval = [weakView availableDuration];
         //        NSLog(@"Time Interval:%f", timeInterval);
-        [weakView.m_pDurationLabel setText:[weakView stringWithTime:timeInterval]];
+//        [weakView.m_pDurationLabel setText:[weakView stringWithTime:totalDuration]];
         //        [weakVC.m_progress setProgress:timeInterval/totalDuration animated:YES];
         weakView.m_pProgresSlider.middleValue = timeInterval/totalDuration;
         //        NSLog(@"----progress : %f , %f", timeInterval, totalDuration);
@@ -452,7 +454,14 @@
     return [NSString stringWithFormat:@"%02d:%02d",minute,second];
 }
 
-
+-(CGFloat)durationWithVideo:(NSURL *)urlPath
+{
+    AVURLAsset *audioAsset=[AVURLAsset assetWithURL:urlPath];
+    CMTime   durationTime = audioAsset.duration;
+    CGFloat    reultTime=0;
+    reultTime = CMTimeGetSeconds(durationTime);
+    return  reultTime;
+}
 
 #pragma mark - Set data
 -(void)SetBookData:(NSArray *)argData

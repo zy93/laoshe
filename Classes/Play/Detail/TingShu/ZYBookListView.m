@@ -11,6 +11,9 @@
 #import "YYUtil.h"
 #import "ZYBookListViewCell.h"
 
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+
 @implementation ZYBookListView
 
 /*
@@ -107,7 +110,9 @@
     }
     ZYChapter *chapter = self.m_bookList[indexPath.row];
     [cell.m_pTitleLabel setText:[NSString stringWithFormat:@"%@ %@", chapter.title, chapter.chapter]];
-    [cell.m_pSubtitleLab setText:chapter.time];
+    CGFloat totalDuration = [self durationWithVideo:[NSURL URLWithString:chapter.audioUrl]];
+    
+    [cell.m_pSubtitleLab setText:[self stringWithTime:totalDuration]];
     cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
     if (indexPath.row == _playBookIndex) {
         [cell.m_pTitleLabel setTextColor: UIColorFromHex(blue_45)];
@@ -128,6 +133,22 @@
     if ([_delegate respondsToSelector:@selector(selectBookIndex:)]) {
         [_delegate selectBookIndex:indexPath.row];
     }
+}
+
+-(NSString *)stringWithTime:(NSTimeInterval)time {
+    
+    int minute = time / 60;
+    int second = (int)time % 60;
+    return [NSString stringWithFormat:@"%02d:%02d",minute,second];
+}
+
+-(CGFloat)durationWithVideo:(NSURL *)urlPath
+{
+    AVURLAsset *audioAsset=[AVURLAsset assetWithURL:urlPath];
+    CMTime   durationTime = audioAsset.duration;
+    CGFloat    reultTime=0;
+    reultTime = CMTimeGetSeconds(durationTime);
+    return  reultTime;
 }
 
 

@@ -80,7 +80,7 @@
     _m_pImageView.contentMode = UIViewContentModeScaleAspectFill;
     _m_pImageView.clipsToBounds = YES;
 
-    [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",[YYUtil timeForYearWithTimeInterval:data.startDate*1000]]];
+    [_m_pTimeLab setText:[NSString stringWithFormat:@"%@",[YYUtil timeForMonthWithTimeInterval:data.startDate*1000]]];
     [_m_pTitleLab setText:data.title];
     
 }

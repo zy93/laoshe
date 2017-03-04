@@ -9,12 +9,13 @@
 #import "YYYanContentView.h"
 #import "UIImageView+AFNetworking.h"
 #import "YYYanData.h"
+#import "JT3DScrollView.h"
 
 #define VIEWBTNTAG 1000
 
 @interface YYYanContentView ()
 {
-    UIScrollView *m_pScrollView;
+    JT3DScrollView *m_pScrollView;
     NSMutableArray *m_arrData;
 }
 
@@ -36,12 +37,14 @@
 #pragma mark - private methods
 -(void)CreateSubViews  ///40
 {
-    m_pScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    m_pScrollView = [[JT3DScrollView alloc] initWithFrame:CGRectMake(50, 0, self.frame.size.width-100, self.frame.size.height)];
     m_pScrollView.scrollEnabled = YES;
     m_pScrollView.contentOffset = CGPointMake(0, 0);
     m_pScrollView.backgroundColor = [UIColor clearColor];
     m_pScrollView.showsVerticalScrollIndicator = NO;
     m_pScrollView.showsHorizontalScrollIndicator = NO;
+    m_pScrollView.effect = JT3DScrollViewEffectDepth;
+
     [self addSubview:m_pScrollView];
 }
 
@@ -59,44 +62,57 @@
     {
         [pView removeFromSuperview];
     }
-    CGFloat fBackViewSizeW = 216*[AppConfigure GetLengthAdaptRate];
-    CGFloat fBackViewSizeH = 381*[AppConfigure GetLengthAdaptRate];
-    CGFloat fLabelSizeW = fBackViewSizeW-20*[AppConfigure GetLengthAdaptRate];
-    CGFloat fLabelSizeH = 16;
-    CGFloat fBackViewX = 20*[AppConfigure GetLengthAdaptRate];
-    CGFloat fBackViewInterval = 4*[AppConfigure GetLengthAdaptRate];
+    
     for (NSInteger i = 0; i<argData.count ; i++)
     {
         YYYanData *pData = argData[i];
-        UIView *pBackgroupView = [[UIImageView alloc] initWithFrame:CGRectMake(fBackViewX+(i * (fBackViewSizeW + fBackViewInterval)), 0, fBackViewSizeW, fBackViewSizeH)];
-        pBackgroupView.backgroundColor = [UIColor whiteColor];
-        [m_pScrollView addSubview:pBackgroupView];
-        
-        UIButton *pPhotoBtn = [[UIButton alloc] initWithFrame:pBackgroupView.frame];
-        pPhotoBtn.backgroundColor = [UIColor clearColor];
-        [pPhotoBtn addTarget:self action:@selector(ClickCheckDetails:) forControlEvents:UIControlEventTouchUpInside];
-        pPhotoBtn.tag = VIEWBTNTAG + i;
-        [m_pScrollView addSubview:pPhotoBtn];
-        
-        
-        UILabel *pBookNameLab = [[UILabel alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], 25*[AppConfigure GetLengthAdaptRate], fLabelSizeW, fLabelSizeH)];
-        pBookNameLab.text = pData.bookName;
-        pBookNameLab.textColor = UIColorFromHex(0x666666);
-        pBookNameLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:15];
-        [pBackgroupView addSubview:pBookNameLab];
-        
-        UILabel *pAuthorLab = [[UILabel alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], pBookNameLab.bottom + 10*[AppConfigure GetLengthAdaptRate], fLabelSizeW, 13)];
-        pAuthorLab.text = pData.author;
-        pAuthorLab.textColor = UIColorFromHex(0xcccccc);
-        pAuthorLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:12.0];
-        [pBackgroupView addSubview:pAuthorLab];
-        
-        UIImageView *pCoverImg = [[UIImageView alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], pAuthorLab.bottom + 10*[AppConfigure GetLengthAdaptRate], 195*[AppConfigure GetLengthAdaptRate], 283*[AppConfigure GetLengthAdaptRate])];
-        [pCoverImg setImageWithURL:[NSURL URLWithString:pData.cover] placeholderImage:nil];
-        [pBackgroupView addSubview:pCoverImg];
+        [self addData:pData];
         
     }
-    m_pScrollView.contentSize = CGSizeMake(fBackViewX+(argData.count * (fBackViewSizeW+fBackViewInterval)), 0);
+}
+
+-(void)addData:(YYYanData *)pData
+{
+    CGFloat width = CGRectGetWidth(m_pScrollView.frame);
+    CGFloat height = CGRectGetHeight(m_pScrollView.frame);
+    CGFloat x = m_pScrollView.subviews.count * width;
+    CGFloat fLabelSizeH = 16;
+
+    
+    UIView *pBackgroupView = [[UIView alloc] initWithFrame:CGRectMake(x, 0, width, height)];
+    pBackgroupView.backgroundColor = [UIColor whiteColor];
+    pBackgroupView.layer.cornerRadius = 8.;
+
+    [m_pScrollView addSubview:pBackgroupView];
+    
+//    UIButton *pPhotoBtn = [[UIButton alloc] initWithFrame:pBackgroupView.frame];
+//    pPhotoBtn.backgroundColor = [UIColor clearColor];
+//    [pPhotoBtn addTarget:self action:@selector(ClickCheckDetails:) forControlEvents:UIControlEventTouchUpInside];
+//    pPhotoBtn.tag = VIEWBTNTAG + x;
+//    [m_pScrollView addSubview:pPhotoBtn];
+    
+    
+    UILabel *pBookNameLab = [[UILabel alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], 25*[AppConfigure GetLengthAdaptRate], CGRectGetWidth(m_pScrollView.frame), fLabelSizeH)];
+    pBookNameLab.text = pData.bookName;
+    pBookNameLab.textAlignment = NSTextAlignmentCenter;
+    pBookNameLab.textColor = UIColorFromHex(0x666666);
+    pBookNameLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:15];
+    [pBackgroupView addSubview:pBookNameLab];
+    
+    UILabel *pAuthorLab = [[UILabel alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], pBookNameLab.bottom + 10*[AppConfigure GetLengthAdaptRate], CGRectGetWidth(m_pScrollView.frame), 13)];
+    pAuthorLab.text = pData.author;
+    pAuthorLab.textAlignment = NSTextAlignmentCenter;
+    pAuthorLab.textColor = UIColorFromHex(0xcccccc);
+    pAuthorLab.font = [UIFont fontWithName:[AppConfigure RegularFont] size:12.0];
+    [pBackgroupView addSubview:pAuthorLab];
+    
+    UIImageView *pCoverImg = [[UIImageView alloc] initWithFrame:CGRectMake(20*[AppConfigure GetLengthAdaptRate], pAuthorLab.bottom + 20*[AppConfigure GetLengthAdaptRate], 195*[AppConfigure GetLengthAdaptRate], 283*[AppConfigure GetLengthAdaptRate])];
+    [pCoverImg setImageWithURL:[NSURL URLWithString:pData.cover] placeholderImage:nil];
+    pCoverImg.center = CGPointMake(CGRectGetWidth(m_pScrollView.frame)/2, CGRectGetMidY(pCoverImg.frame));
+    [pBackgroupView addSubview:pCoverImg];
+    
+    [m_pScrollView setContentSize: CGSizeMake(x + width, height)];
+
 }
 
 @end

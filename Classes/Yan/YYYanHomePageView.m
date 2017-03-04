@@ -63,7 +63,7 @@
     m_pYanChannelView.propDelegete = self;
     [self addSubview:m_pYanChannelView];
     
-    m_pYanContentView = [[YYYanContentView alloc] initWithFrame:CGRectMake(0, m_pHeadImgView.bottom + 40*[AppConfigure GetLengthAdaptRate], self.width, self.height - m_pHeadImgView.bottom - 40*[AppConfigure GetLengthAdaptRate])];
+    m_pYanContentView = [[YYYanContentView alloc] initWithFrame:CGRectMake(0, m_pHeadImgView.bottom + 20*[AppConfigure GetLengthAdaptRate], self.width, self.height - m_pHeadImgView.bottom - 40*[AppConfigure GetLengthAdaptRate])];
     [self addSubview:m_pYanContentView];
 }
 #pragma mark - public methods

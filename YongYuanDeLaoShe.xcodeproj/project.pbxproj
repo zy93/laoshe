@@ -249,6 +249,7 @@
 		25EE99351E5C74B8000E9DCA /* YYDonateListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99341E5C74B8000E9DCA /* YYDonateListView.m */; };
 		25EE99381E5C74D9000E9DCA /* YYDonateListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */; };
 		2A0F93171E584A1B00B874AA /* ZYAudioPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */; };
+		2A20CC431E6A666F0004B9C4 /* JT3DScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A20CC421E6A666F0004B9C4 /* JT3DScrollView.m */; };
 		2A2CBC341E5FC8AF004DDC77 /* YYOtherHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2CBC331E5FC8AF004DDC77 /* YYOtherHeadView.m */; };
 		2A30F46C1E68558500CD72CC /* select_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A30F46A1E68558500CD72CC /* select_blue@2x.png */; };
 		2A30F46D1E68558500CD72CC /* select_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A30F46B1E68558500CD72CC /* select_blue@3x.png */; };
@@ -743,6 +744,8 @@
 		25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDonateListCell.m; sourceTree = "<group>"; };
 		2A0F93151E584A1B00B874AA /* ZYAudioPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYAudioPlayView.h; sourceTree = "<group>"; };
 		2A0F93161E584A1B00B874AA /* ZYAudioPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYAudioPlayView.m; sourceTree = "<group>"; };
+		2A20CC411E6A666F0004B9C4 /* JT3DScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JT3DScrollView.h; sourceTree = "<group>"; };
+		2A20CC421E6A666F0004B9C4 /* JT3DScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JT3DScrollView.m; sourceTree = "<group>"; };
 		2A2CBC321E5FC8AF004DDC77 /* YYOtherHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYOtherHeadView.h; sourceTree = "<group>"; };
 		2A2CBC331E5FC8AF004DDC77 /* YYOtherHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYOtherHeadView.m; sourceTree = "<group>"; };
 		2A30F46A1E68558500CD72CC /* select_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select_blue@2x.png"; sourceTree = "<group>"; };
@@ -1668,6 +1671,7 @@
 		258D7C871E388667009510C4 /* Yan */ = {
 			isa = PBXGroup;
 			children = (
+				2A20CC401E6A665C0004B9C4 /* ScrollVIew */,
 				258D7C8C1E3886EB009510C4 /* YYYanHomePageController.h */,
 				258D7C8D1E3886EB009510C4 /* YYYanHomePageController.m */,
 				25925C681E4EF79100EDEA69 /* YYYanHomePageView.h */,
@@ -1907,6 +1911,15 @@
 				25EE99371E5C74D9000E9DCA /* YYDonateListCell.m */,
 			);
 			path = DonateList;
+			sourceTree = "<group>";
+		};
+		2A20CC401E6A665C0004B9C4 /* ScrollVIew */ = {
+			isa = PBXGroup;
+			children = (
+				2A20CC411E6A666F0004B9C4 /* JT3DScrollView.h */,
+				2A20CC421E6A666F0004B9C4 /* JT3DScrollView.m */,
+			);
+			path = ScrollVIew;
 			sourceTree = "<group>";
 		};
 		2A44C2621E57272100CFD89E /* Custom */ = {
@@ -2393,6 +2406,7 @@
 				251CD1CC1E508C650073517C /* YYYanChannelView.m in Sources */,
 				2555A4DE1E3785DC00E309F6 /* CHANGELOG.md in Sources */,
 				2555A4E61E3785DC00E309F6 /* ZYKeyboardUtil.m in Sources */,
+				2A20CC431E6A666F0004B9C4 /* JT3DScrollView.m in Sources */,
 				25C939B31E5485A000017D17 /* YYXunDetailController.m in Sources */,
 				25AEE9251E5B1FF000DC9488 /* YYRichTextDetailController.m in Sources */,
 				25DFD0D11E51F4B10028D926 /* YYYiFriendDetailController.m in Sources */,

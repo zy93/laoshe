@@ -58,13 +58,38 @@
 {
     _m_pTitle = m_pTitle;
     [m_pTitlelab setText:m_pTitle];
+
     [self setNeedsLayout];
+}
+
+-(NSAttributedString *)setTextString:(NSString *)text
+{
+    NSMutableAttributedString *mAbStr = [[NSMutableAttributedString alloc] initWithString:text];
+    NSMutableParagraphStyle *npgStyle = [[NSMutableParagraphStyle alloc] init];
+    npgStyle.alignment = NSTextAlignmentJustified;
+    npgStyle.paragraphSpacing = 11.0;
+    npgStyle.paragraphSpacingBefore = 10.0;
+    npgStyle.firstLineHeadIndent = 28.0;
+    npgStyle.headIndent = 0.0;
+    NSDictionary *dic = @{
+                          NSForegroundColorAttributeName:[UIColor blackColor],
+                          NSFontAttributeName      :[UIFont systemFontOfSize:14.0],
+                          NSParagraphStyleAttributeName :npgStyle,
+                          NSUnderlineStyleAttributeName :[NSNumber numberWithInteger:NSUnderlineStyleNone]
+                          };
+    [mAbStr setAttributes:dic range:NSMakeRange(0, mAbStr.length)];
+    NSAttributedString *attrString = [mAbStr copy];
+    return attrString;
 }
 
 -(void)setM_pSubtitle:(NSString *)m_pSubtitle
 {
     _m_pSubtitle = m_pSubtitle;
-    [m_pSubitlelab setText:m_pSubtitle];
+    if (m_pSubtitle != nil || [m_pSubtitle isEqualToString:@""])
+    {
+        [m_pSubitlelab setAttributedText:[self setTextString:m_pSubtitle]];
+    }
+
     [self setNeedsLayout];
 }
 

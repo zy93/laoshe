@@ -83,7 +83,7 @@ alpha:a]
 
 + (NSString*)GetFileDomain;
 
-
++(NSString *)GetShareUrl;
 
 + (NSString*)RegularFont;
 

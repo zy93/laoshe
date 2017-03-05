@@ -97,7 +97,7 @@
     messageObject.text = pTitle;
     
     UMShareWebpageObject *pMessageObject = [UMShareWebpageObject shareObjectWithTitle:pTitle descr:@"永远的老舍" thumImage:[UIImage imageNamed:@"shareIcon-1024.png"]];
-    pMessageObject.webpageUrl = [NSString stringWithFormat:@"%@Share/activity_detail?id=%ld",[AppConfigure GetWebServiceDomain],(long)self.propActId];
+    pMessageObject.webpageUrl = [NSString stringWithFormat:@"%@Share/activity_detail&id=%ld",[AppConfigure GetShareUrl],(long)self.propActId];
     messageObject.shareObject = pMessageObject;
     
     [[UMSocialManager defaultManager] shareToPlatform:socialPlatformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {

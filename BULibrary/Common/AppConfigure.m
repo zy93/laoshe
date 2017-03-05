@@ -37,6 +37,10 @@
         return @"http://sjqy.1bu2bu.com/index.php?s=/Api/";    //测试服务器
 }
 
++(NSString *)GetShareUrl
+{
+    return @"http://123.56.226.177/index.php?s=/Home/";
+}
 + (NSString*)RegularFont
 {
 

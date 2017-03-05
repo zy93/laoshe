@@ -72,7 +72,7 @@
 -(void)EndTextEditing;
 
 /// Set the text content
-/// @param set the text content
+/// @param argText the text content
 -(void)SetText:(NSString*)argText;
 
 /// Get the text content

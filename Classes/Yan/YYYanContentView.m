@@ -92,7 +92,7 @@
 //    [m_pScrollView addSubview:pPhotoBtn];
     
     
-    UILabel *pBookNameLab = [[UILabel alloc] initWithFrame:CGRectMake(10*[AppConfigure GetLengthAdaptRate], 25*[AppConfigure GetLengthAdaptRate], CGRectGetWidth(m_pScrollView.frame), fLabelSizeH)];
+    UILabel *pBookNameLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 25*[AppConfigure GetLengthAdaptRate], CGRectGetWidth(m_pScrollView.frame), fLabelSizeH)];
     pBookNameLab.text = pData.bookName;
     pBookNameLab.textAlignment = NSTextAlignmentCenter;
     pBookNameLab.textColor = UIColorFromHex(0x666666);
